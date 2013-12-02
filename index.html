@@ -23,7 +23,9 @@
 <link rel="stylesheet" type="text/css" href="resources/fonts/lato/lato.css"/>
 <link rel="stylesheet" type="text/css" href="frontpage.css"/>
 <script type="text/javascript" src="http://meta.brickimedia.org/resources/jquery/jquery.js"></script>
-<script type="text/javascript" src="frontpage.js"></script>
+<script type="text/javascript">
+var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();
+</script>
 </head>
 <body>
 <div id="fb-root"></div>
@@ -34,6 +36,9 @@
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=170482364649";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+<script async type="text/javascript">
+var pageURL=document.URL;var splitVal=pageURL.split("#");var pageDisplay=splitVal[1];window.onload=function(){$('.header-link').on('click',function(event){event.preventDefault();var target="#"+ $(this).data('target');$('html, body').animate({scrollTop:($(target).offset().top- 100)},1000);});}
+</script>
 <div id="header">
 <div id="header-main"></div>
 <div id="header-fade"></div>
@@ -79,7 +84,7 @@
 	<h1 id="about">What is Brickimedia?</h1>
 	<p>Brickimedia is an open network of LEGO fan communities that was created in early 2013. Brickimedia hosts four projects: Brickipedia, the LEGO encyclopedia, Customs, a MOC hosting wiki where users can display their custom sets, themes, and minifigures, LEGO Stories Wiki, a wiki that allows users to host their fan-created stories about LEGO, and the LEGO CUUSOO Wiki, an encyclopedia about LEGO CUUSOO.</p>
 
-	<p>Brickimedia was originally launched in February 2013, where it hosted five projects: Brickipedia, Customs, the LEGO Message Boards Wiki, LEGO Stories Wiki, and LEGO CUUSOO Wiki. In June 2013, a malicious attack on the company that hosted Brickimedia's server caused all content that was on the Brickimedia server. Due to the lack of accessible backups, very little content was recoverable, and development then started from the ground up. Since that downtime, Brickimedia has been through a closed alpha, closed beta, and open beta testing period. The platform has had many issues that have been addressed in these testing periods, and Brickimedia is guaranteed to be better than it ever has been before.</p>
+	<p>Brickimedia was originally launched in February 2013, where it hosted five projects: Brickipedia, Customs, the LEGO Message Boards Wiki, LEGO Stories Wiki, and LEGO CUUSOO Wiki. In June 2013, a malicious attack on the company that hosted Brickimedia's server caused all content that was on the Brickimedia server to be lost. Due to the lack of accessible backups, very little content was recoverable, and development then started from the ground up. Since that downtime, Brickimedia has been through a closed alpha, closed beta, and open beta testing period. The platform has had many issues that have been addressed in these testing periods, and Brickimedia is guaranteed to be better than it ever has been before.</p>
 	<div class="sec-end"></div>
 	<h1 id="news">Recent updates</h1>
 	<p>
