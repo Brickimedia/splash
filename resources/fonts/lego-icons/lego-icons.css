@@ -1,0 +1,10 @@
+/* Lego Icons font for use on Brickimedia */
+@font-face {
+        font-family: 'lego-icons';
+        src: url('http://www.brickimedia.org/resources/fonts/lego-icons/lego-icons.eot') format('embedded-opentype'),
+                url('http://www.brickimedia.org/resources/fonts/lego-icons/lego-icons.woff') format('woff'),
+                url('http://www.brickimedia.org/resources/fonts/lego-icons/lego-icons.ttf') format('truetype'),
+                url('http://www.brickimedia.org/resources/fonts/lego-icons/lego-icons.svg#lego-icons') format('svg');
+        font-style: normal;
+        font-weight: normal;
+}
