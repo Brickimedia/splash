@@ -1,9 +1,7 @@
-$(document).ready(function(){
-
-	$("#blue-container").css({"background-position": "0 140px"});
-	$("#red-container").css({"background-position": "0 250px"});
-	$("#white-container").css({"background-position": "0 360px"});
-			
+$(document).ready(function() {
+	
+	$("#white-container").css({"background-position": "0 300px"}); //the bricks are at the top, they get cut off when you scroll down without this
+	
 	$.ajax({
 		type: "GET",
 		url: "http://meta.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml",
@@ -65,15 +63,15 @@ $(document).ready(function(){
 	}); //meta ajax
 	
 	$(window).scroll(function() {
-		var hero = $(this).scrollTop();
+		var diffToTop = $(this).scrollTop();
 		var diffToBottom = $(document).height() - ($(this).scrollTop() + $(this).height());
 		if ($(window).width() > 780) {
-			$("#hero").css({"background-position": "0 " + parseInt(-hero / 5) + "px"});
-			$("#blue-container").css({"background-position": "0 " + (140 + parseInt(-hero / 5)) + "px"});
-			$("#red-container").css({"background-position": "0 " + (250 + parseInt(-hero / 5)) + "px"});
-			$("#white-container").css({"background-position": "0 " + (360 + parseInt(-hero / 5)) + "px"});
+			$("#hero").css({"background-position": "0 " + parseInt(-diffToTop / 5, 10) + "px"});
+			$("#blue-container").css({"background-position": "0 " + parseInt(-diffToTop / 5, 10) + "px"});
+			$("#red-container").css({"background-position": "0 " + parseInt(-diffToTop / 5, 10) + "px"});
+			$("#white-container").css({"background-position": "0 " + (300 + parseInt(-diffToTop / 5, 10)) + "px"});
 			if (diffToBottom <= 150 && diffToBottom > 7) {
-				$("#wiki-nav-bottom").css({"margin-top":  35 + diffToBottom/4.5 + "px"});
+				$("#wiki-nav-bottom").css({"margin-top":  35 + diffToBottom / 4.5 + "px"});
   			}
 			if (diffToBottom <= 100) {
 				$("#wiki-nav-bottom").css({"opacity":  (100 - diffToBottom) / 100});
