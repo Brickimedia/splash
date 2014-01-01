@@ -1,664 +1,271 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width">
-<!-- START WINDOWS 8 START TILE -->
-<meta name="application-name" content="&nbsp;"/>
-<meta name="msapplication-TileColor" content="#429ec8"/>
-<meta name="msapplication-TileImage" content="square.png"/>
-<meta name="msapplication-square70x70logo" content="tiny.png"/>
-<meta name="msapplication-square150x150logo" content="square.png"/>
-<meta name="msapplication-wide310x150logo" content="wide.png"/>
-<meta name="msapplication-square310x310logo" content="large.png"/>
-<!-- END WINDOWS 8 START TILE -->
-<!-- START OPEN GRAPH -->
-<meta property="og:image" content="http://www.brickimedia.org/large.png"/>
-<meta property="og:title" content="Brickimedia - An open project to create the largest LEGO fan network on the web"/>
-<meta property="og:url" content="http://www.brickimedia.org"/>
-<meta property="og:site_name" content="Brickimedia"/>
-<!-- END OPEN GRAPH -->
+<meta charset="UTF-8">
 <title>Brickimedia</title>
-<link rel="shortcut icon" href="img/favicon.ico" />
-<link rel="stylesheet" type="text/css" href="resources/fonts/lato/lato.css"/>
-<link rel="stylesheet" type="text/css" href="frontpage.css"/>
+<meta name="viewport" content="width=device-width">
+ 
+<meta name="application-name" content="&nbsp;">
+<meta name="msapplication-TileColor" content="#429ec8">
+<meta name="msapplication-TileImage" content="splashfiles/square.png">
+<meta name="msapplication-square70x70logo" content="splashfiles/tiny.png">
+<meta name="msapplication-square150x150logo" content="splashfiles/square.png">
+<meta name="msapplication-wide310x150logo" content="splashfiles/wide.png">
+<meta name="msapplication-square310x310logo" content="splashfiles/large.png">
+ 
+ 
+<meta property="og:image" content="http://www.brickimedia.org/large.png">
+<meta property="og:title" content="Brickimedia - An open project to create the largest LEGO fan network on the web">
+<meta property="og:url" content="http://www.brickimedia.org">
+<meta property="og:site_name" content="Brickimedia">
+ 
+<link rel="shortcut icon" href="img/favicon.ico">
+<link rel="stylesheet" type="text/css" href="resources/fonts/lato/lato.css">
+<link rel="stylesheet" type="text/css" href="splashfiles/style.css">
+<script src="http://edge.quantserve.com/quant.js" async type="text/javascript"></script>
+<script id="facebook-jssdk" src="//connect.facebook.net/en_US/all.js#xfbml=1&amp;appId=170482364649"></script>
+<script type="text/javascript" async src="http://www.google-analytics.com/ga.js"></script>
 <script type="text/javascript" src="http://meta.brickimedia.org/resources/jquery/jquery.js"></script>
+<script src="splashfiles/scripts.js" type="text/javascript"></script>
 <script type="text/javascript">
 var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();
 </script>
-<script type="text/javascript">
-/** @license
- * DHTML Snowstorm! JavaScript-based Snow for web pages
- * --------------------------------------------------------
- * Version 1.43.20111201 (Previous rev: 1.42.20111120)
- * Copyright (c) 2007, Scott Schiller. All rights reserved.
- * Code provided under the BSD License:
- * http://schillmania.com/projects/snowstorm/license.txt
- */
- 
-/*global window, document, navigator, clearInterval, setInterval */
-/*jslint white: false, onevar: true, plusplus: false, undef: true, nomen: true, eqeqeq: true, bitwise: true, regexp: true, newcap: true, immed: true */
- 
-window.snowStorm = {
- 
-	// --- common properties ---
- 
-	autoStart: true,		// Whether the snow should start automatically or not.
-	flakesMax: 50,			// Limit total amount of snow made (falling + sticking)
-	flakesMaxActive: 50,		// Limit amount of snow falling at once (less = lower CPU use)
-	animationInterval: 35,		// Theoretical "miliseconds per frame" measurement. 20 = fast + smooth, but high CPU use. 50 = more conservative, but slower
-	excludeMobile: true,		// Snow is likely to be bad news for mobile phones' CPUs (and batteries.) By default, be nice.
-	flakeBottom: null,		// Integer for Y axis snow limit, 0 or null for "full-screen" snow effect
-	followMouse: false,		// Snow movement can respond to the user's mouse
-	snowColor: '#fff',		// Don't eat (or use?) yellow snow.
-	snowCharacter: '&bull;',	// &bull; = bullet, &middot; is square on some systems etc.
-	snowStick: false,		// Whether or not snow should "stick" at the bottom. When off, will never collect.
-	targetElement: document.body,	// element which snow will be appended to (null = document.body) - can be an element ID eg. 'myDiv', or a DOM node reference
-	useMeltEffect: true,		// When recycling fallen snow (or rarely, when falling), have it "melt" and fade out if browser supports it
-	useTwinkleEffect: false,	// Allow snow to randomly "flicker" in and out of view while falling
-	usePositionFixed: true,		// true = snow does not shift vertically when scrolling. May increase CPU load, disabled by default - if enabled, used only where supported
- 
-	// --- less-used bits ---
- 
-	freezeOnBlur: true,		// Only snow when the window is in focus (foreground.) Saves CPU.
-	flakeLeftOffset: 0,		// Left margin/gutter space on edge of container (eg. browser window.) Bump up these values if seeing horizontal scrollbars.
-	flakeRightOffset: 0,		// Right margin/gutter space on edge of container
-	flakeWidth: 8,			// Max pixel width reserved for snow element
-	flakeHeight: 8,			// Max pixel height reserved for snow element
-	vMaxX: 5,			// Maximum X velocity range for snow
-	vMaxY: 4,			// Maximum Y velocity range for snow
-	zIndex: 0			// CSS stacking order applied to each snowflake
-};
-// --- End of user section ---
- 
-snowStorm.internal = {
-	// UA sniffing and backCompat rendering mode checks for fixed position, etc.
-	isIE: navigator.userAgent.match(/msie/i),
-	isIE6: navigator.userAgent.match(/msie 6/i),
-	isWin98: navigator.appVersion.match(/windows 98/i),
-	isMobile: navigator.userAgent.match(/mobile|opera m(ob|in)/i),
-	screenX: null,
-	screenX2: null,
-	screenY: null,
-	scrollY: null,
-	vRndX: null,
-	vRndY: null,
-	windOffset: 1,
-	windMultiplier: 2,
-	flakeTypes: 6,
-	fixedForEverything: false,
-	opacitySupported: true,
-	didInit: false,
-	docFrag: document.createDocumentFragment()
-};
-snowStorm.internal.isBackCompatIE = (snowStorm.internal.isIE && document.compatMode == 'BackCompat');
-snowStorm.internal.noFixed = (snowStorm.internal.isMobile || snowStorm.internal.isBackCompatIE || snowStorm.internal.isIE6);
-try {
-	document.createElement('div').style.opacity = '0.5';
-} catch(e) {
-	snowStorm.internal.opacitySupported = false;
+<!--[if IE]>
+<script src="splashfiles/html5.js"></script>
+<![endif]-->
+<style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}
+.fb_invisible{display:none}
+.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}
+.fb_reset > div{overflow:hidden}
+.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}
+.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}
+.fb_dialog_content{background:#fff;color:#333}
+.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\9;right:7px\9}
+.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}
+.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}
+.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}
+.fb_dialog_top_left,
+.fb_dialog_top_right,
+.fb_dialog_bottom_left,
+.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}
+.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}
+.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}
+.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}
+.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right,
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right{width:10px;height:100%}
+.fb_dialog_vert_left{margin-left:-10px}
+.fb_dialog_vert_right{right:0;margin-right:-10px}
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{width:100%;height:10px}
+.fb_dialog_horiz_top{margin-top:-10px}
+.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}
+.fb_dialog_iframe{line-height:0}
+.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}
+.fb_dialog_content .dialog_title > span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif)
+no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}
+body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}
+.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif)
+white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}
+.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}
+#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}
+#fb-root #fb_dialog_ipad_overlay.hidden{display:none}
+.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}
+.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}
+.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%
 }
- 
-snowStorm.timers = [];
-snowStorm.flakes = [];
-snowStorm.disabled = false;
-snowStorm.active = false;
-snowStorm.meltFrameCount = 20;
-snowStorm.meltFrames = [];
- 
-snowStorm.events = {};
-snowStorm.events.add = function(element, listener, func) {
-	if (!window.addEventListener && window.attachEvent) {
-		element.attachEvent('on' + listener, func);
-	}
-	else {
-		element.addEventListener.apply(element, Array.prototype.slice.call(arguments, 1))
-	}
+.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px
 }
-snowStorm.events.remove = function(element, listener, func) {
-	if (!window.addEventListener && window.attachEvent) {
-		element.detachEvent('on' + listener, func);
-	}
-	else {
-		element.removeEventListener.apply(element, Array.prototype.slice.call(arguments, 1))
-	}
+.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px
 }
- 
-function rnd(n, min) {
-	if (isNaN(min)) {
-		min = 0;
-	}
-	return (Math.random() * n) + min;
-}
- 
-function plusMinus(n) {
-	if (parseInt(rnd(2), 10) == 1) {
-		return n * -1;
-	}
-	else {
-		return n;
-	}
-}
- 
-snowStorm.randomizeWind = function() {
-	snowStorm.internal.vRndX = plusMinus(rnd(snowStorm.vMaxX, 0.2));
-	snowStorm.internal.vRndY = rnd(snowStorm.vMaxY, 0.2);
-	if (snowStorm.flakes) {
-		for (var i = 0; i < snowStorm.flakes.length; i++) {
-			if (snowStorm.flakes[i].active) {
-				snowStorm.flakes[i].setVelocities();
-			}
-		}
-	}
-};
- 
-snowStorm.scrollHandler = function() {
-	// "attach" snowflakes to bottom of window if no absolute bottom value was given
-	snowStorm.internal.scrollY = (snowStorm.flakeBottom ? 0 : parseInt(window.scrollY || document.documentElement.scrollTop || document.body.scrollTop, 10));
-	if (isNaN(snowStorm.internal.scrollY)) {
-		snowStorm.internal.scrollY = 0; // Netscape 6 scroll fix
-	}
-	if (!snowStorm.internal.fixedForEverything && !snowStorm.flakeBottom && snowStorm.flakes) {
-		for (var i = snowStorm.flakes.length - 1; i >= 0; i--) {
-			if (snowStorm.flakes[i].active == 0) {
-				snowStorm.flakes[i].stick();
-			}
-		}
-	}
-};
- 
-snowStorm.resizeHandler = function() {
-	if (window.innerWidth || window.innerHeight) {
-		snowStorm.internal.screenX = window.innerWidth - 16 - snowStorm.flakeRightOffset;
-		snowStorm.internal.screenY = (snowStorm.flakeBottom ? snowStorm.flakeBottom : window.innerHeight);
-	} else {
-		snowStorm.internal.screenX = (document.documentElement.clientWidth || document.body.clientWidth || document.body.scrollWidth) - (!snowStorm.internal.isIE ? 8 : 0) - snowStorm.flakeRightOffset;
-		snowStorm.internal.screenY = snowStorm.flakeBottom ? snowStorm.flakeBottom : (document.documentElement.clientHeight || document.body.clientHeight || document.body.scrollHeight);
-	}
-	snowStorm.internal.screenX2 = parseInt(snowStorm.internal.screenX / 2, 10);
-};
- 
-snowStorm.resizeHandlerAlt = function() {
-	snowStorm.internal.screenX = snowStorm.targetElement.offsetLeft + snowStorm.targetElement.offsetWidth - snowStorm.flakeRightOffset;
-	snowStorm.internal.screenY = snowStorm.flakeBottom ? snowStorm.flakeBottom : snowStorm.targetElement.offsetTop + snowStorm.targetElement.offsetHeight;
-	snowStorm.internal.screenX2 = parseInt(snowStorm.internal.screenX/2,10);
-};
- 
-snowStorm.freeze = function() {
-	// pause animation
-	if (!snowStorm.disabled) {
-		snowStorm.disabled = 1;
-	} else {
-		return false;
-	}
-	for (var i = snowStorm.timers.length - 1; i >= 0; i--) {
-		clearInterval(snowStorm.timers[i]);
-	}
-};
- 
-snowStorm.resume = function() {
-	if (snowStorm.disabled) {
-		snowStorm.disabled = 0;
-	} else {
-		return false;
-	}
-	snowStorm.timerInit();
-};
- 
-snowStorm.toggleSnow = function() {
-	if (!snowStorm.flakes.length) {
-		// first run
-		snowStorm.start();
-	} else {
-		snowStorm.active = !snowStorm.active;
-		if (snowStorm.active) {
-			snowStorm.show();
-			snowStorm.resume();
-		} else {
-			snowStorm.stop();
-			snowStorm.freeze();
-		}
-	}
-};
- 
-snowStorm.stop = function() {
-	snowStorm.freeze();
-	for (var i = snowStorm.flakes.length - 1; i >= 0; i--) {
-		snowStorm.flakes[i].o.style.display = 'none';
-	}
-	snowStorm.events.remove(window, 'scroll', snowStorm.scrollHandler);
-	snowStorm.events.remove(window, 'resize', snowStorm.resizeHandler);
-	if (snowStorm.freezeOnBlur) {
-		if (snowStorm.internal.isIE) {
-			snowStorm.events.remove(document, 'focusout', snowStorm.freeze);
-			snowStorm.events.remove(document, 'focusin', snowStorm.resume);
-		} else {
-			snowStorm.events.remove(window, 'blur', snowStorm.freeze);
-			snowStorm.events.remove(window, 'focus', snowStorm.resume);
-		}
-	}
-};
- 
-snowStorm.show = function() {
-	for (var i = snowStorm.flakes.length - 1; i >= 0; i--) {
-		snowStorm.flakes[i].o.style.display = 'block';
-	}
-};
- 
-snowStorm.SnowFlake = function(type, x, y) {
-	this.type = type;
-	this.x = x || parseInt(rnd(snowStorm.internal.screenX - 20), 10);
-	this.y = (!isNaN(y) ? y : -rnd(snowStorm.internal.screenY) - 12);
-	this.vX = null;
-	this.vY = null;
-	this.vAmpTypes = [1, 1.2, 1.4, 1.6, 1.8]; // "amplification" for vX/vY (based on flake size/type)
-	this.vAmp = this.vAmpTypes[this.type];
-	this.melting = false;
-	this.meltFrameCount = snowStorm.meltFrameCount;
-	this.meltFrames = snowStorm.meltFrames;
-	this.meltFrame = 0;
-	this.twinkleFrame = 0;
-	this.active = 1;
-	this.fontSize = (10 + (this.type / 5) * 10);
-	this.o = document.createElement('div');
-	this.o.innerHTML = snowStorm.snowCharacter;
-	this.o.style.color = snowStorm.snowColor;
-	this.o.style.position = (snowStorm.internal.fixedForEverything ? 'fixed' : 'absolute');
-	this.o.style.width = snowStorm.flakeWidth + 'px';
-	this.o.style.height = snowStorm.flakeHeight + 'px';
-	this.o.style.fontFamily = 'arial,verdana';
-	this.o.style.cursor = 'default';
-	this.o.style.overflow = 'hidden';
-	this.o.style.fontWeight = 'normal';
-	this.o.style.zIndex = snowStorm.zIndex;
-	snowStorm.internal.docFrag.appendChild(this.o);
- 
-	this.refresh = function() {
-		if (isNaN(this.x) || isNaN(this.y)) {
-			// safety check
-			return false;
-		}
-		this.o.style.left = this.x + 'px';
-		this.o.style.top = this.y + 'px';
-	};
- 
-	this.stick = function() {
-		if (snowStorm.internal.noFixed || (snowStorm.targetElement !== document.documentElement && snowStorm.targetElement !== document.body)) {
-			this.o.style.top = (snowStorm.internal.screenY + snowStorm.internal.scrollY - snowStorm.flakeHeight) + 'px';
-		} else if (snowStorm.flakeBottom) {
-			this.o.style.top = snowStorm.flakeBottom + 'px';
-		} else {
-			this.o.style.display = 'none';
-			this.o.style.top = 'auto';
-			this.o.style.bottom = '0px';
-			this.o.style.position = 'fixed';
-			this.o.style.display = 'block';
-		}
-	};
- 
-	this.vCheck = function() {
-		if (this.vX >= 0 && this.vX < 0.2) {
-			this.vX = 0.2;
-		} else if (this.vX < 0 && this.vX > -0.2) {
-			this.vX = -0.2;
-		}
-		if (this.vY >= 0 && this.vY < 0.2) {
-			this.vY = 0.2;
-		}
-	};
- 
-	this.move = function() {
-		var vX = this.vX * snowStorm.internal.windOffset;
-		this.x += vX;
-		this.y += (this.vY * this.vAmp);
-		if (this.x >= snowStorm.internal.screenX || snowStorm.internal.screenX - this.x < snowStorm.flakeWidth) { // X-axis scroll check
-			this.x = 0;
-		} else if (vX < 0 && this.x - snowStorm.flakeLeftOffset < -snowStorm.flakeWidth) {
-			this.x = snowStorm.internal.screenX - snowStorm.flakeWidth-1; // flakeWidth;
-		}
-		this.refresh();
-		var yDiff = snowStorm.internal.screenY + snowStorm.internal.scrollY - this.y;
-		if (yDiff < snowStorm.flakeHeight) {
-			this.active = 0;
-			if (snowStorm.snowStick) {
-				this.stick();
-			} else {
-				this.recycle();
-			}
-		} else {
-			if (snowStorm.useMeltEffect && this.active && this.type < 3 && !this.melting && Math.random() > 0.998) {
-				// ~1/1000 chance of melting mid-air, with each frame
-				this.melting = true;
-				this.melt();
-				// only incrementally melt one frame
-				// this.melting = false;
-			}
-			if (snowStorm.useTwinkleEffect) {
-				if (!this.twinkleFrame) {
-					if (Math.random() > 0.9) {
-						this.twinkleFrame = parseInt(Math.random() * 20, 10);
-					}
-				} else {
-					this.twinkleFrame--;
-					this.o.style.visibility = (this.twinkleFrame && this.twinkleFrame % 2 == 0 ? 'hidden' : 'visible');
-				}
-			}
-		}
-	};
- 
-	this.animate = function() {
-		// main animation loop
-		// move, check status, die etc.
-		this.move();
-	};
- 
-	this.setVelocities = function() {
-		this.vX = snowStorm.internal.vRndX + rnd(snowStorm.vMaxX * 0.12, 0.1);
-		this.vY = snowStorm.internal.vRndY + rnd(snowStorm.vMaxY * 0.12, 0.1);
-	};
- 
-	this.setOpacity = function(o, opacity) {
-		if (!snowStorm.internal.opacitySupported) {
-			return false;
-		}
-		o.style.opacity = opacity;
-	};
- 
-	this.melt = function() {
-		if (!snowStorm.useMeltEffect || !this.melting) {
-			this.recycle();
-		} else {
-			if (this.meltFrame < this.meltFrameCount) {
-				this.setOpacity(this.o, this.meltFrames[this.meltFrame]);
-				this.o.style.fontSize = this.fontSize - (this.fontSize * (this.meltFrame / this.meltFrameCount)) + 'px';
-				this.o.style.lineHeight = snowStorm.flakeHeight + 2 + (snowStorm.flakeHeight * 0.75 * (this.meltFrame / this.meltFrameCount)) + 'px';
-				this.meltFrame++;
-			} else {
-				this.recycle();
-			}
-		}
-	};
- 
-	this.recycle = function() {
-		this.o.style.display = 'none';
-		this.o.style.position = (snowStorm.internal.fixedForEverything ? 'fixed' : 'absolute');
-		this.o.style.bottom = 'auto';
-		this.setVelocities();
-		this.vCheck();
-		this.meltFrame = 0;
-		this.melting = false;
-		this.setOpacity(this.o, 1);
-		this.o.style.padding = '0px';
-		this.o.style.margin = '0px';
-		this.o.style.fontSize = this.fontSize + 'px';
-		this.o.style.lineHeight = (snowStorm.flakeHeight + 2) + 'px';
-		this.o.style.textAlign = 'center';
-		this.o.style.verticalAlign = 'baseline';
-		this.x = parseInt(rnd(snowStorm.internal.screenX - snowStorm.flakeWidth - 20), 10);
-		this.y = parseInt(rnd(snowStorm.internal.screenY) * -1, 10) - snowStorm.flakeHeight;
-		this.refresh();
-		this.o.style.display = 'block';
-		this.active = 1;
-	};
- 
-	this.recycle(); // set up x/y coords etc.
-	this.refresh();
- 
-};
- 
-snowStorm.snow = function() {
-	var active = 0;
-	var used = 0;
-	var waiting = 0;
-	var flake = null;
-	for (var i = snowStorm.flakes.length - 1; i >= 0; i--) {
-		if (snowStorm.flakes[i].active == 1) {
-			snowStorm.flakes[i].move();
-			active++;
-		} else if (snowStorm.flakes[i].active == 0) {
-			used++;
-		} else {
-			waiting++;
-		}
-		if (snowStorm.flakes[i].melting) {
-			snowStorm.flakes[i].melt();
-		}
-	}
-	if (active < snowStorm.flakesMaxActive) {
-		flake = snowStorm.flakes[parseInt(rnd(snowStorm.flakes.length), 10)];
-		if (flake.active == 0) {
-			flake.melting = true;
-		}
-	}
-};
- 
-snowStorm.mouseMove = function(e) {
-	if (!snowStorm.followMouse) {
-		return true;
-	}
-	var x = parseInt(e.clientX, 10);
-	if (x < snowStorm.internal.screenX2) {
-		snowStorm.internal.windOffset = -snowStorm.internal.windMultiplier + (x / snowStorm.internal.screenX2 * snowStorm.internal.windMultiplier);
-	} else {
-		x -= snowStorm.internal.screenX2;
-		snowStorm.internal.windOffset = (x / snowStorm.internal.screenX2) * snowStorm.internal.windMultiplier;
-	}
-};
- 
-snowStorm.createSnow = function(limit, allowInactive) {
-	for (var i = 0; i < limit; i++) {
-		snowStorm.flakes.push(new snowStorm.SnowFlake(parseInt(rnd(snowStorm.internal.flakeTypes), 10)));
-		if (allowInactive || i > snowStorm.flakesMaxActive) {
-			snowStorm.flakes[snowStorm.flakes.length - 1].active = -1;
-		}
-	}
-	snowStorm.targetElement.appendChild(snowStorm.internal.docFrag);
-};
- 
-snowStorm.timerInit = function() {
-	snowStorm.timers = (!snowStorm.internal.isWin98 ? [setInterval(snowStorm.snow, snowStorm.animationInterval)] : [setInterval(snowStorm.snow, snowStorm.animationInterval * 3), setInterval(snowStorm.snow, snowStorm.animationInterval)]);
-};
- 
-snowStorm.init = function() {
-	for (var i = 0; i < snowStorm.meltFrameCount; i++) {
-		snowStorm.meltFrames.push(1 - (i / snowStorm.meltFrameCount));
-	}
-	snowStorm.randomizeWind();
-	snowStorm.createSnow(snowStorm.flakesMax); // create initial batch
-	snowStorm.events.add(window, 'resize', snowStorm.resizeHandler);
-	snowStorm.events.add(window, 'scroll', snowStorm.scrollHandler);
-	if (snowStorm.freezeOnBlur) {
-		if (snowStorm.internal.isIE) {
-			snowStorm.events.add(document, 'focusout', snowStorm.freeze);
-			snowStorm.events.add(document, 'focusin', snowStorm.resume);
-		} else {
-			snowStorm.events.add(window, 'blur', snowStorm.freeze);
-			snowStorm.events.add(window, 'focus', snowStorm.resume);
-		}
-	}
-	snowStorm.resizeHandler();
-	snowStorm.scrollHandler();
-	if (snowStorm.followMouse) {
-		snowStorm.events.add(snowStorm.internal.isIE ? document : window, 'mousemove', snowStorm.mouseMove);
-	}
-	snowStorm.animationInterval = Math.max(20, snowStorm.animationInterval);
-	snowStorm.timerInit();
-};
- 
-snowStorm.start = function(bFromOnLoad) {
-	if (!snowStorm.internal.didInit) {
-		snowStorm.internal.didInit = true;
-	} else if (bFromOnLoad) {
-		// already loaded and running
-		return true;
-	}
-	if (typeof snowStorm.targetElement == 'string') {
-		var targetID = snowStorm.targetElement;
-		snowStorm.targetElement = document.getElementById(targetID);
-		if (!snowStorm.targetElement) {
-			throw new Error('Snowstorm: Unable to get targetElement "' + targetID + '"');
-		}
-	}
-	if (!snowStorm.targetElement) {
-		snowStorm.targetElement = (!snowStorm.internal.isIE ? (document.documentElement ? document.documentElement : document.body) : document.body);
-	}
-	if (snowStorm.targetElement !== document.documentElement && snowStorm.targetElement !== document.body) {
-		snowStorm.resizeHandler = snowStorm.resizeHandlerAlt; // re-map handler to get element instead of screen dimensions
-	}
-	snowStorm.resizeHandler(); // get bounding box elements
-	snowStorm.usePositionFixed = (snowStorm.usePositionFixed && !snowStorm.internal.noFixed); // whether or not position:fixed is supported
-	snowStorm.internal.fixedForEverything = snowStorm.usePositionFixed;
-	if (snowStorm.internal.screenX && snowStorm.internal.screenY && !snowStorm.disabled) {
-		snowStorm.init();
-		snowStorm.active = true;
-	}
-};
- 
-function doDelayedStart() {
-	setTimeout(function() {
-		snowStorm.start(true);
-	}, 20);
-	// event cleanup
-	snowStorm.events.remove(snowStorm.internal.isIE ? document : window, 'mousemove', doDelayedStart);
-}
- 
-function doStart() {
-	if (!snowStorm.excludeMobile || !snowStorm.internal.isMobile) {
-		if (snowStorm.freezeOnBlur) {
-			snowStorm.events.add(snowStorm.internal.isIE ? document : window, 'mousemove', doDelayedStart);
-		} else {
-			doDelayedStart();
-		}
-	}
-	// event cleanup
-	snowStorm.events.remove(window, 'load', doStart);
-}
- 
-// hooks for starting the snow
-if (snowStorm.autoStart) {
-	snowStorm.events.add(window, 'load', doStart, false);
-}
-</script>
+.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6),
+color-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,
+rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}
+.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}
+.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}
+.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}
+#fb_dialog_loader_close{float:left}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}
+.fb_iframe_widget iframe{position:absolute}
+.fb_iframe_widget_lift{z-index:1}
+.fb_hide_iframes iframe{position:relative;left:-10000px}
+.fb_iframe_widget_loader{position:relative;display:inline-block}
+.fb_iframe_widget_fluid{display:inline}
+.fb_iframe_widget_fluid span{width:100%}
+.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}
+.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_connect_bar_container div,
+.fb_connect_bar_container span,
+.fb_connect_bar_container a,
+.fb_connect_bar_container img,
+.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}
+.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}
+.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+"px":body.scrollTop+"px")}
+.fb_connect_bar{position:relative;margin:auto;height:100%;width:100%;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:"lucida grande", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}
+.fb_connect_bar a:hover{color:#fff}
+.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}
+.fb_connect_bar div a,
+.fb_connect_bar span,
+.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}
+.fb_connect_bar .fb_buttons{float:right;margin-top:7px}
+.fb_edge_widget_with_comment{*z-index:1000}
+.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50% 50%;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender
+.FB_Loader{margin-top:0}
+.fbpluginrecommendationsbarleft,
+.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}
+.fbpluginrecommendationsbarleft{left:10px}
+.fbpluginrecommendationsbarright{right:10px}</style>
 </head>
-<body>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=170482364649";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<script async type="text/javascript">
-var pageURL=document.URL;var splitVal=pageURL.split("#");var pageDisplay=splitVal[1];window.onload=function(){$('.header-link').on('click',function(event){event.preventDefault();var target="#"+ $(this).data('target');$('html, body').animate({scrollTop:($(target).offset().top- 100)},1000);});}
-</script>
-<div id="header">
-<div id="header-main"></div>
-<div id="header-fade"></div>
-<div id="header-cover">
-    <div id="header-logo">
-	<a class="header-link" href="#content" data-target="content"><img src="img/logo-300px.png" alt="Brickimedia Logo" width="300" height="65" /></a>
-    </div>
-    <div id="header-links-cont">
-	<div id="header-links">
-	    <div class="header-links-a"><a class="header-link" href="#about" data-target="about">What is Brickimedia?<br /></a></div>
-	    <div class="header-links-a"><a class="header-link" href="#news" data-target="news">Recent updates<br /></a></div>
-	    <div class="header-links-a"><a class="header-link" href="#engage" data-target="engage">How to be a part<br /></a></div>
-	</div>
-    </div>
-</div>
-</div>
-<div id="content">
-    <div id="bodycontent">
-	<div class="intro">
-	<span class="big">Welcome &nbsp;to&nbsp; <b>Brickimedia</b></span>
-	<br/><br/>
-	<span class="small">An open project to create the largest LEGO fan network on the web</span>
-	</div>
-	<div class="sec-end"></div>
-	<div id="wiki-nav">
-	    <div class="wiki-nav-item meta"><a href="http://meta.brickimedia.org">Meta</a></div>
-	    <div class="wiki-nav-item en"><a href="http://en.brickimedia.org">Brickipedia</a></div>
-	    <div class="wiki-nav-item customs"><a href="http://customs.brickimedia.org">Customs</a></div>
-	    <div class="wiki-nav-item stories"><a href="http://stories.brickimedia.org">Stories</a></div>
-	    <div class="wiki-nav-item cuusoo"><a href="http://cuusoo.brickimedia.org">CUUSOO</a></div>
-	</div>
-	<div id="ad">
-	    <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	    <ins class="adsbygoogle"
-	       style="display:inline-block;width:728px;height:90px"
- 	       data-ad-client="ca-pub-9543775174763951"
- 	       data-ad-slot="9998611139"></ins>
-    	    <script>
-    		(adsbygoogle = window.adsbygoogle || []).push({});
-   	    </script>
-	</div>
-	<div class="sec-end"></div>
-	<h1 id="about">What is Brickimedia?</h1>
-	<p>Brickimedia is an open network of LEGO fan communities that was created in early 2013. Brickimedia hosts four projects: Brickipedia, the LEGO encyclopedia, Customs, a MOC hosting wiki where users can display their custom sets, themes, and minifigures, LEGO Stories Wiki, a wiki that allows users to host their fan-created stories about LEGO, and the LEGO CUUSOO Wiki, an encyclopedia about LEGO CUUSOO.</p>
 
-	<p>Brickimedia was originally launched in February 2013, where it hosted five projects: Brickipedia, Customs, the LEGO Message Boards Wiki, LEGO Stories Wiki, and LEGO CUUSOO Wiki. In June 2013, a malicious attack on the company that hosted Brickimedia's server caused all content that was on the Brickimedia server to be lost. Due to the lack of accessible backups, very little content was recoverable, and development then started from the ground up. Since that downtime, Brickimedia has been through a closed alpha, closed beta, and open beta testing period. The platform has had many issues that have been addressed in these testing periods, and Brickimedia is guaranteed to be better than it ever has been before.</p>
-	<div class="sec-end"></div>
-	<h1 id="news">Recent updates</h1>
-	<p>
-	<ul>
-	<li>As of November 1st, Brickimedia is in public beta! Learn more about the open beta period <a href='http://meta.brickimedia.org/wiki/User_blog:ToaMeiko/Open_Beta_-_What_to_expect'>here</a>.</li>
-	<li>Brickimedia is now in a closed beta stage. <a href='http://www.brickimedia.org/george-test/2013-2014-beta-planning.pdf' target='_blank'>Download this PDF</a> to learn more about our beta and release planning schedule.</li>
-	<li>An alpha preview of the Brickimedia wikis can be seen on <a href='http://meta.brickimedia.org/wiki/Main_Page'>Brickimedia Meta</a>. As this is in alpha stage, you should expect errors and frequent changes. Anything you add (user accounts, edits, etc) may not transfer over after the alpha period ends.</li>
-	<li>You can now follow development and give feedback/issues on <a href='http://www.github.com/Brickimedia/brickimedia'>GitHub</a>!</li>
-	<li>Development has started back up!</li>
-	<li>The LEGO Message Boards Wiki has <a href='http://legomessageboards.wikia.com/wiki/User_blog:Danielboone6702/The_LMBW_is_not_moving.' target='_blank'>announced</a> they will not move back to Brickimedia for relaunch. You may access their wiki <a href='http://legomessageboards.wikia.com' target='_blank'>on Wikia</a> from now on.</li>
-	<li>Unfortunately, Brickimedia data was lost due to an attack on our webhost.</li>
-	</ul>
-	</p>
-	<div class="sec-end"></div>
-	<h1 id="engage">How to be a part</h1>
-	<p>The best way you can contribute to Brickimedia is to <a href="http://meta.brickimedia.org/wiki/Special:UserLogin/signup">sign up</a> for an account, and start editing wikis on the Brickimedia network. If you are looking for other ways to help be a part of the Brickimedia project:</p>
-	<div class="engage-table">
-	<div class="engage-table-cell">
-	    <h2>Social</h2>
-	    <p>You can stay up to date with Brickimedia developments on the following networks:
-	    <br/><br/>
-	    <a href='http://www.facebook.com/brickimedia' class='social' target='_blank'><img src='img/icons/icon-facebook.png' width='32' height='32' /></a><a href='http://www.twitter.com/brickimedia' class='social' target='_blank'><img src='img/icons/icon-twitter.png' width='32' height='32' /></a><a href='http://plus.google.com/112287617429747667081' class='social' target='_blank'><img src='img/icons/icon-googleplus.png' width='32' height='32' /></a><a href='http://www.github.com/Brickimedia' class='social' target='_blank'><img src='img/icons/icon-github.png' width='32' height='32' /></a><a href='http://www.youtube.com/brickimedia' class='social' target='_blank'><img src='img/icons/icon-youtube.png' width='32' height='32' /></a></p>
-	    <br/>
-	    <div class="fb-like" data-href="http://www.facebook.com/brickimedia" data-width="400" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
-	</div>
-	<div class="engage-table-cell">
-	    <h2>Donate</h2>
-	    <p>As a private organization, we rely on ad revenue and donations to keep the site running. Every cent counts, so even the smallest donations help us to make a better site and a more successful network.</p>
- 	    <!-- BEGIN PAYPAL BUTTON CODE -->
- 	    <form class="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                <input type="hidden" name="cmd" value="_s-xclick">
-                <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
-                        ">
-                <input type="image" src="img/pp-donate.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-            </form>
-   	    <!-- END PAYPAL BUTTON CODE -->
+<body>
+	<header id="header">
+    <a href="http://brickimedia.org"><img src="splashfiles/logo.svg" id="logo" width="300" height="65" alt="Brickimedia logo"></a>
+    </header>
+	<section id="hero">
+		<header>
+			<h1 id="heroHeader">Welcome to <b>Brickimedia</b></h1>
+            <span>An open project to create the largest LEGO fan network on the web</span>
+		</header>
+        <div class="wiki-nav">
+			<div class="wiki-nav-item meta"><a href="http://meta.brickimedia.org">Meta</a></div>
+			<div class="wiki-nav-item en"><a href="http://en.brickimedia.org">Brickipedia</a></div>
+			<div class="wiki-nav-item customs"><a href="http://customs.brickimedia.org">Customs</a></div>
+			<div class="wiki-nav-item stories"><a href="http://stories.brickimedia.org">Stories</a></div>
+			<div class="wiki-nav-item cuusoo"><a href="http://cuusoo.brickimedia.org">CUUSOO</a></div>
+        </div>
+		<div id="ad">
+			<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-9543775174763951" data-ad-slot="9998611139"></ins>
+			<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</div>
+	</section>
+    <div class="text-container" id="blue-container">
+        <section id="about">
+        	<header>
+        		<h1>What is Brickimedia?</h1>
+        	</header>
+            <p>Brickimedia is an open network of LEGO fan communities founded in early 2013. In addition to a <a href="http://meta.brickimedia.org/">coordination wiki</a>, Brickimedia hosts 4 projects: <a href="http://en.brickimedia.org/">Brickipedia</a>, <a href="http://customs.brickimedia.org/">Customs</a>, <a href="http://stories.brickimedia.org/">LEGO Stories Wiki</a>, and <a href="http://cuusoo.brickimedia.org/">LEGO CUUSOO Wiki</a>.</p>
+            
+            <p>Brickimedia was originally launched in February 2013, but several months later the site's data was lost during an attack on its webhost. Since that downtime, Brickimedia has been through a closed alpha and closed beta, and is currently in an open beta testing period.</p>
+        <aside id="circles">
+            <div class="circle-container" id="circle-projects">
+                <div class="circle"></div>
+                <div class="circle-text">
+                    <div class="circle-number">4</div><span>projects</span>
+                </div>
+            </div>
+            <div class="circle-container" id="circle-articles">
+                <div class="circle"></div>
+                <div class="circle-text">
+                    <div class="circle-number"></div><span>articles</span>
+                </div>
+            </div>
+            <div class="circle-container" id="circle-accounts">
+                <div class="circle"></div>
+                <div class="circle-text">
+                    <div class="circle-number"></div><span>accounts</span>
+                </div>
+            </aside>
+        </section>
     </div>
-</div>
+    <div class="text-container" id="red-container">
+    	<section id="updates">
+			<header>
+				<h1>Recent Updates</h1>
+			</header>
+            <ul>
+            <li>As of November 1st, Brickimedia is in public beta! Learn more about the open beta period <a href="http://meta.brickimedia.org/wiki/User_blog:ToaMeiko/Open_Beta_-_What_to_expect">here</a>.</li>
+            <li>Brickimedia is now in a closed beta stage. <a href="http://www.brickimedia.org/george-test/2013-2014-beta-planning.pdf" target="_blank">Download this PDF</a> to learn more about our beta and release planning schedule.</li>
+            <li>An alpha preview of the Brickimedia wikis can be seen on <a href="http://meta.brickimedia.org/wiki/Main_Page">Brickimedia Meta</a>. As this is in alpha stage, you should expect errors and frequent changes. Anything you add (user accounts, edits, etc) may not transfer over after the alpha period ends.</li>
+            <li>You can now follow development and give feedback/issues on <a href="http://www.github.com/Brickimedia/brickimedia">GitHub</a>!</li>
+            <li>Development has started back up!</li>
+            </ul>
+        </section>
+	</div>
+	<div class="text-container" id="white-container">
+        <section id="contribute">
+			<header>
+				<h1>Be a Part</h1>
+			</header>
+            <p>The best way you can contribute to Brickimedia is by <a href="http://meta.brickimedia.org/wiki/Special:UserLogin/signup">signing up</a> for an account and editing wikis on the Brickimedia network.</p>
+            <p>Here are some other ways to contribute:</p>
+            <div id="contribute-table">
+            <section class="contribute-small-box" id="social">
+            	<header>
+                	<h2>Social</h2>
+                </header>
+                <p>Stay up to date with Brickimedia on the following networks:</p>
+                <div id="social-links">
+                <a href="http://www.facebook.com/brickimedia"><img src="splashfiles/facebook.png" width="32" height="32" alt="Facebook"></a>
+                <a href="http://www.twitter.com/brickimedia"><img src="splashfiles/twitter.png" width="32" height="32" alt="Twitter"></a>
+                <a href="http://plus.google.com/112287617429747667081"><img src="splashfiles/googleplus.png" width="32" height="32" alt="Google+"></a>
+                <a href="http://www.youtube.com/brickimedia"><img src="splashfiles/youtube.png" width="32" height="32" alt="YouTube"></a>
+                <a href="http://www.github.com/Brickimedia"><img src="splashfiles/github.png" width="32" height="32" alt="GitHub"></a>
+           		<div class="fb-like fb_edge_widget_with_comment fb_iframe_widget" data-href="http://www.facebook.com/brickimedia" data-width="400" data-layout="standard" data-action="like" data-show-faces="true" data-share="false" fb-xfbml-state="rendered"><span style="height: 20px; width: 400px;"><iframe id="f8e6d558" name="f3d78e4a1" scrolling="no" title="Like this content on Facebook." class="fb_ltr" src="http://www.facebook.com/plugins/like.php?action=like&amp;api_key=170482364649&amp;channel_url=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D28%23cb%3Df1814fd5e%26domain%3Dbrickimedia.org%26origin%3Dhttp%253A%252F%252Fbrickimedia.org%252Ff28d8ea074%26relation%3Dparent.parent&amp;colorscheme=light&amp;extended_social_context=false&amp;href=http%3A%2F%2Fwww.facebook.com%2Fbrickimedia&amp;layout=standard&amp;locale=en_US&amp;node_type=link&amp;sdk=joey&amp;share=false&amp;show_faces=true&amp;width=400" style="border: none; overflow: hidden; height: 20px; width: 400px;"></iframe></span></div>
+                </div>
+            </section>
+            <section class="contribute-small-box" id="donate">
+            	<h2>Donate</h2>
+                <p>As a private organization, Brickimedia relies on ad revenue and donations to keep running. Every cent counts, so even the smallest donations help make Brickimedia better.</p>
+                <form class="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+						<input type="hidden" name="cmd" value="_s-xclick">
+						<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----MIIHPwYJKoZIhvcNAQcEoIIHMDCCBywCAQExggEwMIIBLAIBADCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwDQYJKoZIhvcNAQEBBQAEgYAbDvkJkppTO3GsGDHFszMox0uEkSW9FDFXLxWidTOKEvdoOaYuka23cU2UDHwL6nZ8ZqZRPccOPMLckjXl//r+7LAyYdTwPUt8TP+jdH0Qujy+XWbvQ753jEXIzqdfmGYI9po+kABw6caGhnT0Qs7EbEOm51G3bh7ORJc9rS2UxzELMAkGBSsOAwIaBQAwgbwGCSqGSIb3DQEHATAUBggqhkiG9w0DBwQIknsLAbzhOpKAgZjbaz+FFFBBEZF74O5lkighzEaPQ/Z3GB+5AjgPoCQKlgbu1/+Zz1BJk8LZ4JpQHtJoIjrA8LdHHtSdEwliyP1k8CoHUFFq+Is1zuipF9eFn27bCYUifi6/TvuQ1JgCFqG18vgbbmPQJgGsnxVHkBEqVVkzP6xRL/Mf2ssMpLjmYLk8jdYLop49kAx6nfs0Ip1GSBBf1aSszqCCA4cwggODMIIC7KADAgECAgEAMA0GCSqGSIb3DQEBBQUAMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbTAeFw0wNDAyMTMxMDEzMTVaFw0zNTAyMTMxMDEzMTVaMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAwUdO3fxEzEtcnI7ZKZL412XvZPugoni7i7D7prCe0AtaHTc97CYgm7NsAtJyxNLixmhLV8pyIEaiHXWAh8fPKW+R017+EmXrr9EaquPmsVvTywAAE1PMNOKqo2kl4Gxiz9zZqIajOm1fZGWcGS0f5JQ2kBqNbvbg2/Za+GJ/qwUCAwEAAaOB7jCB6zAdBgNVHQ4EFgQUlp98u8ZvF71ZP1LXChvsENZklGswgbsGA1UdIwSBszCBsIAUlp98u8ZvF71ZP1LXChvsENZklGuhgZSkgZEwgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tggEAMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEFBQADgYEAgV86VpqAWuXvX6Oro4qJ1tYVIT5DgWpE692Ag422H7yRIr/9j/iKG4Thia/Oflx4TdL+IFJBAyPK9v6zZNZtBgPBynXb048hsP16l2vi0k5Q2JKiPDsEfBhGI+HnxLXEaUWAcVfCsQFvd2A1sxRr67ip5y2wwBelUecP3AjJ+YcxggGaMIIBlgIBATCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwCQYFKw4DAhoFAKBdMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTEzMDMwOTE1MjA1OFowIwYJKoZIhvcNAQkEMRYEFKRdgNfuUevRgDqnpbCPgnmalvMaMA0GCSqGSIb3DQEBAQUABIGAbpmoN7xcQ8WuJeMNGdGk3JrK/niJLyTqgeUdQ3/dX90Yu4LOQztrxCkEcwSRBLn7nGARM0G8BHk0CC4quaRwEduoAzIK0nqQzYC9gVbzDG+O2XtLKXYRU/ZEbroAvaKETCMfSc++lxVX/5M6vPDHdpRCT9TLC3dTxO4jtH0WU9w=-----END PKCS7-----
+                        ">
+						<input type="image" src="splashfiles/pp-donate.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    	<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+					</form>
+            </section>
+            </div>
+			<footer>
+                <div class="wiki-nav" id="wiki-nav-bottom">
+                    <div class="wiki-nav-item meta"><a href="http://meta.brickimedia.org">Meta</a></div>
+                    <div class="wiki-nav-item en"><a href="http://en.brickimedia.org">Brickipedia</a></div>
+                    <div class="wiki-nav-item customs"><a href="http://customs.brickimedia.org">Customs</a></div>
+                    <div class="wiki-nav-item stories"><a href="http://stories.brickimedia.org">Stories</a></div>
+                    <div class="wiki-nav-item cuusoo"><a href="http://cuusoo.brickimedia.org">CUUSOO</a></div>
+                </div>
+            </footer>
+        </section>
+    </div>
+</body>
 <!-- Quantcast Tag -->
 <script type="text/javascript">
-var _qevents = _qevents || [];
+	var _qevents = _qevents || [];
 
-(function() {
-var elem = document.createElement('script');
-elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
-elem.async = true;
-elem.type = "text/javascript";
-var scpt = document.getElementsByTagName('script')[0];
-scpt.parentNode.insertBefore(elem, scpt);
-})();
+	(function() {
+		var elem = document.createElement('script');
+		elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+		elem.async = true;
+		elem.type = "text/javascript";
+		var scpt = document.getElementsByTagName('script')[0];
+		scpt.parentNode.insertBefore(elem, scpt);
+	})();
 
-_qevents.push({
-qacct:"p-PSLuHGN8ESzUr"
-});
+	_qevents.push({
+		qacct:"p-PSLuHGN8ESzUr"
+	});
 </script>
 
 <noscript>
-<div style="display:none;">
-<img src="//pixel.quantserve.com/pixel/p-PSLuHGN8ESzUr.gif" border="0" height="1" width="1" alt="Quantcast"/>
-</div>
+	<div style="display:none;">
+		<img src="//pixel.quantserve.com/pixel/p-PSLuHGN8ESzUr.gif" border="0" height="1" width="1" alt="Quantcast"/>
+	</div>
 </noscript>
 <!-- End Quantcast tag -->
-</body>
+</html>
