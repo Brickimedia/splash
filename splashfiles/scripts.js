@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	$("#blue-container").css({"background-position": "0 100px"});
+	$("#blue-container").css({"background-position": "0 140px"});
 	$("#red-container").css({"background-position": "0 250px"});
 	$("#white-container").css({"background-position": "0 360px"});
 			
@@ -69,7 +69,7 @@ $(document).ready(function(){
 		var diffToBottom = $(document).height() - ($(this).scrollTop() + $(this).height());
 		if ($(window).width() > 780) {
 			$("#hero").css({"background-position": "0 " + parseInt(-hero / 5) + "px"});
-			$("#blue-container").css({"background-position": "0 " + (100 + parseInt(-hero / 5)) + "px"});
+			$("#blue-container").css({"background-position": "0 " + (140 + parseInt(-hero / 5)) + "px"});
 			$("#red-container").css({"background-position": "0 " + (250 + parseInt(-hero / 5)) + "px"});
 			$("#white-container").css({"background-position": "0 " + (360 + parseInt(-hero / 5)) + "px"});
 			if (diffToBottom <= 150 && diffToBottom > 7) {
