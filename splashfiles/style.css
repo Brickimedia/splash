@@ -161,7 +161,7 @@ ul {
 #blue-container {
 	background: url("about.jpg") no-repeat fixed;
 	background-position: 0 0;
-	background-size: cover;
+	background-size: auto 150%;
 }
 #circles {
 	padding-top: 50px;
@@ -208,7 +208,7 @@ ul {
 #red-container {
 	background: url("updates.jpg") no-repeat fixed;
 	background-position: 0 0;
-	background-size: cover;
+	background-size: auto 150%;
 	color: #fff;
 }
 
@@ -219,7 +219,7 @@ ul {
 #white-container {
 	background: url("contribute.jpg") no-repeat fixed;
 	background-position: 0 0;
-	background-size: cover;
+	background-size: auto 150%;
 	color: #000;
 	padding-bottom: 0;
 }
