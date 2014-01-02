@@ -2,7 +2,7 @@ $(document).ready(function() {
 	
 	$("#white-container").css({"background-position": "0 300px"}); //the bricks are at the top, they get cut off when you scroll down without this
 	
-	$.ajax({
+	/* $.ajax({
 		type: "GET",
 		url: "http://meta.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml&callback=?",
 		dataType: "xml",
@@ -60,7 +60,7 @@ $(document).ready(function() {
 				} //en success
 			}); //en ajax
 		} //meta success
-	}); //meta ajax
+	}); //meta ajax */
 	
 	$(window).scroll(function() {
 		var diffToTop = $(this).scrollTop();
