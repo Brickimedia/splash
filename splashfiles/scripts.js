@@ -4,7 +4,7 @@ $(document).ready(function() {
 	
 	$.ajax({
 		type: "GET",
-		url: "http://meta.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml",
+		url: "http://meta.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml&callback=?",
 		dataType: "xml",
 		success: function(xml) {
 			$(xml).find("statistics").each(function(){
@@ -16,7 +16,7 @@ $(document).ready(function() {
 			$("#circle-accounts .circle-number").append(accounts);
 			$.ajax({
 				type: "GET",
-				url: "http://en.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml",
+				url: "http://en.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml&callback=?",
 				dataType: "xml",
 				success: function(xml) {
 					$(xml).find("statistics").each(function(){
@@ -24,7 +24,7 @@ $(document).ready(function() {
 					}); //en parse
 					$.ajax({
 						type: "GET",
-						url: "http://customs.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml",
+						url: "http://customs.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml&callback=?",
 						dataType: "xml",
 						success: function(xml) {
 							$(xml).find("statistics").each(function(){
@@ -32,7 +32,7 @@ $(document).ready(function() {
 							}); //customs parse
 							$.ajax({
 								type: "GET",
-								url: "http://stories.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml",
+								url: "http://stories.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml&callback=?",
 								dataType: "xml",
 								success: function(xml) {
 									$(xml).find("statistics").each(function(){
@@ -40,7 +40,7 @@ $(document).ready(function() {
 									}); //stories parse
 									$.ajax({
 										type: "GET",
-										url: "http://cuusoo.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml",
+										url: "http://cuusoo.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml&callback=?",
 										dataType: "xml",
 										success: function(xml) {
 											$(xml).find("statistics").each(function(){
