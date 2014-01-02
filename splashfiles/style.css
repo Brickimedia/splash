@@ -251,9 +251,7 @@ ul {
 	padding-top: 1em;
 }
 .fb-like {
-	position: absolute;
-	left: 50%;
-	margin-left: -165px; /* negative half of width (-(331px/2)) */
+	margin: 0 auto;
 	padding-top: 1em;
 }
 
@@ -309,6 +307,12 @@ footer {
 	
 	#social {
 		padding-bottom: 2em;
+	}
+}
+
+@media screen and (max-width: 727px) {
+	#ad {
+		display: none;
 	}
 }
 
