@@ -8,11 +8,14 @@ body {
 	text-align: center;
 }
 
-h1,
-h2 {
+h1 {
 	font-weight: normal;
 }
 
+h2 {
+	font-weight: normal;
+	margin-bottom: .25em;
+}
 a {
 	color: #ccc;
 	text-decoration: none;
