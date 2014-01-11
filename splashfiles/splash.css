@@ -8,11 +8,14 @@ body {
 	text-align: center;
 }
 
-h1,
-h2 {
+h1 {
 	font-weight: normal;
 }
 
+h2 {
+	font-weight: normal;
+	margin-bottom: .25em;
+}
 a {
 	color: #ccc;
 	text-decoration: none;
@@ -79,7 +82,10 @@ ul {
     height: 70px;
     margin: 40px auto auto auto;
     text-align: center;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
     border-radius: 35px;
+    background: rgb(0, 0, 0);
     background: rgba(0, 0, 0, 0.7);
 	max-width: 800px;
 }
@@ -109,13 +115,15 @@ ul {
 }
 
 .meta {
-    border-top-left-radius: 35px;
-    border-bottom-left-radius: 35px;
+    -webkit-border-radius: 35px 0 0 35px;
+    -moz-border-radius: 35px 0 0 35px;
+    border-radius: 35px 0 0 35px;
 }
 
 .cuusoo {
-    border-top-right-radius: 35px;
-    border-bottom-right-radius: 35px;
+    -webkit-border-radius: 0 35px 35px 0;
+    -moz-border-radius: 0 35px 35px 0;
+    border-radius: 0 35px 35px 0;
 }
 
 .meta:hover {
@@ -182,6 +190,8 @@ ul {
 .circle {
     width: 200px;
     height: 200px;
+    -webkit-border-radius: 250px;
+    -moz-border-radius: 250px;
     border-radius: 250px;
     font-size: 75pt;
     line-height: 500px;
@@ -267,6 +277,7 @@ footer {
 
 #wiki-nav-bottom {
 	margin-top: 35px;
+	background: rgb(75, 75, 75);
 	background: rgba(75, 75, 75, 0.4);
 }
 
@@ -322,13 +333,15 @@ footer {
 	}
 	
 	.meta {
-   		border-bottom-left-radius: 0;
-    	border-top-right-radius: 35px;
+		-webkit-border-radius: 35px 35px 0 0;
+		-moz-border-radius: 35px 35px 0 0;
+   		border-radius: 35px 35px 0 0;
 	}
 	
 	.cuusoo {
-   		border-top-right-radius: 0;
-    	border-bottom-left-radius: 35px;
+   		-webkit-border-radius: 0 0 35px 35px;
+   		-moz-border-radius: 0 0 35px 35px;
+   		border-radius: 0 0 35px 35px;
 	}
 	
 	footer {

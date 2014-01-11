@@ -2,53 +2,43 @@ $(document).ready(function() {
 	
 	$("#white-container").css({"background-position": "0 300px"}); //the bricks are at the top, they get cut off when you scroll down without this
 	
-	/* $.ajax({
+	$.ajax({
 		type: "GET",
-		url: "http://meta.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml&callback=?",
-		dataType: "xml",
-		success: function(xml) {
-			$(xml).find("statistics").each(function(){
-				accounts = $(this).attr("users");
-				if (accounts >= 1000) {
-					accounts = ((accounts/1000).toFixed(1).replace(/\.?0+$/, "")) + "k";
-				}
-			}); //meta parse
+		url: "http://meta.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=json",
+		dataType: "jsonp",
+		success: function(data) {
+			accounts = data.query.statistics.users;
+			//if (accounts >= 1000) {
+				accounts = ((accounts/1000).toFixed(1).replace(/\.?0+$/, "")) + "k";
+			//}
 			$("#circle-accounts .circle-number").append(accounts);
 			$.ajax({
 				type: "GET",
-				url: "http://en.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml&callback=?",
-				dataType: "xml",
-				success: function(xml) {
-					$(xml).find("statistics").each(function(){
-						articles = parseInt($(this).attr("articles"), 10);
-					}); //en parse
+				url: "http://en.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=json",
+				dataType: "jsonp",
+				success: function(data) {
+					articles = parseInt(data.query.statistics.articles, 10);
 					$.ajax({
 						type: "GET",
-						url: "http://customs.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml&callback=?",
-						dataType: "xml",
-						success: function(xml) {
-							$(xml).find("statistics").each(function(){
-								articles += parseInt($(this).attr("articles"), 10);
-							}); //customs parse
+						url: "http://customs.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=json",
+						dataType: "jsonp",
+						success: function(data) {
+							articles += parseInt(data.query.statistics.articles, 10);
 							$.ajax({
 								type: "GET",
-								url: "http://stories.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml&callback=?",
-								dataType: "xml",
-								success: function(xml) {
-									$(xml).find("statistics").each(function(){
-										articles += parseInt($(this).attr("articles"), 10);
-									}); //stories parse
+								url: "http://stories.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=json",
+								dataType: "jsonp",
+								success: function(data) {
+									articles += parseInt(data.query.statistics.articles, 10);
 									$.ajax({
 										type: "GET",
-										url: "http://cuusoo.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=xml&callback=?",
-										dataType: "xml",
-										success: function(xml) {
-											$(xml).find("statistics").each(function(){
-												articles += parseInt($(this).attr("articles"), 10);
-											}); //cuusoo parse
-											if (articles >= 1000) {
-												articles = ((articles/1000).toFixed(1).replace(/\.?0+$/, "")) + "k";
-											}
+										url: "http://cuusoo.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=json",
+										dataType: "jsonp",
+										success: function(data) {
+											articles += parseInt(data.query.statistics.articles, 10);
+											//if (articles >= 10000) {
+												articles = ((articles/1000).toFixed()) + "k";
+											//}
 											$("#circle-articles .circle-number").append(articles);
 											$("#circles").css({"display": "block"});
 										} //cuusoo success
@@ -60,7 +50,7 @@ $(document).ready(function() {
 				} //en success
 			}); //en ajax
 		} //meta success
-	}); //meta ajax */
+	}); //meta ajax
 	
 	$(window).scroll(function() {
 		var diffToTop = $(this).scrollTop();
