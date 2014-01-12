@@ -190,9 +190,9 @@ ul {
 .circle {
     width: 200px;
     height: 200px;
-    -webkit-border-radius: 250px;
-    -moz-border-radius: 250px;
-    border-radius: 250px;
+    -webkit-border-radius: 200px;
+    -moz-border-radius: 200px;
+    border-radius: 200px;
     font-size: 75pt;
     line-height: 500px;
     text-align: center;
@@ -302,12 +302,7 @@ footer {
 	}
 	
 	.circle-container {
-		display: block;
-		margin: 0 0 10px 0;
-	}
-	
-	.circle {
-		margin: 0 auto;
+		display: none;
 	}
 	
 	.contribute-small-box {
