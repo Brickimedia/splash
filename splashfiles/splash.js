@@ -51,11 +51,15 @@ $(document).ready(function() {
 			}); //en ajax
 		} //meta success
 	}); //meta ajax
-	
-	$(window).scroll(function() {
-		var diffToTop = $(this).scrollTop();
-		var diffToBottom = $(document).height() - ($(this).scrollTop() + $(this).height());
-		if ($(window).width() > 780) {
+	if ( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
+		$("#hero, .text-container").each( function() {
+			$(this).css({"background-attachment": "scroll"});
+		});
+	}
+	if ( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		$(window).scroll(function() {
+			var diffToTop = $(this).scrollTop();
+			var diffToBottom = $(document).height() - ($(this).scrollTop() + $(this).height());
 			$("#hero").css({"background-position": "0 " + parseInt(-diffToTop / 5, 10) + "px"});
 			$("#blue-container").css({"background-position": "0 " + parseInt(-diffToTop / 5, 10) + "px"});
 			$("#red-container").css({"background-position": "0 " + parseInt(-diffToTop / 5, 10) + "px"});
@@ -66,12 +70,12 @@ $(document).ready(function() {
 			if (diffToBottom <= 100) {
 				$("#wiki-nav-bottom").css({"opacity":  (100 - diffToBottom) / 100});
 			}
-		} else {
-			$("#hero").css({"background-position": "0 0"});
-			$("#blue-container").css({"background-position": "0 0"});
-			$("#red-container").css({"background-position": "0 0"});
-			$("#white-container").css({"background-position": "0 0"});
-			$("#wiki-nav-bottom").css({"margin-top":  "35px", "opacity": 1});
-		}
-	});
+		});
+	} else {
+		$("#hero").css({"background-position": "0 0"});
+		$("#blue-container").css({"background-position": "0 0"});
+		$("#red-container").css({"background-position": "0 0"});
+		$("#white-container").css({"background-position": "0 0"});
+		$("#wiki-nav-bottom").css({"margin-top":  "35px", "opacity": 1});
+	}
 });
