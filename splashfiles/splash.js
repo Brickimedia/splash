@@ -51,10 +51,12 @@ $(document).ready(function() {
 			}); //en ajax
 		} //meta success
 	}); //meta ajax
-	if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+	if ( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
 		$("#hero, .text-container").each( function() {
-			$(this).css({"background-attachment": "fixed"});
-		});	
+			$(this).css({"background-attachment": "scroll"});
+		});
+	}
+	if ( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		$(window).scroll(function() {
 			var diffToTop = $(this).scrollTop();
 			var diffToBottom = $(document).height() - ($(this).scrollTop() + $(this).height());
