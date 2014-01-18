@@ -281,6 +281,12 @@ footer {
 	background: rgba(75, 75, 75, 0.4);
 }
 
+@media screen and (max-width: 788px) {
+	.circle-container {
+		display: none;
+	}
+}
+
 @media screen and (max-width: 780px) {
 	#hero,
 	#white-container {
@@ -301,10 +307,6 @@ footer {
 		margin-top: 1em;
 	}
 	
-	.circle-container {
-		display: none;
-	}
-	
 	.contribute-small-box {
 		display: block;
 		width: 100%;
@@ -314,7 +316,10 @@ footer {
 		padding-bottom: 2em;
 	}
 	
-	#hero, .text-container {
+	#hero,
+	#blue-container,
+	#red-container,
+	#white-container {
 		background-attachment: scroll;
 	}
 }
