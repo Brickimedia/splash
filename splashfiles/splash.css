@@ -313,6 +313,10 @@ footer {
 	#social {
 		padding-bottom: 2em;
 	}
+	
+	#hero, .text-container {
+		background-attachment: scroll;
+	}
 }
 
 @media screen and (max-width: 727px) {
