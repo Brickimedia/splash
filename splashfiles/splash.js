@@ -55,7 +55,7 @@ $(document).ready(function() {
 	$(window).scroll(function() {
 		var diffToTop = $(this).scrollTop();
 		var diffToBottom = $(document).height() - ($(this).scrollTop() + $(this).height());
-		if ($(window).width() > 780) {
+		if (window.innerWidth > 780) {
 			$("#hero").css({"background-position": "0 " + parseInt(-diffToTop / 5, 10) + "px"});
 			$("#blue-container").css({"background-position": "0 " + parseInt(-diffToTop / 5, 10) + "px"});
 			$("#red-container").css({"background-position": "0 " + parseInt(-diffToTop / 5, 10) + "px"});
