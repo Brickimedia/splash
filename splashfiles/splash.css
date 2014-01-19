@@ -354,3 +354,21 @@ footer {
 		padding-bottom: 35px;
 	}
 }
+
+@media screen and (min-aspect-ratio: 1321/561) {
+	#red-container {
+		background-size: cover;
+	}
+}
+
+@media screen and (min-aspect-ratio: 1331/561) {
+	#blue-container {
+		background-size: cover;
+	}
+}
+
+@media screen and (min-aspect-ratio: 1638/561) {
+	#white-container {
+		background-size: cover;
+	}
+}
