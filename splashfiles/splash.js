@@ -1,7 +1,5 @@
 $(document).ready(function() {
 	
-	$("#white-container").css({"background-position": "0 300px"}); //the bricks are at the top, they get cut off when you scroll down without this
-	
 	$.ajax({
 		type: "GET",
 		url: "http://meta.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&format=json",
@@ -56,22 +54,26 @@ $(document).ready(function() {
 		var diffToTop = $(this).scrollTop();
 		var diffToBottom = $(document).height() - ($(this).scrollTop() + $(this).height());
 		if (window.innerWidth > 780) {
-			$("#hero").css({"background-position": "0 " + parseInt(-diffToTop / 5, 10) + "px"});
-			$("#blue-container").css({"background-position": "0 " + parseInt(-diffToTop / 5, 10) + "px"});
-			$("#red-container").css({"background-position": "0 " + parseInt(-diffToTop / 5, 10) + "px"});
-			$("#white-container").css({"background-position": "0 " + (300 + parseInt(-diffToTop / 5, 10)) + "px"});
+			$("#hero").css("background-position", "center " + parseInt(-diffToTop / 5, 10) + "px");
+			$("#blue-container").css("background-position", "center " + parseInt(-diffToTop / 5, 10) + "px");
+			$("#red-container").css("background-position", "center " + (150 + parseInt(-diffToTop / 5, 10)) + "px");
+			$("#white-container").css("background-position", "center " + (300 + parseInt(-diffToTop / 5, 10)) + "px");
 			if (diffToBottom <= 150 && diffToBottom > 7) {
-				$("#wiki-nav-bottom").css({"margin-top":  35 + diffToBottom / 4.5 + "px"});
+				$("#wiki-nav-bottom").css("margin-top", 35 + diffToBottom / 4.5 + "px");
   			}
 			if (diffToBottom <= 100) {
-				$("#wiki-nav-bottom").css({"opacity":  (100 - diffToBottom) / 100});
+				$("#wiki-nav-bottom").css("opacity", (100 - diffToBottom) / 100);
 			}
 		} else {
-			$("#hero").css({"background-position": "0 0"});
-			$("#blue-container").css({"background-position": "0 0"});
-			$("#red-container").css({"background-position": "0 0"});
-			$("#white-container").css({"background-position": "0 0"});
-			$("#wiki-nav-bottom").css({"margin-top":  "35px", "opacity": 1});
+			$("#hero").css("background-position", "center 0");
+			$("#blue-container").css("background-position", "center 0");
+			$("#red-container").css("background-position", "center 0");
+			$("#white-container").css("background-position", "center 0");
+			$("#wiki-nav-bottom").css({"margin-top": "35px", "opacity": 1});
 		}
 	});
+	
+	$(window).resize(function() {
+                $(this).scroll();
+        });
 });

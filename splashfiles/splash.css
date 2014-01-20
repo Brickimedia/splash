@@ -59,7 +59,7 @@ ul {
 	height: 100%;
 	background: url("hero.jpg") no-repeat fixed;
 	background-size: cover;
-	background-position: 0 0;
+	background-position: center 0;
 	padding: 50px 0 125px 0;
 }
 
@@ -168,7 +168,7 @@ ul {
 
 #blue-container {
 	background: url("about.jpg") no-repeat fixed;
-	background-position: 0 0;
+	background-position: center 0;
 	background-size: auto 150%;
 }
 #circles {
@@ -217,7 +217,7 @@ ul {
 
 #red-container {
 	background: url("updates.jpg") no-repeat fixed;
-	background-position: 0 0;
+	background-position: center 0;
 	background-size: auto 150%;
 	color: #fff;
 }
@@ -228,7 +228,7 @@ ul {
 
 #white-container {
 	background: url("contribute.jpg") no-repeat fixed;
-	background-position: 0 0;
+	background-position: center 300px;
 	background-size: auto 150%;
 	color: #000;
 	padding-bottom: 0;
