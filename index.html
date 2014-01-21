@@ -44,8 +44,17 @@ var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackP
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 	<header id="header">
-    <a href="http://brickimedia.org"><img src="splashfiles/logo.svg" id="logo" width="300" height="65" alt="Brickimedia logo"></a>
-    </header>
+		<a href="http://brickimedia.org"><img src="splashfiles/logo.svg" id="logo" width="300" height="65" alt="Brickimedia logo"></a>
+		<input name="search" title="Search Brickimedia [alt-shift-f]" id="searchInput" accesskey="f" type="search" placeholder="Search Brickimedia" autocomplete="off">
+		<a id="searchClear">&times;</a>
+	</header>
+	<div id="searchResults">
+		<div class="search-result" id="en">Brickipedia<div class="result"></div></div>
+		<div class="search-result" id="customs">Customs<div class="result"></div></div>
+		<div class="search-result" id="cuusoo">Cuusoo<div class="result"></div></div>
+		<div class="search-result" id="stories">Stories<div class="result"></div></div>
+		<div class="search-result" id="meta">Brickimedia<div class="result"></div></div>
+	</div>
 	<section id="hero">
 		<header>
 			<h1 id="heroHeader">Welcome to <b>Brickimedia</b></h1>
