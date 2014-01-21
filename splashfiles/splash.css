@@ -6,6 +6,7 @@ body {
 	background: #419ec8;
 	margin: 0;
 	text-align: center;
+	overflow-x: hidden;
 }
 
 h1 {
@@ -23,6 +24,7 @@ a {
 
 a:hover {
 	color: #eaeaea;
+	cursor: pointer;
 }
 
 p {
@@ -41,6 +43,7 @@ ul {
 }
 
 #header {
+	overflow: hidden;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -279,6 +282,106 @@ footer {
 	margin-top: 35px;
 	background: rgb(75, 75, 75);
 	background: rgba(75, 75, 75, 0.4);
+}
+
+#searchInput {
+	position: absolute;
+	right: 3em;
+	height: 50px;
+	border-radius: 25px;
+	border: 0;
+	top: 12px;
+	width: 200px;
+	font-family: "Lato", sans-serif;
+	font-size: 14pt;
+	padding: 0 10px;
+}
+
+#searchInput:focus {
+	outline: none;
+}
+
+#searchClear {
+	position: absolute;
+	font-size: 30pt;
+	right: -24px;
+	top: 13px;
+	color: #fff;
+	-moz-transition: all .5s;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    -ms-transition: all .5s;
+    transition: all .5s;
+}
+
+#searchResults {
+	pointer-events: none;
+	opacity: 0;
+	top: 75px;
+	height: 100%;
+	height: calc(100% - 95px);
+	height: -webkit-calc(100% - 95px);
+	height: -moz-calc(100% - 95px);
+	padding-bottom: 20px;
+	width: 100%;
+	background-color: #000;
+	background-color: rgba(0, 0, 0, 0.9);
+	position: absolute;
+	text-align: left;
+	overflow-x: hidden;
+	z-index: 1;
+	font-size: 20pt;
+	-moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    -ms-transition: all 1s;
+    transition: all 1s;
+}
+
+.search-result {
+	padding: 0 10% 0 10%;
+	margin-top: 20px;
+	text-align: center;
+	display: none;
+}
+
+.result a {
+	display: inline;
+	width: auto;
+	color: #0645ad;
+	font-size: 18pt;
+	margin-top: 5px;
+	-moz-transition: all .5s;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    -ms-transition: all .5s;
+    transition: all .5s;
+}
+
+.result a:after {
+	display: block;
+	content: "";
+	margin-top: 5px;
+}
+
+.result a:hover {
+	color: #0389D6;
+}
+
+::-webkit-input-placeholder {
+	text-align:center;
+}
+
+:-moz-placeholder {
+	text-align:center;  
+}
+
+::-moz-placeholder {
+	text-align:center;  
+}
+
+:-ms-input-placeholder {  
+	text-align:center; 
 }
 
 @media screen and (max-width: 788px) {
