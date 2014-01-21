@@ -1,3 +1,7 @@
+var suggestions = {};
+var ajaxPool = [];
+var listWikis = ['en', 'customs', 'cuusoo', 'stories', 'meta'];
+
 $(document).ready(function() {
 	
 	$.ajax({
@@ -74,6 +78,60 @@ $(document).ready(function() {
 	});
 	
 	$(window).resize(function() {
-                $(this).scroll();
-        });
+		$(this).scroll();
+		if (window.innerWidth < 750) {
+			$('#searchInput').hide();
+		} else if (window.innerWidth < 950) {
+			$('#searchInput').show().css('width', window.innerWidth / 2 - 275).attr('placeholder', 'Search');
+		} else {
+			$('#searchInput').show().css('width', 200).attr('placeholder', 'Search Brickimedia');
+		}
+	});
+	
+	$('#searchInput').keyup(function() {
+		for (var i in ajaxPool) {
+			ajaxPool[i].abort();
+		}
+		var searchText = $('#searchInput').val();
+		var uriText = encodeURIComponent(searchText);
+		$('#searchSuggestions').html('');
+		for (var i = 0; i < listWikis.length; i++) {
+			ajaxPool[i] = $.ajax({
+				type: "GET",
+				url: "http://" + listWikis[i] + ".brickimedia.org/api.php?action=opensearch&search=" + uriText + "&limit=3&namespace=0&format=json",
+				dataType: "jsonp",
+				success: function(data) {
+					addSearchResults(data[1], this.url);
+				}
+			}); //search ajax
+		}
+	}); //on search change
+	
+	$('#searchInput').click(function() {
+		$('#searchClear').css('right', '17px');
+		$('#searchResults').css({'pointer-events': 'auto', 'opacity': 1});
+		$('html, body').animate({ scrollTop: 0 }, 500).css('overflow-y', 'hidden');
+		$(this).keyup();
+	}); //show search
+	
+	$('#searchClear').click(function() {
+		$('#searchClear').css('right', '-24px');
+		$('#searchResults').css({'pointer-events': 'none', 'opacity': 0});
+		$('html, body').css('overflow-y', 'auto');
+	}); //hide search
+	
+	$(window).resize();
 });
+
+function addSearchResults(results, name) {
+	name = name.replace(/http:\/\/([^\.]*).*/, '$1');
+	$('#' + name + ' .result').html('');
+	for (var i in results) {
+		$('#' + name + ' .result').append('<a href="http://' + name + '.brickimedia.org/wiki/' + results[i] + '">' + results[i] + '</a>');
+	}
+	if (results.length) {
+		$('#' + name).show();
+	} else {
+		$('#' + name).hide();
+	}
+} //add search results
