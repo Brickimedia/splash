@@ -44,8 +44,12 @@ var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackP
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 	<header id="header">
+		<div id="account">
+			<a class="loginOpen">Log in</a> | 
+			<a href="http://meta.brickimedia.org/wiki/Special:UserLogin/signup">Sign up</a>
+		</div>
 		<a href="http://brickimedia.org"><img src="splashfiles/logo.svg" id="logo" width="300" height="65" alt="Brickimedia logo"></a>
-		<input name="search" title="Search Brickimedia [alt-shift-f]" id="searchInput" accesskey="f" type="search" placeholder="Search Brickimedia" autocomplete="off">
+		<input title="Search Brickimedia [alt-shift-f]" id="searchInput" accesskey="f" type="search" placeholder="Search Brickimedia" autocomplete="off" tabindex="1"/>
 		<a id="searchClear">&times;</a>
 	</header>
 	<div id="searchResults">
@@ -54,6 +58,21 @@ var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackP
 		<div class="search-result" id="cuusoo">Cuusoo<div class="result"></div></div>
 		<div class="search-result" id="stories">Stories<div class="result"></div></div>
 		<div class="search-result" id="meta">Brickimedia<div class="result"></div></div>
+	</div>
+	<div id="clearContainer">
+		<a id="clearOverlay">&times;</a>
+	</div>
+	<div id="loginForm">
+		<h1>One account, 4 wikis.</h1>
+		<span>Log in to Brickimedia</span>
+		<input class="loginInput" id="loginUsername" type="text" placeholder="Username"/>
+		<input class="loginInput" id="loginPassword" type="password" placeholder="Password"/>
+		<input id="loginSubmit" type="submit" value="Log in"/>
+		<span class="small-links">
+			<a href="http://meta.brickimedia.org/wiki/Special:UserLogin/signup">Create an account</a> / 
+			<a href="http://meta.brickimedia.org/wiki/Special:PasswordReset">Forgotten your password?</a>
+		</span>
+		<span id="loginError"></span>
 	</div>
 	<section id="hero">
 		<header>
