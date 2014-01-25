@@ -1,3 +1,17 @@
+<?php
+// variables
+$sharedUserID = $_COOKIE['sharedUserID'];
+$sharedUserName = $_COOKIE['sharedUserName'];
+if ( is_file( '/var/www/wiki/images/avatars/' . $sharedUserID . '_l.png' ) ) {
+	$avatar = 'http://images.brickimedia.org/avatars/' . $sharedUserID . '_l.png';
+} elseif ( is_file( '/var/www/wiki/images/avatars/' . $sharedUserID . '_l.jpg' ) ) {
+	$avatar = 'http://images.brickimedia.org/avatars/' . $sharedUserID . '_l.jpg';
+} elseif ( is_file( '/var/www/wiki/images/avatars/' . $sharedUserID . '_l.gif' ) ) {
+	$avatar = 'http://images.brickimedia.org/avatars/' . $sharedUserID . '_l.gif';
+} else {
+	$avatar = 'http://images.brickimedia.org/avatars/default_l.gif';
+}
+?>
 <!doctype html>
 <html>
 <head>
@@ -22,6 +36,7 @@
 <link rel="shortcut icon" href="img/favicon.ico">
 <link rel="stylesheet" type="text/css" href="resources/fonts/lato/lato.css">
 <link rel="stylesheet" type="text/css" href="splashfiles/splash.css">
+</style>
 <script src="http://edge.quantserve.com/quant.js" async type="text/javascript"></script>
 <script type="text/javascript" async src="http://www.google-analytics.com/ga.js"></script>
 <script type="text/javascript" src="http://meta.brickimedia.org/resources/jquery/jquery.js"></script>
@@ -45,8 +60,16 @@ var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackP
     }(document, 'script', 'facebook-jssdk'));</script>
 	<header id="header">
 		<div id="account">
-			<a class="loginOpen">Log in</a> | 
-			<a href="http://meta.brickimedia.org/wiki/Special:UserLogin/signup">Sign up</a>
+			<?php
+			if ( empty($sharedUserName) ) {
+				echo '<a class="loginOpen">Log in</a> | 
+					<a href="http://meta.brickimedia.org/wiki/Special:UserLogin/signup">Sign up</a>';
+			} else {
+				// place avatar here; source variable is $avatar
+				echo '<a href="http://meta.brickimedia.org/wiki/Special:MyPage">' . $sharedUserName . '</a> | 
+					<a href="http://meta.brickimedia.org/wiki/Special:UserLogout">Log out</a>';
+			}
+			?>
 		</div>
 		<a href="http://brickimedia.org"><img src="splashfiles/logo.svg" id="logo" width="300" height="65" alt="Brickimedia logo"></a>
 		<input title="Search Brickimedia [alt-shift-f]" id="searchInput" accesskey="f" type="search" placeholder="Search Brickimedia" autocomplete="off" tabindex="1"/>
