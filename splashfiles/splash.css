@@ -20,11 +20,11 @@ h2 {
 a {
 	color: #ccc;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 a:hover {
 	color: #eaeaea;
-	cursor: pointer;
 }
 
 p {
@@ -174,6 +174,7 @@ ul {
 	background-position: center 0;
 	background-size: auto 150%;
 }
+
 #circles {
 	padding-top: 50px;
 	display: none;
@@ -284,6 +285,26 @@ footer {
 	background: rgba(75, 75, 75, 0.4);
 }
 
+#account {
+	position: absolute;
+	top: 25px;
+	font-size: 14pt;
+	left: 50px;
+}
+
+#account a {
+	color: #fff;
+	-moz-transition: all .5s;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    -ms-transition: all .5s;
+    transition: all .5s;
+}
+
+#account a:hover {
+	color: #c6c6c6;
+}
+
 #searchInput {
 	position: absolute;
 	right: 3em;
@@ -297,11 +318,11 @@ footer {
 	padding: 0 10px;
 }
 
-#searchInput:focus {
+#searchInput:focus, #loginSubmit, .loginInput:focus {
 	outline: none;
 }
 
-#searchClear {
+#searchClear, #clearOverlay {
 	position: absolute;
 	font-size: 30pt;
 	right: -24px;
@@ -312,6 +333,15 @@ footer {
     -o-transition: all .5s;
     -ms-transition: all .5s;
     transition: all .5s;
+}
+
+#clearOverlay {
+	top: 77px;
+	z-index: 2;
+}
+
+#clearContainer {
+	position: relative;
 }
 
 #searchResults {
@@ -345,11 +375,10 @@ footer {
 	display: none;
 }
 
-.result a {
+.result a, #loginForm a {
 	display: inline;
 	width: auto;
 	color: #0645ad;
-	font-size: 18pt;
 	margin-top: 5px;
 	-moz-transition: all .5s;
     -webkit-transition: all .5s;
@@ -358,14 +387,115 @@ footer {
     transition: all .5s;
 }
 
+.result a {
+	font-size: 18pt;
+}
+
 .result a:after {
 	display: block;
 	content: "";
 	margin-top: 5px;
 }
 
-.result a:hover {
+.result a:hover, #loginForm a:hover {
 	color: #0389D6;
+}
+
+#loginForm {
+	opacity: 0;
+	pointer-events: none;
+	top: 75px;
+	height: 100%;
+	height: calc(100% - 95px);
+	height: -webkit-calc(100% - 95px);
+	height: -moz-calc(100% - 95px);
+	padding-bottom: 20px;
+	width: 100%;
+	background-color: #000;
+	background-color: rgba(0, 0, 0, 0.9);
+	position: absolute;
+	text-align: center;
+	overflow-x: hidden;
+	z-index: 1;
+	font-size: 20pt;
+	-moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    -ms-transition: all 1s;
+    transition: all 1s;
+}
+
+#loginForm h1 {
+	margin-bottom: 0;
+}
+
+#loginForm span {
+	font-size: 14pt;
+}
+
+#loginUsername {
+	margin-top: 20px;
+}
+
+.loginInput {
+	display: block;
+	margin: auto;
+	margin-bottom: 10px;
+	height: 30px;
+	border-radius: 25px;
+	border: 0;
+	width: 200px;
+	font-family: "Lato", sans-serif;
+	font-size: 14pt;
+	padding: 0 10px;
+	height: 40px;
+	-moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    -ms-transition: all 1s;
+    transition: all 1s;
+}
+
+#loginSubmit {
+	margin: 0;
+	border: 0;
+	background-color: #aaa;
+	width: 220px;
+	height: 40px;
+	border-radius: 25px;
+	padding: 0 10px;
+	font-size: 14pt;
+	font-family: "Lato", sans-serif;
+	cursor: pointer;
+	margin-top: 15px;
+	-moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    -ms-transition: all 1s;
+    transition: all 1s;
+	margin-bottom: 10px;
+}
+
+#loginSubmit:hover {
+	background-color: #fff;
+}
+
+#loginForm .small-links {
+	font-size: 13pt;
+	display: block;
+}
+
+#loginError {
+	opacity: 0;
+	pointer-events: none;
+	color: #f00;
+	display: block;
+	margin-top: 5px;
+	-moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    -ms-transition: all 1s;
+    transition: all 1s;
 }
 
 ::-webkit-input-placeholder {
@@ -385,7 +515,7 @@ footer {
 }
 
 @media screen and (max-width: 788px) {
-	.circle-container {
+	#circles {
 		display: none;
 	}
 }
