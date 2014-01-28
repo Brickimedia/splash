@@ -232,7 +232,7 @@ ul {
 
 #white-container {
 	background: url("contribute.jpg") no-repeat fixed;
-	background-position: center 300px;
+	background-position: center 0;
 	background-size: auto 150%;
 	color: #000;
 	padding-bottom: 0;
@@ -498,6 +498,10 @@ footer {
     transition: all 1s;
 }
 
+#sideMenu {
+	display: none;
+}
+
 ::-webkit-input-placeholder {
 	text-align:center;
 }
@@ -514,13 +518,7 @@ footer {
 	text-align:center; 
 }
 
-@media screen and (max-width: 788px) {
-	#circles {
-		display: none;
-	}
-}
-
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 800px) {
 	#hero,
 	#white-container {
 		overflow-x: hidden;
@@ -554,6 +552,16 @@ footer {
 	#red-container,
 	#white-container {
 		background-attachment: scroll;
+	}
+	
+	#searchInput, #searchClear, #clearContainer, #account {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 788px) {
+	#circles {
+		display: none;
 	}
 }
 
