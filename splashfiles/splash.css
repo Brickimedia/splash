@@ -395,7 +395,7 @@ footer {
 	position: absolute;
 	font-size: 30pt;
 	right: -24px;
-	top: 13px;
+	line-height: 75px;
 	color: #fff;
 	-moz-transition: all .5s;
     -webkit-transition: all .5s;
@@ -403,7 +403,7 @@ footer {
 }
 
 #clearOverlay {
-	top: 77px;
+	top: 65px;
 	z-index: 2;
 }
 
@@ -561,15 +561,16 @@ footer {
 	pointer-events: none;
 	height: 75px;
 	width: 80px;
-	font-size: 32pt;
-	line-height: 75px;
+	background: url("menu-icon.png") no-repeat;
+	background-size: 67px;
+	background-position: center;
 	margin-right: 10px;
 	float: left;
 	cursor: pointer;
 	background-color: #093861;
-	-moz-transition: all .5s;
-    -webkit-transition: all .5s;
-    transition: all .5s;
+	-moz-transition: background-color .5s;
+    -webkit-transition: background-color .5s;
+    transition: background-color .5s;
 }
 
 #sideMenu:hover {
@@ -581,6 +582,24 @@ footer {
 	height: 100%;
 	width: 100%;
 	z-index: 1;
+}
+
+#logout {
+	background: url("logout-icon.png") no-repeat;
+	background-position: center;
+	height: 75px;
+	width: 50px;
+	position: absolute;
+	background-size: 30px;
+	z-index: 2;
+	cursor: pointer;
+	-moz-transition: opacity .5s;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+}
+
+#logout:hover {
+	opacity: 0.8;
 }
 
 ::-webkit-input-placeholder {
@@ -664,7 +683,7 @@ footer {
 	}
 	
 	#account.loggedIn {
-		width: 216px !important;
+		width: 173px !important;
 	}
 	
 	#content {
@@ -674,6 +693,7 @@ footer {
 	#searchResults {
 		height: auto;
 		padding: 0;
+		padding-right: 50%;
 		top: 0px;
 		width: 240px;
 		opacity: 1 !important;
@@ -693,6 +713,10 @@ footer {
 	
 	#loginForm h1 {
 		display: none;
+	}
+	
+	#logout {
+		left: 187px;
 	}
 }
 
