@@ -56,47 +56,53 @@ var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackP
       js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=170482364649";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-	<header id="header">
-		<div id="sideMenu">&#9776;</div>
-		<a href="http://brickimedia.org"><img src="splashfiles/logo.svg" id="logo" width="300" height="65" alt="Brickimedia logo"></a>
-	</header>
-	<div id="account">
+	<div id="sideBar">
 		<?php
 			if ( empty($sharedUserID) ) {
-				echo '<a id="loginOpen">Log in</a> | 
-					<a href="http://meta.brickimedia.org/wiki/Special:UserLogin/signup">Sign up</a>';
+				echo '<div id="account">
+					<a id="loginOpen" href="javascript:;">Log in</a> | 
+					<a href="http://meta.brickimedia.org/wiki/Special:UserLogin/signup">Sign up</a>
+					</div>';
 			} else {
-				// place avatar here; source variable is $avatar
-				echo '<a href="http://meta.brickimedia.org/wiki/Special:MyPage">' . $sharedUserName . '</a> | 
-					<a id="logOut">Log out</a>';
+				echo '<div id="account" class="loggedIn">
+					<a href="http://meta.brickimedia.org/wiki/Special:MyPage"><img src="' . $avatar . '">' . $sharedUserName . '</a>
+					</div>';
 			}
 		?>
-	</div>
-	<input title="Search Brickimedia [alt-shift-f]" id="searchInput" accesskey="f" type="search" placeholder="Search Brickimedia" autocomplete="off" tabindex="1"/>
-	<div id="searchResults">
-		<div class="search-result" id="en">Brickipedia<div class="result"></div></div>
-		<div class="search-result" id="customs">Customs<div class="result"></div></div>
-		<div class="search-result" id="cuusoo">Cuusoo<div class="result"></div></div>
-		<div class="search-result" id="stories">Stories<div class="result"></div></div>
-		<div class="search-result" id="meta">Brickimedia<div class="result"></div></div>
-	</div>
-	<div id="loginForm">
-		<h1>One account, 4 wikis.</h1>
-		<span>Log in to Brickimedia</span>
-		<input class="loginInput" id="loginUsername" type="text" placeholder="Username"/>
-		<input class="loginInput" id="loginPassword" type="password" placeholder="Password"/>
-		<input id="loginSubmit" type="submit" value="Log in"/>
-		<span class="small-links">
-			<a href="http://meta.brickimedia.org/wiki/Special:UserLogin/signup">Create an account</a> / 
-			<a href="http://meta.brickimedia.org/wiki/Special:PasswordReset">Forgotten your password?</a>
-		</span>
-		<span id="loginError"></span>
-	</div>
-	<div id="clearContainer">
-		<a id="searchClear">&times;</a>
-		<a id="clearOverlay">&times;</a>
+		<input title="Search Brickimedia [alt-shift-f]" id="searchInput" accesskey="f" type="search" placeholder="Search Brickimedia" autocomplete="off"/>
+		<div id="searchResults">
+			<div id="searchOffset"></div>
+			<div class="search-result" id="en">Brickipedia<div class="result"></div></div>
+			<div class="search-result" id="customs">Customs<div class="result"></div></div>
+			<div class="search-result" id="cuusoo">Cuusoo<div class="result"></div></div>
+			<div class="search-result" id="stories">Stories<div class="result"></div></div>
+			<div class="search-result" id="meta">Brickimedia<div class="result"></div></div>
+		</div>
+		<?php
+			if ( empty($sharedUserID) )
+				echo '<div id="loginForm">
+						<h1>One account, 4 wikis.</h1>
+						<span>Log in to Brickimedia</span>
+						<input class="loginInput" id="loginUsername" type="text" placeholder="Username"/>
+						<input class="loginInput" id="loginPassword" type="password" placeholder="Password"/>
+						<input id="loginSubmit" type="submit" value="Log in"/>
+						<span class="small-links">
+							<a href="http://meta.brickimedia.org/wiki/Special:UserLogin/signup">Create an account</a> / 
+							<a href="http://meta.brickimedia.org/wiki/Special:PasswordReset">Forgotten your password?</a>
+						</span>
+						<span id="loginError"></span>
+					</div>'
+		?>
+		<div id="clearContainer">
+			<a id="searchClear">&times;</a>
+			<a id="clearOverlay">&times;</a>
+		</div>
 	</div>
 	<div id="content">
+		<header id="header">
+			<div id="sideMenu">&#9776;</div>
+			<a href="http://brickimedia.org"></a>
+		</header>
 		<section id="hero">
 			<header>
 				<h1 id="heroHeader">Welcome to <b>Brickimedia</b></h1>
@@ -124,7 +130,7 @@ var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackP
 				</header>
 				<p>Brickimedia is an open network of LEGO fan communities founded in early 2013. In addition to a <a href="http://meta.brickimedia.org/">coordination wiki</a>, Brickimedia hosts 4 projects: <a href="http://en.brickimedia.org/">Brickipedia</a>, <a href="http://customs.brickimedia.org/">Customs</a>, <a href="http://stories.brickimedia.org/">LEGO Stories Wiki</a>, and <a href="http://cuusoo.brickimedia.org/">LEGO CUUSOO Wiki</a>.</p>
 				
-				<p>Brickimedia was originally launched in February 2013, but several months later the site's data was lost during an attack on its webhost. Since that downtime, Brickimedia has been through a closed alpha and closed beta, and is currently in an open beta testing period.</p>
+				<p>Brickimedia was originally launched in February 2013, but several months later the site's data was lost during an attack on its webhost. Since that downtime, Brickimedia has been through several testing periods and is now officially open!</p>
 			<aside id="circles">
 				<div class="circle-container" id="circle-projects">
 					<div class="circle"></div>
@@ -144,6 +150,7 @@ var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackP
 						<div class="circle-number"></div><span>accounts</span>
 					</div>
 				</div>
+				<div id="stretch"></div>
 				</aside>
 			</section>
 		</div>
@@ -153,6 +160,7 @@ var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackP
 					<h1>Recent Updates</h1>
 				</header>
 				<ul>
+				<li>Brickimedia is officially open!</li>
 				<li>As of November 1st, Brickimedia is in public beta! Learn more about the open beta period <a href="http://meta.brickimedia.org/wiki/User_blog:ToaMeiko/Open_Beta_-_What_to_expect">here</a>.</li>
 				<li>Brickimedia is now in a closed beta stage. <a href="http://www.brickimedia.org/george-test/2013-2014-beta-planning.pdf" target="_blank">Download this PDF</a> to learn more about our beta and release planning schedule.</li>
 				<li>An alpha preview of the Brickimedia wikis can be seen on <a href="http://meta.brickimedia.org/wiki/Main_Page">Brickimedia Meta</a>. As this is in alpha stage, you should expect errors and frequent changes. Anything you add (user accounts, edits, etc) may not transfer over after the alpha period ends.</li>
