@@ -63,7 +63,6 @@ $(document).ready(function() {
 			$.ajax({
 				'type': 'POST',
 				'url': 'http://meta.brickimedia.org/api.php?action=login&lgname=' + username + '&lgpassword=' + password + '&origin=http%3A%2F%2F' + document.domain + '&format=json',
-				'cache': false,
 				'xhrFields': {
 					'withCredentials': true
 				},
@@ -71,7 +70,6 @@ $(document).ready(function() {
 					$.ajax({
 						'type': 'POST',
 						'url': 'http://meta.brickimedia.org/api.php?action=login&lgname=' + username + '&lgpassword=' + password + '&lgtoken=' + data.login.token + '&origin=http%3A%2F%2F' + document.domain + '&format=json',
-						'cache': false,
 						'xhrFields': {
 							'withCredentials': true
 						},
@@ -80,9 +78,10 @@ $(document).ready(function() {
 								location.reload();
 							} else if (data.login.result === 'Blocked') {
 								showError('Your account is blocked');
+							} else if (data.login.result === 'NeedToken') {
+								showError('Login was blocked by the browser');
 							} else {
 								showError('Username or password is incorrect');
-								console.log(data.login.result);
 							} //possible token errors
 						} //token success
 					}); //token ajax
@@ -93,6 +92,19 @@ $(document).ready(function() {
 			}); //login ajax
 		}
 	}); //login
+	
+	$('#logout').click(function() {
+		$.ajax({
+			'type': 'POST',
+			'url': 'http://meta.brickimedia.org/api.php?action=logout&origin=http%3A%2F%2F' + document.domain + '&format=json',
+			'xhrFields': {
+				'withCredentials': true
+			},
+			'success': function() {
+				location.reload();
+			}
+		});
+	}); //logout
 }); //both desktop and mobile functions
 
 function goDesktop() {
@@ -254,6 +266,7 @@ function resetWindow() {
 	$(window).resize(function() {
 		if (window.innerWidth > 800 && !desktop) {
 			$('#loginOpen').unbind('click');
+			$('#searchInput, #loginUsername, #loginPassword').blur();
 			if (sideActive) {
 				sideActive = false;
 				$('html, body').css('overflow-y', 'auto');
@@ -264,6 +277,7 @@ function resetWindow() {
 		} else if (window.innerWidth <= 800 && desktop) {
 			$('#loginOpen, #searchInput').unbind('click');
 			$('#searchClear, #clearOverlay').click();
+			$('#searchInput, #loginUsername, #loginPassword').blur();
 			goMobile();
 		}
 	}); //switch between mobile and desktop on resize
@@ -284,7 +298,7 @@ function addSearchResults(results, name) {
 } //add search results
 
 function showError(text) {
-	$('#loginError').text(text).css({'pointer-events': 'auto', 'opacity': 1});
+	$('#loginError').html(text).css({'pointer-events': 'auto', 'opacity': 1});
 	$('#loginSubmit').css('background-color', '#f00');
 	setTimeout(function() { 
 		$('#loginError').css({'pointer-events': 'none', 'opacity': 0}); 
