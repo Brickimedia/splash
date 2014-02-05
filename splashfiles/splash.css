@@ -3,10 +3,11 @@
 body {
 	font-family: "Lato", sans-serif;
 	color: #fff;
-	background: #419ec8;
+	background: #000;
 	margin: 0;
 	text-align: center;
 	overflow-x: hidden;
+	width: 100%;
 }
 
 h1 {
@@ -42,9 +43,15 @@ ul {
 	text-align: left;
 }
 
+#content {
+	width: 100%;
+	z-index: 2;
+	box-shadow: #000 0px 0px 10px;
+}
+
 #header {
 	overflow: hidden;
-	position: absolute;
+	position: relative;
 	top: 0;
 	right: 0;
 	width: 100%;
@@ -52,18 +59,31 @@ ul {
 	background: #002541;
 }
 
+#header a {
+	display: block;
+	overflow: hidden;
+	width: auto;
+	margin: auto;
+	background: url("logo.svg") no-repeat scroll;
+	background-size: contain;
+	background-position: 0 center;
+	height: 70px;
+	margin-top: 5px;
+	max-width: 340px;
+}
+
 #logo {
 	padding-top: 5px;
 }
 
 #hero {
-	margin-top: 75px;
 	width: 100%;
 	height: 100%;
 	background: url("hero.jpg") no-repeat fixed;
 	background-size: cover;
 	background-position: center 0;
 	padding: 50px 0 125px 0;
+	background-color: #419ec8;
 }
 
 #hero header {
@@ -104,8 +124,6 @@ ul {
     vertical-align: middle;
     -moz-transition: all .5s;
     -webkit-transition: all .5s;
-    -o-transition: all .5s;
-    -ms-transition: all .5s;
     transition: all .5s;
     font-size: 110%;
 }
@@ -173,18 +191,29 @@ ul {
 	background: url("about.jpg") no-repeat fixed;
 	background-position: center 0;
 	background-size: auto 150%;
+	background-color: #419ec8;
 }
 
 #circles {
 	padding-top: 50px;
 	display: none;
+	text-align: justify; /* http://stackoverflow.com/questions/6865194/fluid-width-with-equally-spaced-divs */
+	-ms-text-justify: distribute-all-lines;
+	text-justify: distribute-all-lines;
+	padding-left: 5%;
+	padding-right: 5%;
+	max-width: 800px;
+	margin: 0 auto;
 }
 
 .circle-container {
 	display: inline-block;
 	position: relative;
 	text-align: center;
-	margin-right: 10%;
+	width: auto;
+	height: auto;
+	vertical-align: top;
+	display: inline-block;
 }
 
 .circle-container:last-of-type {
@@ -219,11 +248,19 @@ ul {
 	text-transform: uppercase;
 }
 
+#stretch {
+	width: 100%;
+	display: inline-block;
+	font-size: 0;
+	line-height: 0;
+}
+
 #red-container {
 	background: url("updates.jpg") no-repeat fixed;
 	background-position: center 0;
 	background-size: auto 150%;
 	color: #fff;
+	background-color: #419ec8;
 }
 
 .divider {
@@ -236,6 +273,7 @@ ul {
 	background-size: auto 150%;
 	color: #000;
 	padding-bottom: 0;
+	background-color: #419ec8;
 }
 
 #white-container a {
@@ -289,20 +327,47 @@ footer {
 	position: absolute;
 	top: 25px;
 	font-size: 14pt;
-	left: 50px;
+	left: 3em;
+	z-index: 2;
+	cursor: default;
 }
 
 #account a {
 	color: #fff;
 	-moz-transition: all .5s;
     -webkit-transition: all .5s;
-    -o-transition: all .5s;
-    -ms-transition: all .5s;
     transition: all .5s;
 }
 
 #account a:hover {
 	color: #c6c6c6;
+}
+
+#account img {
+	height: 50px;
+	border-radius: 25px;
+	vertical-align: middle;
+	position: absolute;
+	left: 0px;
+	-moz-transition: all .5s;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+
+#account a:hover img {
+	opacity: 0.8;
+}
+
+#account.loggedIn {
+	top: 12px;
+	overflow: hidden;
+	text-align: left;
+	height: 50px;
+	line-height: 50px;
+}
+
+#account.loggedIn a {
+	margin-left: 60px;
 }
 
 #searchInput {
@@ -316,6 +381,10 @@ footer {
 	font-family: "Lato", sans-serif;
 	font-size: 14pt;
 	padding: 0 10px;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	-webkit-appearance: none;
+	z-index: 2;
 }
 
 #searchInput:focus, #loginSubmit, .loginInput:focus {
@@ -330,8 +399,6 @@ footer {
 	color: #fff;
 	-moz-transition: all .5s;
     -webkit-transition: all .5s;
-    -o-transition: all .5s;
-    -ms-transition: all .5s;
     transition: all .5s;
 }
 
@@ -342,6 +409,7 @@ footer {
 
 #clearContainer {
 	position: relative;
+	z-index: 3;
 }
 
 #searchResults {
@@ -361,11 +429,9 @@ footer {
 	overflow-x: hidden;
 	z-index: 1;
 	font-size: 20pt;
-	-moz-transition: all 1s;
-    -webkit-transition: all 1s;
-    -o-transition: all 1s;
-    -ms-transition: all 1s;
-    transition: all 1s;
+	-moz-transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
 }
 
 .search-result {
@@ -382,8 +448,6 @@ footer {
 	margin-top: 5px;
 	-moz-transition: all .5s;
     -webkit-transition: all .5s;
-    -o-transition: all .5s;
-    -ms-transition: all .5s;
     transition: all .5s;
 }
 
@@ -418,11 +482,9 @@ footer {
 	overflow-x: hidden;
 	z-index: 1;
 	font-size: 20pt;
-	-moz-transition: all 1s;
-    -webkit-transition: all 1s;
-    -o-transition: all 1s;
-    -ms-transition: all 1s;
-    transition: all 1s;
+	-moz-transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
 }
 
 #loginForm h1 {
@@ -451,8 +513,6 @@ footer {
 	height: 40px;
 	-moz-transition: all 1s;
     -webkit-transition: all 1s;
-    -o-transition: all 1s;
-    -ms-transition: all 1s;
     transition: all 1s;
 }
 
@@ -470,10 +530,9 @@ footer {
 	margin-top: 15px;
 	-moz-transition: all 1s;
     -webkit-transition: all 1s;
-    -o-transition: all 1s;
-    -ms-transition: all 1s;
     transition: all 1s;
 	margin-bottom: 10px;
+	-webkit-appearance: none;
 }
 
 #loginSubmit:hover {
@@ -493,13 +552,35 @@ footer {
 	margin-top: 5px;
 	-moz-transition: all 1s;
     -webkit-transition: all 1s;
-    -o-transition: all 1s;
-    -ms-transition: all 1s;
     transition: all 1s;
 }
 
 #sideMenu {
-	display: none;
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+	height: 75px;
+	width: 80px;
+	font-size: 32pt;
+	line-height: 75px;
+	margin-right: 10px;
+	float: left;
+	cursor: pointer;
+	background-color: #093861;
+	-moz-transition: all .5s;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+
+#sideMenu:hover {
+	background-color: #066996;
+}
+
+#sideBar {
+	position: static;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
 }
 
 ::-webkit-input-placeholder {
@@ -547,20 +628,70 @@ footer {
 		padding-bottom: 2em;
 	}
 	
+	/* !importants are needed to override javascript */
 	#hero,
 	#blue-container,
 	#red-container,
 	#white-container {
 		background-attachment: scroll;
+		background-position: center 0 !important; 
+		background-size: cover !important;
+	}
+
+	#clearContainer {
+		display: none !important;
 	}
 	
-	#searchInput, #searchClear, #clearContainer, #account {
-		display: none;
+	#searchInput {
+		left: 12px;
+		width: 196px !important;
+		top: 95px;
 	}
-}
-
-@media screen and (max-width: 788px) {
-	#circles {
+	
+	#wiki-nav-bottom {
+		margin-top: 35px !important;
+		opacity: 1 !important;
+	}
+	
+	#sideMenu {
+		opacity: 1;
+		pointer-events: auto;
+	}
+	
+	#account {
+		left: 12px;
+		width: 220px;
+	}
+	
+	#account.loggedIn {
+		width: 216px !important;
+	}
+	
+	#content {
+		position: relative;
+	}
+	
+	#searchResults {
+		height: auto;
+		padding: 0;
+		top: 0px;
+		width: 240px;
+		opacity: 1 !important;
+		pointer-events: auto !important;
+		background-color: #000;
+		padding-top: 70px;
+		border-top: 75px solid #171717;
+	}
+	
+	#loginForm {
+		height: 2000px;
+		width: 240px;
+		z-index: 2;
+		background-color: #000;
+		margin-top: 10px;
+	}
+	
+	#loginForm h1 {
 		display: none;
 	}
 }
@@ -568,6 +699,23 @@ footer {
 @media screen and (max-width: 727px) {
 	#ad {
 		display: none;
+	}
+}
+
+@media screen and (max-width: 730px) {
+	#circles {
+		display: none !important;
+	}
+}
+
+@media screen and (max-width: 537px) {
+	#sideMenu {
+		position: static;
+	}
+	
+	#header a {
+		margin-left: 0;
+		margin-right: 10px;
 	}
 }
 
