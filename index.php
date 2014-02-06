@@ -66,7 +66,7 @@ var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackP
 			} else {
 				echo '<div id="logout"></div>
 					<div id="account" class="loggedIn">
-					<a href="http://meta.brickimedia.org/wiki/Special:MyPage"><img src="' . $avatar . '">' . $sharedUserName . '</a>
+					<a href="http://meta.brickimedia.org/wiki/User:' . $sharedUserName . '"><img src="' . $avatar . '"/>' . $sharedUserName . '</a>
 					</div>';
 			}
 		?>
