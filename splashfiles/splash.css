@@ -360,6 +360,7 @@ footer {
 
 #account.loggedIn {
 	overflow: hidden;
+	text-align: left;
 }
 
 #account.loggedIn a {

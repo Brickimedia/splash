@@ -75,6 +75,7 @@ $(document).ready(function() {
 						},
 						'success': function(data) {
 							if (data.login.result === 'Success') {
+								$('#loginSubmit').css('background-color', '#0f0');
 								location.reload();
 							} else if (data.login.result === 'Blocked') {
 								showError('Your account is blocked');
