@@ -75,7 +75,7 @@ var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackP
 			<div id="searchOffset"></div>
 			<div class="search-result" id="en">Brickipedia<div class="result"></div></div>
 			<div class="search-result" id="customs">Customs<div class="result"></div></div>
-			<div class="search-result" id="cuusoo">Cuusoo<div class="result"></div></div>
+			<div class="search-result" id="cuusoo">CUUSOO<div class="result"></div></div>
 			<div class="search-result" id="stories">Stories<div class="result"></div></div>
 			<div class="search-result" id="meta">Brickimedia<div class="result"></div></div>
 		</div>
