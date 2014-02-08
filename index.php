@@ -64,7 +64,7 @@ var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackP
 					<a href="http://meta.brickimedia.org/wiki/Special:UserLogin/signup">Sign up</a>
 					</div>';
 			} else {
-				echo '<div id="logout"></div>
+				echo '<a id="logout" href="javascript:;"></a>
 					<div id="account" class="loggedIn">
 					<a href="http://meta.brickimedia.org/wiki/User:' . $sharedUserName . '"><img src="' . $avatar . '"/>' . $sharedUserName . '</a>
 					</div>';
@@ -94,8 +94,8 @@ var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackP
 					</div>'
 		?>
 		<div id="clearContainer">
-			<a id="searchClose">&times;</a>
-			<a id="loginClose">&times;</a>
+			<a id="searchClose"></a>
+			<a id="loginClose"></a>
 		</div>
 	</div>
 	<div id="content">

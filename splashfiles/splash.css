@@ -1,12 +1,16 @@
 @charset "UTF-8";
 /* CSS Document */
+html {
+	overflow-x: hidden;
+}
+
 body {
 	font-family: "Lato", sans-serif;
 	color: #fff;
 	background: #000;
 	margin: 0;
 	text-align: center;
-	overflow-x: hidden;
+	overflow: hidden;
 	width: 100%;
 }
 
@@ -22,6 +26,9 @@ a {
 	color: #ccc;
 	text-decoration: none;
 	cursor: pointer;
+	-moz-transition: color .5s, opacity .5s, right .5s;
+    -webkit-transition: color .5s, opacity .5s, right .5s;
+    transition: color .5s, opacity .5s, right .5s;
 }
 
 a:hover {
@@ -61,9 +68,8 @@ ul {
 	background-size: 30px;
 	z-index: 2;
 	cursor: pointer;
-	-moz-transition: opacity .5s;
-    -webkit-transition: opacity .5s;
-    transition: opacity .5s;
+	display: block;
+	-webkit-backface-visibility: hidden;
 }
 
 #logout:hover {
@@ -84,14 +90,11 @@ ul {
 	display: inline-block;
 	height: 75px;
 	color: #fff;
-	-moz-transition: all .5s;
-    -webkit-transition: all .5s;
-    transition: all .5s;
 	white-space: nowrap;
 }
 
 #account a:hover {
-	opacity: 0.7;
+	color: #99A8B3;
 }
 
 #account img {
@@ -99,10 +102,14 @@ ul {
 	border-radius: 25px;
 	position: absolute;
 	left: 0px;
-	-moz-transition: all .5s;
-    -webkit-transition: all .5s;
-    transition: all .5s;
 	margin-top: 12px;
+	-moz-transition: opacity .5s;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+}
+
+#account a:hover img {
+	opacity: .7;
 }
 
 #account.loggedIn {
@@ -171,9 +178,6 @@ ul {
 	width: auto;
 	color: #0645ad;
 	margin-top: 5px;
-	-moz-transition: all .5s;
-    -webkit-transition: all .5s;
-    transition: all .5s;
 }
 
 .result a {
@@ -186,7 +190,8 @@ ul {
 	margin-top: 5px;
 }
 
-.result a:hover, #loginForm a:hover {
+.result a:hover,
+#loginForm a:hover {
 	color: #0389D6;
 }
 
@@ -281,31 +286,37 @@ ul {
 }
 
 #clearContainer {
-	position: relative;
+	position: fixed;
 	z-index: 3;
+	right: 0;
 }
 
 #searchClose, 
 #loginClose {
 	position: absolute;
-	font-size: 30pt;
-	right: -24px;
-	line-height: 75px;
-	color: #fff;
-	-moz-transition: all .5s;
-    -webkit-transition: all .5s;
-    transition: all .5s;
+	right: -25px;
+	height: 75px;
+	width: 25px;
+	background: url("close-icon.png") no-repeat;
+	background-size: 25px;
+	background-position: center;
+	z-index: 2;
+}
+
+#searchClose:hover, 
+#loginClose:hover {
+	opacity: .5;
 }
 
 #loginClose {
-	top: 65px;
-	z-index: 2;
+	top: 70px;
 }
 
 #content {
 	width: 100%;
 	z-index: 2;
 	box-shadow: #000 0px 0px 10px;
+	overflow-y: hidden;
 }
 
 #header {
@@ -565,6 +576,7 @@ ul {
 #white-container a:hover {
 	color: #777;
 }
+
 .contribute-table {
 	width: 100%;
 	display: table;
@@ -609,11 +621,11 @@ footer {
 }
 
 :-moz-placeholder {
-	text-align:center;  
+	text-align:center;
 }
 
 ::-moz-placeholder {
-	text-align:center;  
+	text-align:center;
 }
 
 :-ms-input-placeholder {  
@@ -642,6 +654,10 @@ footer {
 	#account {
 		left: 12px;
 		width: 220px;
+	}
+	
+	#account a:hover {
+		color: #B9B9B9;
 	}
 	
 	/* !importants are needed to override javascript */

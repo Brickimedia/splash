@@ -5,7 +5,6 @@ var mobileHistory = false; //prevent double bindings
 var ajaxPool = [];
 var listWikis = ['en', 'customs', 'cuusoo', 'stories', 'meta'];
 var sideActive = false;
-var coverActive = false;
 var offset = 0;
 
 $(document).ready(function() {
@@ -114,21 +113,14 @@ function goDesktop() {
 	desktop = true;
 	
 	$(window).scroll(function() {
-		if (coverActive) {
-			window.scrollTo(0, 0); //this is temporary until a better solution can be found (Safari OSX)
-		} else {
-			var diffToTop = $(this).scrollTop();
-			var diffToBottom = $(document).height() - ($(this).scrollTop() + $(this).height());
-			$("#hero").css("background-position", "center " + parseInt(-diffToTop / 5, 10) + "px");
-			$("#blue-container").css("background-position", "center " + parseInt(-diffToTop / 5, 10) + "px");
-			$("#red-container").css("background-position", "center " + (150 + parseInt(-diffToTop / 5, 10)) + "px");
-			$("#white-container").css("background-position", "center " + (300 + parseInt(-diffToTop / 5, 10)) + "px");
-			if (diffToBottom <= 150 && diffToBottom > 7) {
-				$("#wiki-nav-bottom").css("margin-top", 35 + diffToBottom / 4.5 + "px");
-			}
-			if (diffToBottom <= 100) {
-				$("#wiki-nav-bottom").css("opacity", (100 - diffToBottom) / 100);
-			}
+		var diffToTop = $(this).scrollTop();
+		var diffToBottom = $(document).height() - ($(this).scrollTop() + $(this).height());
+		$("#hero").css("background-position", "center " + parseInt(-diffToTop / 5, 10) + "px");
+		$("#blue-container").css("background-position", "center " + parseInt(-diffToTop / 5, 10) + "px");
+		$("#red-container").css("background-position", "center " + (150 + parseInt(-diffToTop / 5, 10)) + "px");
+		$("#white-container").css("background-position", "center " + (300 + parseInt(-diffToTop / 5, 10)) + "px");
+		if (diffToBottom <= 100) {
+			$("#wiki-nav-bottom").css("opacity", (100 - diffToBottom) / 100);
 		}
 	}); //move background images
 	
@@ -147,41 +139,42 @@ function goDesktop() {
 	$(window).resize();
 	
 	$('#loginOpen').click(function() {
-		coverActive = true;
-		$('#searchClose').css('right', '-24px');
-		$('#searchResults').css({'pointer-events': 'none', 'opacity': 0});
-		$('#loginClose').css('right', '17px');
-		$('#loginForm').css({'pointer-events': 'auto', 'opacity': 1});
-		$('body').animate({ scrollTop: 0 }, 500);
-		$('html, body').css('overflow-y', 'hidden');
-		$('#loginUsername').select();
+		$('body').animate({ scrollTop: 0 }, 50, function() {
+			$('html').animate({ scrollTop: 0 }, 50, function() {
+				$(this).css('overflow-y', 'hidden');
+				$('#searchClose').css('right', '-25px');
+				$('#searchResults').css({'pointer-events': 'none', 'opacity': 0});
+				$('#loginClose').css('right', '16px');
+				$('#loginForm').css({'pointer-events': 'auto', 'opacity': 1});
+				$('#loginUsername').select();
+			});
+		});
 	}); //show login
 		
 	$('#searchInput').click(function() {
-		coverActive = true;
-		$('#loginClose').css('right', '-24px');
-		$('#loginForm').css({'pointer-events': 'none', 'opacity': 0});
-		$('#searchClose').css('right', '17px');
-		$('#searchResults').css({'pointer-events': 'auto', 'opacity': 1});
-		$('body').animate({ scrollTop: 0 }, 500);
-		$('html, body').css('overflow-y', 'hidden');
-		$(this).keyup();
+		$('body').animate({ scrollTop: 0 }, 50, function() {
+			$('html').animate({ scrollTop: 0 }, 50, function() {
+				$(this).css('overflow-y', 'hidden');
+				$('#loginClose').css('right', '-25px');
+				$('#loginForm').css({'pointer-events': 'none', 'opacity': 0});
+				$('#searchClose').css('right', '16px');
+				$('#searchResults').css({'pointer-events': 'auto', 'opacity': 1});
+			});
+		});
 	}); //show search
 	
 	if (!desktopHistory) {
 		desktopHistory = true;
 		$('#loginClose').click(function() {
-			coverActive = false;
-			$('#loginClose').css('right', '-24px');
+			$('#loginClose').css('right', '-25px');
 			$('#loginForm').css({'pointer-events': 'none', 'opacity': 0});
-			$('html, body').css('overflow-y', 'auto');
+			$('html').css('overflow-y', 'auto');
 		}); //hide login
 		
 		$('#searchClose').click(function() {
-			coverActive = false;
-			$('#searchClose').css('right', '-24px');
+			$('#searchClose').css('right', '-25px');
 			$('#searchResults').css({'pointer-events': 'none', 'opacity': 0});
-			$('html, body').css('overflow-y', 'auto');
+			$('html').css('overflow-y', 'auto');
 		}); //hide search
 		
 		$('#loginUsername').keyup(function(e) {
@@ -224,13 +217,10 @@ function goMobile() {
 				});
 			} else {
 				sideActive = true;
-				$('html, body').css('overflow-y', 'hidden');
 				$("#hero a, .text-container").click(function(e) {
 					e.preventDefault();
 				});
-				$('#content').animate({'margin-left': '240px'}, 500, function() {
-					$('html, body').css('overflow-y', 'auto'); //workaround for iOS
-				});
+				$('#content').animate({'margin-left': '240px'}, 500);
 			}
 		}); //toggle side menu
 		
@@ -272,7 +262,6 @@ function resetWindow() {
 			$('#searchInput, #loginUsername, #loginPassword').blur();
 			if (sideActive) {
 				sideActive = false;
-				$('html, body').css('overflow-y', 'auto');
 				$("#hero a, .text-container").unbind('click');
 				$('#content').css('margin-left', '0px');
 			}
