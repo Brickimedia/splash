@@ -1,13 +1,15 @@
-var desktop = window.innerWidth > 800 ? false : true; //starts opposite so functions fire
+//Mobile is 800px wide or less
+var desktop = window.innerWidth > 800 ? false : true; //starts opposite
 var desktopHistory = false;
-var mobileHistory = false; //has been desktop or mobile in the past (to prevent double bindings)
+var mobileHistory = false; //prevent double bindings
 var ajaxPool = [];
 var listWikis = ['en', 'customs', 'cuusoo', 'stories', 'meta'];
-var sideActive = false; //side menu is active
-var coverActive = false; //a cover is active
+var sideActive = false;
+var coverActive = false;
+var offset = 0;
 
 $(document).ready(function() {
-	resetWindow(); //bind resize functions to window
+	resetWindow();
 	
 	//*** Needs to be converted to php ***
 	var articles = 0;
@@ -36,7 +38,7 @@ $(document).ready(function() {
 	$('#searchInput').keyup(function() {
 		for (var i in ajaxPool) {
 			ajaxPool[i].abort();
-		} //cancel existing ajax calls
+		} //cancel existing
 		var searchText = $('#searchInput').val();
 		var uriText = encodeURIComponent(searchText);
 		$('#searchSuggestions').html('');
@@ -47,14 +49,14 @@ $(document).ready(function() {
 				} //success
 			); //ajax
 		}
-	}); //on search change
+	}); //search
 	
 	$('#loginSubmit').click(function() {
-		if ( !$('#loginUsername').val() ) { //username not set
+		if ( !$('#loginUsername').val() ) { //username
 			$('#loginUsername').css('background-color', '#f00');
 			setTimeout(function() { $('#loginUsername').css('background-color', '#fff'); }, 2000);
 		}
-		if ( !$('#loginPassword').val() ) { //password not set
+		if ( !$('#loginPassword').val() ) { //password
 			$('#loginPassword').css('background-color', '#f00');
 			setTimeout(function() { $('#loginPassword').css('background-color', '#fff'); }, 2000);
 		} else if ( $('#loginUsername').val() ) { //both set
@@ -83,13 +85,13 @@ $(document).ready(function() {
 								showError('Login was blocked by the browser');
 							} else {
 								showError('Username or password is incorrect');
-							} //possible token errors
+							}
 						} //token success
 					}); //token ajax
 				}, //login success
 				'error': function() {
 					showError('Login failed because of an error');
-				} //login error
+				}
 			}); //login ajax
 		}
 	}); //login
@@ -106,7 +108,7 @@ $(document).ready(function() {
 			}
 		});
 	}); //logout
-}); //both desktop and mobile functions
+}); //both desktop and mobile
 
 function goDesktop() {
 	desktop = true;
@@ -140,15 +142,15 @@ function goDesktop() {
 		} else {
 			$('#searchInput').css('width', 200).attr('placeholder', 'Search Brickimedia');
 		}
-	}); //resize search and account
+	}); //resize search and username
 	
 	$(window).resize();
 	
 	$('#loginOpen').click(function() {
 		coverActive = true;
-		$('#searchClear').css('right', '-24px');
+		$('#searchClose').css('right', '-24px');
 		$('#searchResults').css({'pointer-events': 'none', 'opacity': 0});
-		$('#clearOverlay').css('right', '17px');
+		$('#loginClose').css('right', '17px');
 		$('#loginForm').css({'pointer-events': 'auto', 'opacity': 1});
 		$('body').animate({ scrollTop: 0 }, 500);
 		$('html, body').css('overflow-y', 'hidden');
@@ -157,9 +159,9 @@ function goDesktop() {
 		
 	$('#searchInput').click(function() {
 		coverActive = true;
-		$('#clearOverlay').css('right', '-24px');
+		$('#loginClose').css('right', '-24px');
 		$('#loginForm').css({'pointer-events': 'none', 'opacity': 0});
-		$('#searchClear').css('right', '17px');
+		$('#searchClose').css('right', '17px');
 		$('#searchResults').css({'pointer-events': 'auto', 'opacity': 1});
 		$('body').animate({ scrollTop: 0 }, 500);
 		$('html, body').css('overflow-y', 'hidden');
@@ -168,16 +170,16 @@ function goDesktop() {
 	
 	if (!desktopHistory) {
 		desktopHistory = true;
-		$('#clearOverlay').click(function() {
+		$('#loginClose').click(function() {
 			coverActive = false;
-			$('#clearOverlay').css('right', '-24px');
+			$('#loginClose').css('right', '-24px');
 			$('#loginForm').css({'pointer-events': 'none', 'opacity': 0});
 			$('html, body').css('overflow-y', 'auto');
 		}); //hide login
 		
-		$('#searchClear').click(function() {
+		$('#searchClose').click(function() {
 			coverActive = false;
-			$('#searchClear').css('right', '-24px');
+			$('#searchClose').css('right', '-24px');
 			$('#searchResults').css({'pointer-events': 'none', 'opacity': 0});
 			$('html, body').css('overflow-y', 'auto');
 		}); //hide search
@@ -200,8 +202,8 @@ function goDesktop() {
 				$('#loginSubmit').css('background-color', '#aaa');
 			}
 		}); //password "enter" up
-	} //first time firing desktop
-} //desktop only functions
+	} //first time desktop
+} //desktop
 
 function goMobile() {
 	desktop = false;
@@ -213,7 +215,7 @@ function goMobile() {
 	
 	if (!mobileHistory) {
 		mobileHistory = true;
-		$('#sideMenu').click(function() {
+		$('#sideToggle').click(function() {
 			if (sideActive) {
 				sideActive = false;
 				$("#hero a, .text-container").unbind('click');
@@ -230,7 +232,7 @@ function goMobile() {
 					$('html, body').css('overflow-y', 'auto'); //workaround for iOS
 				});
 			}
-		}); //show or hide side menu
+		}); //toggle side menu
 		
 		$('#content').bind('touchstart', function(e) {
 			startTouch(e, true);
@@ -259,8 +261,8 @@ function goMobile() {
 				endTouch();
 			}); //mouse up
 		}); //mouse down
-	} //first time firing mobile
-} //mobile only functions
+	} //first time mobile
+} //mobile
 
 function resetWindow() {
 	$(window).unbind();
@@ -277,11 +279,11 @@ function resetWindow() {
 			goDesktop();
 		} else if (window.innerWidth <= 800 && desktop) {
 			$('#loginOpen, #searchInput').unbind('click');
-			$('#searchClear, #clearOverlay').click();
+			$('#searchClose, #loginClose').click();
 			$('#searchInput, #loginUsername, #loginPassword').blur();
 			goMobile();
 		}
-	}); //switch between mobile and desktop on resize
+	}); //toggle mobile and desktop on resize
 	$(window).resize();
 } //reset the window element
 
@@ -307,8 +309,6 @@ function showError(text) {
 	}, 3000);
 } //show login errors
 
-var offset = 0;
-
 function startTouch(e, type) {
 	if (sideActive) {
 		offset = (type ? e.originalEvent.changedTouches[0].pageX : e.pageX) - $('#content').css('margin-left').replace('px', '');
@@ -326,7 +326,7 @@ function moveTouch(e, type) {
 		}
 		$('#content').css('margin-left', orig);
 	}
-} //move #content
+} //move content
 
 function endTouch() {
 	if (sideActive) {
@@ -339,4 +339,4 @@ function endTouch() {
 		}
 		setTimeout(function() { document.getSelection().removeAllRanges(); }, 100);
 	}
-} //move #content to final position
+} //move content to final position

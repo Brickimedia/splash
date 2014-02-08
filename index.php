@@ -56,7 +56,7 @@ var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackP
       js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=170482364649";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-	<div id="sideBar">
+	<div id="sideMenu">
 		<?php
 			if ( empty($sharedUserID) ) {
 				echo '<div id="account">
@@ -70,9 +70,8 @@ var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackP
 					</div>';
 			}
 		?>
-		<input title="Search Brickimedia [alt-shift-f]" id="searchInput" accesskey="f" type="search" placeholder="Search Brickimedia" autocomplete="off"/>
+		<input title="Search Brickimedia" id="searchInput" type="search" placeholder="Search Brickimedia" autocomplete="off"/>
 		<div id="searchResults">
-			<div id="searchOffset"></div>
 			<div class="search-result" id="en">Brickipedia<div class="result"></div></div>
 			<div class="search-result" id="customs">Customs<div class="result"></div></div>
 			<div class="search-result" id="cuusoo">CUUSOO<div class="result"></div></div>
@@ -84,8 +83,8 @@ var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackP
 				echo '<div id="loginForm">
 						<h1>One account, 4 wikis.</h1>
 						<span>Log in to Brickimedia</span>
-						<input class="loginInput" id="loginUsername" type="text" placeholder="Username"/>
-						<input class="loginInput" id="loginPassword" type="password" placeholder="Password"/>
+						<input class="login-input" id="loginUsername" type="text" placeholder="Username"/>
+						<input class="login-input" id="loginPassword" type="password" placeholder="Password"/>
 						<input id="loginSubmit" type="submit" value="Log in"/>
 						<span class="small-links">
 							<a href="http://meta.brickimedia.org/wiki/Special:UserLogin/signup">Create an account</a> / 
@@ -95,13 +94,13 @@ var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-38958899-1']);_gaq.push(['_trackP
 					</div>'
 		?>
 		<div id="clearContainer">
-			<a id="searchClear">&times;</a>
-			<a id="clearOverlay">&times;</a>
+			<a id="searchClose">&times;</a>
+			<a id="loginClose">&times;</a>
 		</div>
 	</div>
 	<div id="content">
 		<header id="header">
-			<div id="sideMenu"></div>
+			<div id="sideToggle"></div>
 			<a href="http://brickimedia.org"></a>
 		</header>
 		<section id="hero">
