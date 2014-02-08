@@ -22,13 +22,14 @@ h2 {
 	font-weight: normal;
 	margin-bottom: .25em;
 }
+
 a {
 	color: #ccc;
 	text-decoration: none;
 	cursor: pointer;
 	-moz-transition: color .5s, opacity .5s, right .5s;
-    -webkit-transition: color .5s, opacity .5s, right .5s;
-    transition: color .5s, opacity .5s, right .5s;
+	-webkit-transition: color .5s, opacity .5s, right .5s;
+	transition: color .5s, opacity .5s, right .5s;
 }
 
 a:hover {
@@ -104,8 +105,8 @@ ul {
 	left: 0px;
 	margin-top: 12px;
 	-moz-transition: opacity .5s;
-    -webkit-transition: opacity .5s;
-    transition: opacity .5s;
+	-webkit-transition: opacity .5s;
+	transition: opacity .5s;
 }
 
 #account a:hover img {
@@ -138,8 +139,8 @@ ul {
 	z-index: 2;
 }
 
-#searchInput:focus, 
-#loginSubmit, 
+#searchInput:focus,
+#loginSubmit,
 .login-input:focus {
 	outline: none;
 }
@@ -162,8 +163,8 @@ ul {
 	z-index: 1;
 	font-size: 20pt;
 	-moz-transition: opacity 1s;
-    -webkit-transition: opacity 1s;
-    transition: opacity 1s;
+	-webkit-transition: opacity 1s;
+	transition: opacity 1s;
 }
 
 .search-result {
@@ -173,7 +174,8 @@ ul {
 	display: none;
 }
 
-.result a, #loginForm a {
+.result a,
+#loginForm a {
 	display: inline;
 	width: auto;
 	color: #0645ad;
@@ -213,8 +215,8 @@ ul {
 	z-index: 1;
 	font-size: 20pt;
 	-moz-transition: opacity 1s;
-    -webkit-transition: opacity 1s;
-    transition: opacity 1s;
+	-webkit-transition: opacity 1s;
+	transition: opacity 1s;
 }
 
 #loginForm h1 {
@@ -242,8 +244,8 @@ ul {
 	padding: 0 10px;
 	height: 40px;
 	-moz-transition: all 1s;
-    -webkit-transition: all 1s;
-    transition: all 1s;
+	-webkit-transition: all 1s;
+	transition: all 1s;
 }
 
 #loginSubmit {
@@ -259,8 +261,8 @@ ul {
 	cursor: pointer;
 	margin-top: 15px;
 	-moz-transition: all 1s;
-    -webkit-transition: all 1s;
-    transition: all 1s;
+	-webkit-transition: all 1s;
+	transition: all 1s;
 	margin-bottom: 10px;
 	-webkit-appearance: none;
 }
@@ -281,8 +283,8 @@ ul {
 	display: block;
 	margin-top: 5px;
 	-moz-transition: all 1s;
-    -webkit-transition: all 1s;
-    transition: all 1s;
+	-webkit-transition: all 1s;
+	transition: all 1s;
 }
 
 #clearContainer {
@@ -291,7 +293,7 @@ ul {
 	right: 0;
 }
 
-#searchClose, 
+#searchClose,
 #loginClose {
 	position: absolute;
 	right: -25px;
@@ -303,7 +305,7 @@ ul {
 	z-index: 2;
 }
 
-#searchClose:hover, 
+#searchClose:hover,
 #loginClose:hover {
 	opacity: .5;
 }
@@ -356,8 +358,8 @@ ul {
 	cursor: pointer;
 	background-color: #093861;
 	-moz-transition: background-color .5s;
-    -webkit-transition: background-color .5s;
-    transition: background-color .5s;
+	-webkit-transition: background-color .5s;
+	transition: background-color .5s;
 }
 
 #sideToggle:hover {
@@ -392,16 +394,16 @@ ul {
 }
 
 .wiki-nav {
-    display: table;
-    width: 90%;
-    height: 70px;
-    margin: 40px auto auto auto;
-    text-align: center;
-    -webkit-border-radius: 35px;
-    -moz-border-radius: 35px;
-    border-radius: 35px;
-    background: rgb(0, 0, 0);
-    background: rgba(0, 0, 0, 0.7);
+	display: table;
+	width: 90%;
+	height: 70px;
+	margin: 40px auto auto auto;
+	text-align: center;
+	-webkit-border-radius: 35px;
+	-moz-border-radius: 35px;
+	border-radius: 35px;
+	background: rgb(0, 0, 0);
+	background: rgba(0, 0, 0, 0.7);
 	max-width: 800px;
 }
 
@@ -410,53 +412,53 @@ ul {
 }
 
 .wiki-nav-item {
-    display: table-cell;
-    width: 18%;
-    height: 70px;
-    vertical-align: middle;
-    -moz-transition: all .5s;
-    -webkit-transition: all .5s;
-    transition: all .5s;
-    font-size: 110%;
+	display: table-cell;
+	width: 18%;
+	height: 70px;
+	vertical-align: middle;
+	-moz-transition: all .5s;
+	-webkit-transition: all .5s;
+	transition: all .5s;
+	font-size: 110%;
 }
 
 .wiki-nav-item a {
-    color: #fff !important;
-    text-decoration: none;
-    display: block;
-    line-height: 4em;
+	color: #fff !important;
+	text-decoration: none;
+	display: block;
+	line-height: 4em;
 }
 
 .meta {
-    -webkit-border-radius: 35px 0 0 35px;
-    -moz-border-radius: 35px 0 0 35px;
-    border-radius: 35px 0 0 35px;
+	-webkit-border-radius: 35px 0 0 35px;
+	-moz-border-radius: 35px 0 0 35px;
+	border-radius: 35px 0 0 35px;
 }
 
 .cuusoo {
-    -webkit-border-radius: 0 35px 35px 0;
-    -moz-border-radius: 0 35px 35px 0;
-    border-radius: 0 35px 35px 0;
+	-webkit-border-radius: 0 35px 35px 0;
+	-moz-border-radius: 0 35px 35px 0;
+	border-radius: 0 35px 35px 0;
 }
 
 .meta:hover {
-    background: #89959e;
+	background: #89959e;
 }
 
 .en:hover {
-    background: #3d9ec8;
+	background: #3d9ec8;
 }
 
 .customs:hover {
-    background: #ad2b2b;
+	background: #ad2b2b;
 }
 
 .stories:hover {
-    background: #965100;
+	background: #965100;
 }
 
 .cuusoo:hover {
-    background: #fac80a;
+	background: #fac80a;
 }
 
 #ad {
@@ -513,16 +515,16 @@ ul {
 }
 
 .circle {
-    width: 200px;
-    height: 200px;
-    -webkit-border-radius: 200px;
-    -moz-border-radius: 200px;
-    border-radius: 200px;
-    font-size: 75pt;
-    line-height: 500px;
-    text-align: center;
-    background: #ccc;
-    line-height: 196px; /* total height (200px) - half of the small text font size (16/2=8) + 2 for padding */
+	width: 200px;
+	height: 200px;
+	-webkit-border-radius: 200px;
+	-moz-border-radius: 200px;
+	border-radius: 200px;
+	font-size: 75pt;
+	line-height: 500px;
+	text-align: center;
+	background: #ccc;
+	line-height: 196px; /* total height (200px) - half of the small text font size (16/2=8) + 2 for padding */
 }
 
 .circle-text {
@@ -595,6 +597,7 @@ ul {
 #social-links {
 	padding-top: 1em;
 }
+
 .fb-like {
 	margin: 0 auto;
 	padding-top: 1em;
@@ -617,19 +620,19 @@ footer {
 }
 
 ::-webkit-input-placeholder {
-	text-align:center;
+	text-align: center;
 }
 
 :-moz-placeholder {
-	text-align:center;
+	text-align: center;
 }
 
 ::-moz-placeholder {
-	text-align:center;
+	text-align: center;
 }
 
-:-ms-input-placeholder {  
-	text-align:center; 
+:-ms-input-placeholder {
+	text-align: center;
 }
 
 @media screen and (max-width: 800px) {
@@ -637,25 +640,25 @@ footer {
 		width: 100%;
 		margin-top: 1em;
 	}
-	
+
 	ul {
 		width: 95%;
 		padding-left: 1em;
 	}
-	
+
 	li {
 		margin-top: 1em;
 	}
-	
+
 	#logout {
 		left: 193px;
 	}
-	
+
 	#account {
 		left: 12px;
 		width: 220px;
 	}
-	
+
 	#account a:hover {
 		color: #B9B9B9;
 	}
@@ -664,13 +667,13 @@ footer {
 	#account.loggedIn {
 		width: 173px !important;
 	}
-	
+
 	#searchInput {
 		left: 12px;
 		width: 196px !important;
 		top: 95px;
 	}
-	
+
 	#searchResults {
 		height: auto;
 		padding: 0;
@@ -682,7 +685,7 @@ footer {
 		padding-top: 70px;
 		border-top: 75px solid #171717;
 	}
-	
+
 	#loginForm {
 		height: 2000px;
 		width: 240px;
@@ -690,47 +693,47 @@ footer {
 		background-color: #000;
 		margin-top: 10px;
 	}
-	
+
 	#loginForm h1 {
 		display: none;
 	}
-	
+
 	#clearContainer {
 		display: none !important;
 	}
-	
+
 	#content {
 		position: relative;
 	}
-	
+
 	#sideToggle {
 		opacity: 1;
 		pointer-events: auto;
 	}
-	
+
 	#hero,
 	#blue-container,
 	#red-container,
 	#white-container {
 		background-attachment: scroll;
-		background-position: center 0 !important; 
+		background-position: center 0 !important;
 		background-size: cover !important;
 	}
-	
+
 	#hero,
 	#white-container {
 		overflow-x: hidden;
 	}
-	
+
 	.contribute-small-box {
 		display: block;
 		width: 100%;
 	}
-	
+
 	#social {
 		padding-bottom: 2em;
 	}
-	
+
 	#wiki-nav-bottom {
 		margin-top: 35px !important;
 		opacity: 1 !important;
@@ -753,7 +756,7 @@ footer {
 	#sideToggle {
 		position: static;
 	}
-	
+
 	#header a {
 		margin-left: 0;
 		margin-right: 10px;
@@ -765,19 +768,19 @@ footer {
 		width: 100%;
 		display: block;
 	}
-	
+
 	.meta {
 		-webkit-border-radius: 35px 35px 0 0;
 		-moz-border-radius: 35px 35px 0 0;
-   		border-radius: 35px 35px 0 0;
+		border-radius: 35px 35px 0 0;
 	}
-	
+
 	.cuusoo {
-   		-webkit-border-radius: 0 0 35px 35px;
-   		-moz-border-radius: 0 0 35px 35px;
-   		border-radius: 0 0 35px 35px;
+		-webkit-border-radius: 0 0 35px 35px;
+		-moz-border-radius: 0 0 35px 35px;
+		border-radius: 0 0 35px 35px;
 	}
-	
+
 	footer {
 		height: auto;
 		padding: 0;
