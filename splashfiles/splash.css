@@ -1,11 +1,17 @@
 @charset "UTF-8";
 /* CSS Document */
+html {
+	overflow-x: hidden;
+}
+
 body {
 	font-family: "Lato", sans-serif;
 	color: #fff;
-	background: #419ec8;
+	background: #000;
 	margin: 0;
 	text-align: center;
+	overflow: hidden;
+	width: 100%;
 }
 
 h1 {
@@ -16,9 +22,14 @@ h2 {
 	font-weight: normal;
 	margin-bottom: .25em;
 }
+
 a {
 	color: #ccc;
 	text-decoration: none;
+	cursor: pointer;
+	-moz-transition: color .5s, opacity .5s, right .5s;
+	-webkit-transition: color .5s, opacity .5s, right .5s;
+	transition: color .5s, opacity .5s, right .5s;
 }
 
 a:hover {
@@ -40,8 +51,279 @@ ul {
 	text-align: left;
 }
 
-#header {
+#sideMenu {
+	position: static;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+}
+
+#logout {
+	opacity: 0.3;
+	background: url("logout-icon.png") no-repeat;
+	background-position: center;
+	height: 75px;
+	width: 35px;
+	left: 9px;
 	position: absolute;
+	background-size: 30px;
+	z-index: 2;
+	cursor: pointer;
+	display: block;
+	-webkit-backface-visibility: hidden;
+}
+
+#logout:hover {
+	opacity: 1;
+}
+
+#account {
+	position: absolute;
+	top: 0;
+	font-size: 14pt;
+	left: 3em;
+	z-index: 2;
+	cursor: default;
+	line-height: 75px;
+}
+
+#account a {
+	display: inline-block;
+	height: 75px;
+	color: #fff;
+	white-space: nowrap;
+}
+
+#account a:hover {
+	color: #99A8B3;
+}
+
+#account img {
+	height: 50px;
+	border-radius: 25px;
+	position: absolute;
+	left: 0px;
+	margin-top: 12px;
+	-moz-transition: opacity .5s;
+	-webkit-transition: opacity .5s;
+	transition: opacity .5s;
+}
+
+#account a:hover img {
+	opacity: .7;
+}
+
+#account.loggedIn {
+	overflow: hidden;
+	text-align: left;
+}
+
+#account.loggedIn a {
+	padding-left: 60px;
+}
+
+#searchInput {
+	position: absolute;
+	right: 3em;
+	height: 50px;
+	border-radius: 25px;
+	border: 0;
+	top: 12px;
+	width: 200px;
+	font-family: "Lato", sans-serif;
+	font-size: 14pt;
+	padding: 0 10px;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	-webkit-appearance: none;
+	z-index: 2;
+}
+
+#searchInput:focus,
+#loginSubmit,
+.login-input:focus {
+	outline: none;
+}
+
+#searchResults {
+	pointer-events: none;
+	opacity: 0;
+	top: 75px;
+	height: 100%;
+	height: calc(100% - 95px);
+	height: -webkit-calc(100% - 95px);
+	height: -moz-calc(100% - 95px);
+	padding-bottom: 20px;
+	width: 100%;
+	background-color: #000;
+	background-color: rgba(0, 0, 0, 0.9);
+	position: absolute;
+	text-align: left;
+	overflow-x: hidden;
+	z-index: 1;
+	font-size: 20pt;
+	-moz-transition: opacity 1s;
+	-webkit-transition: opacity 1s;
+	transition: opacity 1s;
+}
+
+.search-result {
+	padding: 0 10% 0 10%;
+	margin-top: 20px;
+	text-align: center;
+	display: none;
+}
+
+.result a,
+#loginForm a {
+	display: inline;
+	width: auto;
+	color: #0645ad;
+	margin-top: 5px;
+}
+
+.result a {
+	font-size: 18pt;
+}
+
+.result a:after {
+	display: block;
+	content: "";
+	margin-top: 5px;
+}
+
+.result a:hover,
+#loginForm a:hover {
+	color: #0389D6;
+}
+
+#loginForm {
+	opacity: 0;
+	pointer-events: none;
+	top: 75px;
+	height: 100%;
+	height: calc(100% - 95px);
+	height: -webkit-calc(100% - 95px);
+	height: -moz-calc(100% - 95px);
+	padding-bottom: 20px;
+	width: 100%;
+	background-color: #000;
+	background-color: rgba(0, 0, 0, 0.9);
+	position: absolute;
+	text-align: center;
+	overflow-x: hidden;
+	z-index: 1;
+	font-size: 20pt;
+	-moz-transition: opacity 1s;
+	-webkit-transition: opacity 1s;
+	transition: opacity 1s;
+}
+
+#loginForm h1 {
+	margin-bottom: 0;
+}
+
+#loginForm span {
+	font-size: 14pt;
+}
+
+#loginUsername {
+	margin-top: 20px;
+}
+
+.login-input {
+	display: block;
+	margin: auto;
+	margin-bottom: 10px;
+	height: 30px;
+	border-radius: 25px;
+	border: 0;
+	width: 200px;
+	font-family: "Lato", sans-serif;
+	font-size: 14pt;
+	padding: 0 10px;
+	height: 40px;
+	-moz-transition: all 1s;
+	-webkit-transition: all 1s;
+	transition: all 1s;
+}
+
+#loginSubmit {
+	margin: 0;
+	border: 0;
+	background-color: #aaa;
+	width: 220px;
+	height: 40px;
+	border-radius: 25px;
+	padding: 0 10px;
+	font-size: 14pt;
+	font-family: "Lato", sans-serif;
+	cursor: pointer;
+	margin-top: 15px;
+	-moz-transition: all 1s;
+	-webkit-transition: all 1s;
+	transition: all 1s;
+	margin-bottom: 10px;
+	-webkit-appearance: none;
+}
+
+#loginSubmit:hover {
+	background-color: #fff;
+}
+
+#loginForm .small-links {
+	font-size: 13pt;
+	display: block;
+}
+
+#loginError {
+	opacity: 0;
+	pointer-events: none;
+	color: #f00;
+	display: block;
+	margin-top: 5px;
+	-moz-transition: all 1s;
+	-webkit-transition: all 1s;
+	transition: all 1s;
+}
+
+#clearContainer {
+	position: fixed;
+	z-index: 3;
+	right: 0;
+}
+
+#searchClose,
+#loginClose {
+	position: absolute;
+	right: -25px;
+	height: 75px;
+	width: 25px;
+	background: url("close-icon.png") no-repeat;
+	background-size: 25px;
+	background-position: center;
+	z-index: 2;
+}
+
+#searchClose:hover,
+#loginClose:hover {
+	opacity: .5;
+}
+
+#loginClose {
+	top: 70px;
+}
+
+#content {
+	width: 100%;
+	z-index: 2;
+	box-shadow: #000 0px 0px 10px;
+	overflow-y: hidden;
+}
+
+#header {
+	overflow: hidden;
+	position: relative;
 	top: 0;
 	right: 0;
 	width: 100%;
@@ -49,18 +331,53 @@ ul {
 	background: #002541;
 }
 
+#header a {
+	display: block;
+	overflow: hidden;
+	width: auto;
+	margin: auto;
+	background: url("logo.svg") no-repeat scroll;
+	background-size: contain;
+	background-position: 0 center;
+	height: 70px;
+	margin-top: 5px;
+	max-width: 340px;
+}
+
+#sideToggle {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+	height: 75px;
+	width: 80px;
+	background: url("menu-icon.png") no-repeat;
+	background-size: 62px;
+	background-position: center;
+	margin-right: 10px;
+	float: left;
+	cursor: pointer;
+	background-color: #093861;
+	-moz-transition: background-color .5s;
+	-webkit-transition: background-color .5s;
+	transition: background-color .5s;
+}
+
+#sideToggle:hover {
+	background-color: #066996;
+}
+
 #logo {
 	padding-top: 5px;
 }
 
 #hero {
-	margin-top: 75px;
 	width: 100%;
 	height: 100%;
 	background: url("hero.jpg") no-repeat fixed;
 	background-size: cover;
 	background-position: center 0;
 	padding: 50px 0 125px 0;
+	background-color: #419ec8;
 }
 
 #hero header {
@@ -77,16 +394,16 @@ ul {
 }
 
 .wiki-nav {
-    display: table;
-    width: 90%;
-    height: 70px;
-    margin: 40px auto auto auto;
-    text-align: center;
-    -webkit-border-radius: 35px;
-    -moz-border-radius: 35px;
-    border-radius: 35px;
-    background: rgb(0, 0, 0);
-    background: rgba(0, 0, 0, 0.7);
+	display: table;
+	width: 90%;
+	height: 70px;
+	margin: 40px auto auto auto;
+	text-align: center;
+	-webkit-border-radius: 35px;
+	-moz-border-radius: 35px;
+	border-radius: 35px;
+	background: rgb(0, 0, 0);
+	background: rgba(0, 0, 0, 0.7);
 	max-width: 800px;
 }
 
@@ -95,55 +412,53 @@ ul {
 }
 
 .wiki-nav-item {
-    display: table-cell;
-    width: 18%;
-    height: 70px;
-    vertical-align: middle;
-    -moz-transition: all .5s;
-    -webkit-transition: all .5s;
-    -o-transition: all .5s;
-    -ms-transition: all .5s;
-    transition: all .5s;
-    font-size: 110%;
+	display: table-cell;
+	width: 18%;
+	height: 70px;
+	vertical-align: middle;
+	-moz-transition: all .5s;
+	-webkit-transition: all .5s;
+	transition: all .5s;
+	font-size: 110%;
 }
 
 .wiki-nav-item a {
-    color: #fff !important;
-    text-decoration: none;
-    display: block;
-    line-height: 4em;
+	color: #fff !important;
+	text-decoration: none;
+	display: block;
+	line-height: 4em;
 }
 
 .meta {
-    -webkit-border-radius: 35px 0 0 35px;
-    -moz-border-radius: 35px 0 0 35px;
-    border-radius: 35px 0 0 35px;
+	-webkit-border-radius: 35px 0 0 35px;
+	-moz-border-radius: 35px 0 0 35px;
+	border-radius: 35px 0 0 35px;
 }
 
 .cuusoo {
-    -webkit-border-radius: 0 35px 35px 0;
-    -moz-border-radius: 0 35px 35px 0;
-    border-radius: 0 35px 35px 0;
+	-webkit-border-radius: 0 35px 35px 0;
+	-moz-border-radius: 0 35px 35px 0;
+	border-radius: 0 35px 35px 0;
 }
 
 .meta:hover {
-    background: #89959e;
+	background: #89959e;
 }
 
 .en:hover {
-    background: #3d9ec8;
+	background: #3d9ec8;
 }
 
 .customs:hover {
-    background: #ad2b2b;
+	background: #ad2b2b;
 }
 
 .stories:hover {
-    background: #965100;
+	background: #965100;
 }
 
 .cuusoo:hover {
-    background: #fac80a;
+	background: #fac80a;
 }
 
 #ad {
@@ -170,17 +485,29 @@ ul {
 	background: url("about.jpg") no-repeat fixed;
 	background-position: center 0;
 	background-size: auto 150%;
+	background-color: #419ec8;
 }
+
 #circles {
 	padding-top: 50px;
 	display: none;
+	text-align: justify; /* http://stackoverflow.com/questions/6865194/fluid-width-with-equally-spaced-divs */
+	-ms-text-justify: distribute-all-lines;
+	text-justify: distribute-all-lines;
+	padding-left: 5%;
+	padding-right: 5%;
+	max-width: 800px;
+	margin: 0 auto;
 }
 
 .circle-container {
 	display: inline-block;
 	position: relative;
 	text-align: center;
-	margin-right: 10%;
+	width: auto;
+	height: auto;
+	vertical-align: top;
+	display: inline-block;
 }
 
 .circle-container:last-of-type {
@@ -188,16 +515,16 @@ ul {
 }
 
 .circle {
-    width: 200px;
-    height: 200px;
-    -webkit-border-radius: 200px;
-    -moz-border-radius: 200px;
-    border-radius: 200px;
-    font-size: 75pt;
-    line-height: 500px;
-    text-align: center;
-    background: #ccc;
-    line-height: 196px; /* total height (200px) - half of the small text font size (16/2=8) + 2 for padding */
+	width: 200px;
+	height: 200px;
+	-webkit-border-radius: 200px;
+	-moz-border-radius: 200px;
+	border-radius: 200px;
+	font-size: 75pt;
+	line-height: 500px;
+	text-align: center;
+	background: #ccc;
+	line-height: 196px; /* total height (200px) - half of the small text font size (16/2=8) + 2 for padding */
 }
 
 .circle-text {
@@ -215,11 +542,19 @@ ul {
 	text-transform: uppercase;
 }
 
+#stretch {
+	width: 100%;
+	display: inline-block;
+	font-size: 0;
+	line-height: 0;
+}
+
 #red-container {
 	background: url("updates.jpg") no-repeat fixed;
 	background-position: center 0;
 	background-size: auto 150%;
 	color: #fff;
+	background-color: #419ec8;
 }
 
 .divider {
@@ -228,10 +563,11 @@ ul {
 
 #white-container {
 	background: url("contribute.jpg") no-repeat fixed;
-	background-position: center 300px;
+	background-position: center 0;
 	background-size: auto 150%;
 	color: #000;
 	padding-bottom: 0;
+	background-color: #419ec8;
 }
 
 #white-container a {
@@ -242,6 +578,7 @@ ul {
 #white-container a:hover {
 	color: #777;
 }
+
 .contribute-table {
 	width: 100%;
 	display: table;
@@ -260,6 +597,7 @@ ul {
 #social-links {
 	padding-top: 1em;
 }
+
 .fb-like {
 	margin: 0 auto;
 	padding-top: 1em;
@@ -281,46 +619,124 @@ footer {
 	background: rgba(75, 75, 75, 0.4);
 }
 
-@media screen and (max-width: 788px) {
-	.circle-container {
-		display: none;
-	}
+::-webkit-input-placeholder {
+	text-align: center;
 }
 
-@media screen and (max-width: 780px) {
-	#hero,
-	#white-container {
-		overflow-x: hidden;
-	}
-	
+:-moz-placeholder {
+	text-align: center;
+}
+
+::-moz-placeholder {
+	text-align: center;
+}
+
+:-ms-input-placeholder {
+	text-align: center;
+}
+
+@media screen and (max-width: 800px) {
 	p {
 		width: 100%;
 		margin-top: 1em;
 	}
-	
+
 	ul {
 		width: 95%;
 		padding-left: 1em;
 	}
-	
+
 	li {
 		margin-top: 1em;
 	}
-	
-	.contribute-small-box {
-		display: block;
-		width: 100%;
+
+	#logout {
+		left: 193px;
+	}
+
+	#account {
+		left: 12px;
+		width: 220px;
+	}
+
+	#account a:hover {
+		color: #B9B9B9;
 	}
 	
-	#social {
-		padding-bottom: 2em;
+	/* !importants are needed to override javascript */
+	#account.loggedIn {
+		width: 173px !important;
 	}
-	
+
+	#searchInput {
+		left: 12px;
+		width: 196px !important;
+		top: 95px;
+	}
+
+	#searchResults {
+		height: auto;
+		padding: 0;
+		top: 0px;
+		width: 240px;
+		opacity: 1 !important;
+		pointer-events: auto !important;
+		background-color: #000;
+		padding-top: 70px;
+		border-top: 75px solid #171717;
+	}
+
+	#loginForm {
+		height: 2000px;
+		width: 240px;
+		z-index: 2;
+		background-color: #000;
+		margin-top: 10px;
+	}
+
+	#loginForm h1 {
+		display: none;
+	}
+
+	#clearContainer {
+		display: none !important;
+	}
+
+	#content {
+		position: relative;
+	}
+
+	#sideToggle {
+		opacity: 1;
+		pointer-events: auto;
+	}
+
 	#hero,
 	#blue-container,
 	#red-container,
 	#white-container {
 		background-attachment: scroll;
+		background-position: center 0 !important;
+		background-size: cover !important;
+	}
+
+	#hero,
+	#white-container {
+		overflow-x: hidden;
+	}
+
+	.contribute-small-box {
+		display: block;
+		width: 100%;
+	}
+
+	#social {
+		padding-bottom: 2em;
+	}
+
+	#wiki-nav-bottom {
+		margin-top: 35px !important;
+		opacity: 1 !important;
 	}
 }
 
@@ -330,24 +746,41 @@ footer {
 	}
 }
 
+@media screen and (max-width: 730px) {
+	#circles {
+		display: none !important;
+	}
+}
+
+@media screen and (max-width: 537px) {
+	#sideToggle {
+		position: static;
+	}
+
+	#header a {
+		margin-left: 0;
+		margin-right: 10px;
+	}
+}
+
 @media screen and (max-width: 515px) {
 	.wiki-nav-item {
 		width: 100%;
 		display: block;
 	}
-	
+
 	.meta {
 		-webkit-border-radius: 35px 35px 0 0;
 		-moz-border-radius: 35px 35px 0 0;
-   		border-radius: 35px 35px 0 0;
+		border-radius: 35px 35px 0 0;
 	}
-	
+
 	.cuusoo {
-   		-webkit-border-radius: 0 0 35px 35px;
-   		-moz-border-radius: 0 0 35px 35px;
-   		border-radius: 0 0 35px 35px;
+		-webkit-border-radius: 0 0 35px 35px;
+		-moz-border-radius: 0 0 35px 35px;
+		border-radius: 0 0 35px 35px;
 	}
-	
+
 	footer {
 		height: auto;
 		padding: 0;
