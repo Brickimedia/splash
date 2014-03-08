@@ -321,6 +321,7 @@ function endTouch() {
 	if (sideActive) {
 		if ($('#content').css('margin-left').replace('px', '') <= 120) {
 			sideActive = false;
+			$('#hero a, .text-container').unbind('click');
 			$('#content').animate({'margin-left': '0px'}, 250);
 			$('#loginForm').css({'pointer-events': 'none', 'opacity': 0});
 		} else {
