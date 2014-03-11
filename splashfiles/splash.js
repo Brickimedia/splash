@@ -40,7 +40,6 @@ $(document).ready(function() {
 		} //cancel existing
 		var searchText = $('#searchInput').val();
 		var uriText = encodeURIComponent(searchText);
-		$('#searchSuggestions').html('');
 		for (var i = 0; i < listWikis.length; i++) {
 			ajaxPool[i] = $.get('http://' + listWikis[i] + '.brickimedia.org/api.php?action=opensearch&search=' + uriText + '&limit=3&namespace=0&origin=http%3A%2F%2F' + document.domain + '&format=json',
 				function(data) {
