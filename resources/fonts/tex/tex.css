@@ -1,6 +1,6 @@
 /* TeX font for use on Brickimedia */
 @font-face {
-	font-family: TeX;
+	font-family: 'TeX Gyre Adventor';
 	font-style: normal;
 	font-weight: normal;
 	src: url(http://www.brickimedia.org/resources/fonts/tex/texgyreadventor-regular.woff),
@@ -8,7 +8,7 @@
 		 url(http://www.brickimedia.org/resources/fonts/tex/texgyreadventor-regular.eot);
 }
 @font-face {
-	font-family: TeX;
+	font-family: 'TeX Gyre Adventor';
 	font-style: italic;
 	font-weight: normal;
 	src: url(http://www.brickimedia.org/resources/fonts/tex/texgyreadventor-italic.woff),
@@ -16,7 +16,7 @@
 		 url(http://www.brickimedia.org/resources/fonts/tex/texgyreadventor-italic.eot);
 }
 @font-face {
-	font-family: TeX;
+	font-family: 'TeX Gyre Adventor';
 	font-style: normal;
 	font-weight: bold;
 	src: url(http://www.brickimedia.org/resources/fonts/tex/texgyreadventor-bold.woff),
@@ -24,7 +24,7 @@
 		 url(http://www.brickimedia.org/resources/fonts/tex/texgyreadventor-bold.eot);
 }
 @font-face {
-	font-family: TeX;
+	font-family: 'TeX Gyre Adventor';
 	font-style: italic;
 	font-weight: bold;
 	src: url(http://www.brickimedia.org/resources/fonts/tex/texgyreadventor-bolditalic.woff),
