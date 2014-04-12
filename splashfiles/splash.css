@@ -805,3 +805,14 @@ footer {
 		background-size: cover;
 	}
 }
+
+/*Since it looks like no one is ever going to fix the PHP, cleaning up*/
+@media screen and (max-width: 800px) {
+	#searchResults {
+		border-top: 0;
+	}
+
+	#searchInput {
+		top: 12px;
+	}
+}
