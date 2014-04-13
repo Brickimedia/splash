@@ -3,7 +3,7 @@ var desktop = window.innerWidth > 800 ? false : true; //starts opposite
 var desktopHistory = false;
 var mobileHistory = false; //prevent double bindings
 var ajaxPool = [];
-var listWikis = ['en', 'customs', 'cuusoo', 'stories', 'meta'];
+var listWikis = ['en', 'customs', 'cuusoo', 'stories', 'meta', 'books'];
 var sideActive = false;
 var offset = 0;
 

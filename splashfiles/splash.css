@@ -395,7 +395,7 @@ ul {
 
 .wiki-nav {
 	display: table;
-	width: 90%;
+	width: 95%;
 	height: 70px;
 	margin: 40px auto auto auto;
 	text-align: center;
@@ -404,7 +404,7 @@ ul {
 	border-radius: 35px;
 	background: rgb(0, 0, 0);
 	background: rgba(0, 0, 0, 0.7);
-	max-width: 800px;
+	max-width: 975px;
 }
 
 .wiki-nav-row {
@@ -413,7 +413,7 @@ ul {
 
 .wiki-nav-item {
 	display: table-cell;
-	width: 18%;
+	width: 16%;
 	height: 70px;
 	vertical-align: middle;
 	-moz-transition: all .5s;
@@ -435,7 +435,7 @@ ul {
 	border-radius: 35px 0 0 35px;
 }
 
-.cuusoo {
+.brickibooks {
 	-webkit-border-radius: 0 35px 35px 0;
 	-moz-border-radius: 0 35px 35px 0;
 	border-radius: 0 35px 35px 0;
@@ -445,7 +445,7 @@ ul {
 	background: #89959e;
 }
 
-.en:hover {
+.enbricki:hover {
 	background: #3d9ec8;
 }
 
@@ -459,6 +459,10 @@ ul {
 
 .cuusoo:hover {
 	background: #fac80a;
+}
+
+.brickibooks:hover {
+	background: #ed8400;
 }
 
 #ad {
@@ -775,7 +779,7 @@ footer {
 		border-radius: 35px 35px 0 0;
 	}
 
-	.cuusoo {
+	.brickibooks {
 		-webkit-border-radius: 0 0 35px 35px;
 		-moz-border-radius: 0 0 35px 35px;
 		border-radius: 0 0 35px 35px;
