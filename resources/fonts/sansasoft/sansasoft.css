@@ -3,13 +3,13 @@
 	font-family: Sansa Soft;
 	font-style: normal;
 	font-weight: normal;
-	src: url(http://www.brickimedia.org/resources/fonts/sansasoft/sansasoft-normal.ttf),
-		 url(http://www.brickimedia.org/resources/fonts/sansasoft/sansasoft-normal.eot);
+	src: url('sansasoft-normal.ttf'),
+		 url('sansasoft-normal.eot');
 }
 @font-face {
 	font-family: Sansa Soft;
 	font-style: normal;
 	font-weight: bold;
-	src: url(http://www.brickimedia.org/resources/fonts/sansasoft/sansasoft-bold.ttf),
-		 url(http://www.brickimedia.org/resources/fonts/sansasoft/sansasoft-bold.eot;
+	src: url('sansasoft-bold.ttf'),
+		 url('sansasoft-bold.eot');
 }

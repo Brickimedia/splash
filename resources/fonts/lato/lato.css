@@ -3,31 +3,31 @@
 	font-family: Lato;
 	font-style: normal;
 	font-weight: normal;
-	src: url(http://www.brickimedia.org/resources/fonts/lato/Lato-Reg.woff),
-		 url(http://www.brickimedia.org/resources/fonts/lato/Lato-Reg.ttf),
-		 url(http://www.brickimedia.org/resources/fonts/lato/Lato-Reg.eot);
+	src: url('Lato-Reg.woff'),
+		 url('Lato-Reg.ttf'),
+		 url('Lato-Reg.eot');
 }
 @font-face {
 	font-family: Lato;
 	font-style: italic;
 	font-weight: normal;
-	src: url(http://www.brickimedia.org/resources/fonts/lato/Lato-RegIta.woff),
-		 url(http://www.brickimedia.org/resources/fonts/lato/Lato-RegIta.ttf),
-		 url(http://www.brickimedia.org/resources/fonts/lato/Lato-RegIta.eot);
+	src: url('Lato-RegIta.woff'),
+		 url('Lato-RegIta.ttf'),
+		 url('Lato-RegIta.eot');
 }
 @font-face {
 	font-family: Lato;
 	font-style: normal;
 	font-weight: bold;
-	src: url(http://www.brickimedia.org/resources/fonts/lato/Lato-Bol.woff),
-		 url(http://www.brickimedia.org/resources/fonts/lato/Lato-Bol.ttf),
-		 url(http://www.brickimedia.org/resources/fonts/lato/Lato-Bol.eot);
+	src: url('Lato-Bol.woff'),
+		 url('Lato-Bol.ttf'),
+		 url('Lato-Bol.eot');
 }
 @font-face {
 	font-family: Lato;
 	font-style: italic;
 	font-weight: bold;
-	src: url(http://www.brickimedia.org/resources/fonts/lato/Lato-BolIta.woff),
-		 url(http://www.brickimedia.org/resources/fonts/lato/Lato-BolIta.ttf),
-		 url(http://www.brickimedia.org/resources/fonts/lato/Lato-BolIta.eot);
+	src: url('Lato-BolIta.woff'),
+		 url('Lato-BolIta.ttf'),
+		 url('Lato-BolIta.eot');
 }
