@@ -9,8 +9,7 @@ var offset = 0;
 
 $(document).ready(function() {
 	resetWindow();
-	
-	//*** Needs to be converted to php ***
+
 	var articles = 0;
 	var ii = 0;
 	$.get('http://meta.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&origin=http%3A%2F%2F' + document.domain + '&format=json',
@@ -48,64 +47,7 @@ $(document).ready(function() {
 			); //ajax
 		}
 	}); //search
-	
-	$('#loginSubmit').click(function() {
-		if ( !$('#loginUsername').val() ) { //username
-			$('#loginUsername').css('background-color', '#f00');
-			setTimeout(function() { $('#loginUsername').css('background-color', '#fff'); }, 2000);
-		}
-		if ( !$('#loginPassword').val() ) { //password
-			$('#loginPassword').css('background-color', '#f00');
-			setTimeout(function() { $('#loginPassword').css('background-color', '#fff'); }, 2000);
-		} else if ( $('#loginUsername').val() ) { //both set
-			var username = encodeURIComponent( $('#loginUsername').val() );
-			var password = encodeURIComponent( $('#loginPassword').val() );
-			$.ajax({
-				'type': 'POST',
-				'url': 'http://meta.brickimedia.org/api.php?action=login&lgname=' + username + '&lgpassword=' + password + '&origin=http%3A%2F%2F' + document.domain + '&format=json',
-				'xhrFields': {
-					'withCredentials': true
-				},
-				'success': function(data) {
-					$.ajax({
-						'type': 'POST',
-						'url': 'http://meta.brickimedia.org/api.php?action=login&lgname=' + username + '&lgpassword=' + password + '&lgtoken=' + data.login.token + '&origin=http%3A%2F%2F' + document.domain + '&format=json',
-						'xhrFields': {
-							'withCredentials': true
-						},
-						'success': function(data) {
-							if (data.login.result === 'Success') {
-								$('#loginSubmit').css('background-color', '#0f0');
-								location.reload();
-							} else if (data.login.result === 'Blocked') {
-								showError('Your account is blocked');
-							} else if (data.login.result === 'NeedToken') {
-								showError('Login was blocked by the browser');
-							} else {
-								showError('Username or password is incorrect');
-							}
-						} //token success
-					}); //token ajax
-				}, //login success
-				'error': function() {
-					showError('Login failed because of an error');
-				}
-			}); //login ajax
-		}
-	}); //login
-	
-	$('#logout').click(function() {
-		$.ajax({
-			'type': 'POST',
-			'url': 'http://meta.brickimedia.org/api.php?action=logout&origin=http%3A%2F%2F' + document.domain + '&format=json',
-			'xhrFields': {
-				'withCredentials': true
-			},
-			'success': function() {
-				location.reload();
-			}
-		});
-	}); //logout
+
 }); //both desktop and mobile
 
 function goDesktop() {
@@ -136,26 +78,11 @@ function goDesktop() {
 	}); //resize search and username
 	
 	$(window).resize();
-	
-	$('#loginOpen').click(function() {
-		$('body').animate({ scrollTop: 0 }, 50, function() {
-			$('html').animate({ scrollTop: 0 }, 50, function() {
-				$(this).css('overflow-y', 'hidden');
-				$('#searchClose').css('right', '-25px');
-				$('#searchResults').css({'pointer-events': 'none', 'opacity': 0});
-				$('#loginClose').css('right', '16px');
-				$('#loginForm').css({'pointer-events': 'auto', 'opacity': 1});
-				$('#loginUsername').select();
-			});
-		});
-	}); //show login
 		
 	$('#searchInput').click(function() {
 		$('body').animate({ scrollTop: 0 }, 50, function() {
 			$('html').animate({ scrollTop: 0 }, 50, function() {
 				$(this).css('overflow-y', 'hidden');
-				$('#loginClose').css('right', '-25px');
-				$('#loginForm').css({'pointer-events': 'none', 'opacity': 0});
 				$('#searchClose').css('right', '16px');
 				$('#searchResults').css({'pointer-events': 'auto', 'opacity': 1});
 			});
@@ -164,36 +91,13 @@ function goDesktop() {
 	
 	if (!desktopHistory) {
 		desktopHistory = true;
-		$('#loginClose').click(function() {
-			$('#loginClose').css('right', '-25px');
-			$('#loginForm').css({'pointer-events': 'none', 'opacity': 0});
-			$('html').css('overflow-y', 'auto');
-		}); //hide login
 		
 		$('#searchClose').click(function() {
 			$('#searchClose').css('right', '-25px');
 			$('#searchResults').css({'pointer-events': 'none', 'opacity': 0});
 			$('html').css('overflow-y', 'auto');
 		}); //hide search
-		
-		$('#loginUsername').keyup(function(e) {
-			if (e.keyCode === 13) {
-				$('#loginPassword').select();
-			}
-		}); //username "enter" up
-		
-		$('#loginPassword').keydown(function(e) {
-			if (e.keyCode === 13) {
-				$('#loginSubmit').css('background-color', '#fff');
-			}
-		}); //password "enter" down
-		
-		$('#loginPassword').keyup(function(e) {
-			if (e.keyCode === 13) {
-				$('#loginSubmit').click();
-				$('#loginSubmit').css('background-color', '#aaa');
-			}
-		}); //password "enter" up
+
 	} //first time desktop
 } //desktop
 
@@ -201,19 +105,13 @@ function goMobile() {
 	desktop = false;
 	resetWindow();
 	
-	$('#loginOpen').click(function() {
-		$('#loginForm').css({'pointer-events': 'auto', 'opacity': 1});
-	}); //show login
-	
 	if (!mobileHistory) {
 		mobileHistory = true;
 		$('#sideToggle').click(function() {
 			if (sideActive) {
 				sideActive = false;
 				$("#hero a, .text-container").unbind('click');
-				$('#content').animate({'margin-left': '0px'}, 500, function() {
-					$('#loginForm').css({'pointer-events': 'none', 'opacity': 0});
-				});
+				$('#content').animate({'margin-left': '0px'}, 500);
 			} else {
 				sideActive = true;
 				$("#hero a, .text-container").click(function(e) {
@@ -257,8 +155,7 @@ function resetWindow() {
 	$(window).unbind();
 	$(window).resize(function() {
 		if (window.innerWidth > 800 && !desktop) {
-			$('#loginOpen').unbind('click');
-			$('#searchInput, #loginUsername, #loginPassword').blur();
+			$('#searchInput').blur();
 			if (sideActive) {
 				sideActive = false;
 				$("#hero a, .text-container").unbind('click');
@@ -266,9 +163,9 @@ function resetWindow() {
 			}
 			goDesktop();
 		} else if (window.innerWidth <= 800 && desktop) {
-			$('#loginOpen, #searchInput').unbind('click');
-			$('#searchClose, #loginClose').click();
-			$('#searchInput, #loginUsername, #loginPassword').blur();
+			$('#searchInput').unbind('click');
+			$('#searchClose').click();
+			$('#searchInput').blur();
 			goMobile();
 		}
 	}); //toggle mobile and desktop on resize
@@ -287,15 +184,6 @@ function addSearchResults(results, name) {
 		$('#' + name).hide();
 	}
 } //add search results
-
-function showError(text) {
-	$('#loginError').html(text).css({'pointer-events': 'auto', 'opacity': 1});
-	$('#loginSubmit').css('background-color', '#f00');
-	setTimeout(function() { 
-		$('#loginError').css({'pointer-events': 'none', 'opacity': 0}); 
-		$('#loginSubmit').css('background-color', '#aaa'); 
-	}, 3000);
-} //show login errors
 
 function startTouch(e, type) {
 	if (sideActive) {
@@ -322,7 +210,6 @@ function endTouch() {
 			sideActive = false;
 			$('#hero a, .text-container').unbind('click');
 			$('#content').animate({'margin-left': '0px'}, 250);
-			$('#loginForm').css({'pointer-events': 'none', 'opacity': 0});
 		} else {
 			$('#content').animate({'margin-left': '240px'}, 250);
 		}

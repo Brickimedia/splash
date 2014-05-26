@@ -1,5 +1,19 @@
 @charset "UTF-8";
 /* CSS Document */
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Lato Regular'), local('Lato-Regular'), url(http://themes.googleusercontent.com/static/fonts/lato/v7/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Lato Bold'), local('Lato-Bold'), url(http://themes.googleusercontent.com/static/fonts/lato/v7/wkfQbvfT_02e2IWO3yYueQ.woff) format('woff');
+}
+
 html {
 	overflow-x: hidden;
 }
@@ -139,9 +153,7 @@ ul {
 	z-index: 2;
 }
 
-#searchInput:focus,
-#loginSubmit,
-.login-input:focus {
+#searchInput:focus {
 	outline: none;
 }
 
@@ -174,8 +186,7 @@ ul {
 	display: none;
 }
 
-.result a,
-#loginForm a {
+.result a {
 	display: inline;
 	width: auto;
 	color: #0645ad;
@@ -192,99 +203,8 @@ ul {
 	margin-top: 5px;
 }
 
-.result a:hover,
-#loginForm a:hover {
+.result a:hover {
 	color: #0389D6;
-}
-
-#loginForm {
-	opacity: 0;
-	pointer-events: none;
-	top: 75px;
-	height: 100%;
-	height: calc(100% - 95px);
-	height: -webkit-calc(100% - 95px);
-	height: -moz-calc(100% - 95px);
-	padding-bottom: 20px;
-	width: 100%;
-	background-color: #000;
-	background-color: rgba(0, 0, 0, 0.9);
-	position: absolute;
-	text-align: center;
-	overflow-x: hidden;
-	z-index: 1;
-	font-size: 20pt;
-	-moz-transition: opacity 1s;
-	-webkit-transition: opacity 1s;
-	transition: opacity 1s;
-}
-
-#loginForm h1 {
-	margin-bottom: 0;
-}
-
-#loginForm span {
-	font-size: 14pt;
-}
-
-#loginUsername {
-	margin-top: 20px;
-}
-
-.login-input {
-	display: block;
-	margin: auto;
-	margin-bottom: 10px;
-	height: 30px;
-	border-radius: 25px;
-	border: 0;
-	width: 200px;
-	font-family: "Lato", sans-serif;
-	font-size: 14pt;
-	padding: 0 10px;
-	height: 40px;
-	-moz-transition: all 1s;
-	-webkit-transition: all 1s;
-	transition: all 1s;
-}
-
-#loginSubmit {
-	margin: 0;
-	border: 0;
-	background-color: #aaa;
-	width: 220px;
-	height: 40px;
-	border-radius: 25px;
-	padding: 0 10px;
-	font-size: 14pt;
-	font-family: "Lato", sans-serif;
-	cursor: pointer;
-	margin-top: 15px;
-	-moz-transition: all 1s;
-	-webkit-transition: all 1s;
-	transition: all 1s;
-	margin-bottom: 10px;
-	-webkit-appearance: none;
-}
-
-#loginSubmit:hover {
-	background-color: #fff;
-}
-
-#loginForm .small-links {
-	font-size: 13pt;
-	display: block;
-}
-
-#loginError {
-	opacity: 0;
-	pointer-events: none;
-	color: #f00;
-	display: block;
-	margin-top: 5px;
-	-moz-transition: all 1s;
-	-webkit-transition: all 1s;
-	transition: all 1s;
 }
 
 #clearContainer {
@@ -293,8 +213,7 @@ ul {
 	right: 0;
 }
 
-#searchClose,
-#loginClose {
+#searchClose {
 	position: absolute;
 	right: -25px;
 	height: 75px;
@@ -305,13 +224,8 @@ ul {
 	z-index: 2;
 }
 
-#searchClose:hover,
-#loginClose:hover {
+#searchClose:hover {
 	opacity: .5;
-}
-
-#loginClose {
-	top: 70px;
 }
 
 #content {
@@ -675,7 +589,7 @@ footer {
 	#searchInput {
 		left: 12px;
 		width: 196px !important;
-		top: 95px;
+		top: 12px;
 	}
 
 	#searchResults {
@@ -686,20 +600,7 @@ footer {
 		opacity: 1 !important;
 		pointer-events: auto !important;
 		background-color: #000;
-		padding-top: 70px;
-		border-top: 75px solid #171717;
-	}
-
-	#loginForm {
-		height: 2000px;
-		width: 240px;
-		z-index: 2;
-		background-color: #000;
-		margin-top: 10px;
-	}
-
-	#loginForm h1 {
-		display: none;
+		padding-top: 62px;
 	}
 
 	#clearContainer {
@@ -744,30 +645,19 @@ footer {
 	}
 }
 
-@media screen and (max-width: 727px) {
-	#ad {
-		display: none;
-	}
-}
-
 @media screen and (max-width: 730px) {
 	#circles {
 		display: none !important;
 	}
 }
 
-@media screen and (max-width: 537px) {
-	#sideToggle {
-		position: static;
-	}
-
-	#header a {
-		margin-left: 0;
-		margin-right: 10px;
+@media screen and (max-width: 727px) {
+	#ad {
+		display: none;
 	}
 }
 
-@media screen and (max-width: 515px) {
+@media screen and (max-width: 700px) {
 	.wiki-nav-item {
 		width: 100%;
 		display: block;
@@ -792,6 +682,17 @@ footer {
 	}
 }
 
+@media screen and (max-width: 537px) {
+	#sideToggle {
+		position: static;
+	}
+
+	#header a {
+		margin-left: 0;
+		margin-right: 10px;
+	}
+}
+
 @media screen and (min-aspect-ratio: 1321/561) {
 	#red-container {
 		background-size: cover;
@@ -807,16 +708,5 @@ footer {
 @media screen and (min-aspect-ratio: 1638/561) {
 	#white-container {
 		background-size: cover;
-	}
-}
-
-/*Since it looks like no one is ever going to fix the PHP, cleaning up*/
-@media screen and (max-width: 800px) {
-	#searchResults {
-		border-top: 0;
-	}
-
-	#searchInput {
-		top: 12px;
 	}
 }
