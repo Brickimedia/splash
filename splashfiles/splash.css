@@ -41,9 +41,9 @@ a {
 	color: #ccc;
 	text-decoration: none;
 	cursor: pointer;
-	-moz-transition: color .15s, opacity .15s, right .5s;
-	-webkit-transition: color .15s, opacity .15s, right .5s;
-	transition: color .15s, opacity .15s, right .5s;
+	-moz-transition: right .5s;
+	-webkit-transition: right .5s;
+	transition: right .5s;
 }
 
 a:hover {
@@ -200,16 +200,13 @@ ul {
 	pointer-events: none;
 	height: 75px;
 	width: 80px;
-	background: url("menu-icon.png") no-repeat;
-	background-size: 62px;
+	background: url("search-icon.png") no-repeat;
+	background-size: 74px;
 	background-position: center;
 	margin-right: 10px;
 	float: left;
 	cursor: pointer;
 	background-color: #093861;
-	-moz-transition: background-color .5s;
-	-webkit-transition: background-color .5s;
-	transition: background-color .5s;
 }
 
 #sideToggle:hover {
@@ -266,9 +263,6 @@ ul {
 	width: 16%;
 	height: 70px;
 	vertical-align: middle;
-	-moz-transition: all .5s;
-	-webkit-transition: all .5s;
-	transition: all .5s;
 	font-size: 110%;
 }
 
@@ -562,6 +556,10 @@ footer {
 	#social {
 		padding-bottom: 2em;
 	}
+	
+	#social-links a:hover{
+		opacity: .5;
+	}
 
 	#wiki-nav-bottom {
 		margin-top: 35px !important;
@@ -570,6 +568,18 @@ footer {
 }
 
 @media screen and (min-width: 800px) {
+	a {
+		-moz-transition: color .15s, opacity .15s, right .5s;
+		-webkit-transition: color .15s, opacity .15s, right .5s;
+		transition: color .15s, opacity .15s, right .5s;
+	}
+	
+	.wiki-nav-item {
+		-moz-transition: all .25s;
+		-webkit-transition: all .25s;
+		transition: all .25s;
+	}
+	
 	#social-links img {
 		position: relative;
 		bottom: 0;
