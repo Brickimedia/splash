@@ -97,16 +97,16 @@ ul {
 	height: 75px;
 	width: 80px;
 	float: left;
-	background-color: #093861;
 }
 
 #user:hover {
-	background-color: #066996;
+	opacity: .75;
 }
 
 #user img {
 	width: 55px;
 	margin-top: 10px;
+	margin-right: 8px;
 	border-radius: 30px;
 }
 
@@ -347,22 +347,6 @@ footer {
 	background: rgba(75, 75, 75, 0.4);
 }
 
-::-webkit-input-placeholder {
-	text-align: center;
-}
-
-:-moz-placeholder {
-	text-align: center;
-}
-
-::-moz-placeholder {
-	text-align: center;
-}
-
-:-ms-input-placeholder {
-	text-align: center;
-}
-
 @media screen and (max-width: 800px) {
 	p {
 		width: 100%;
@@ -420,7 +404,7 @@ footer {
 		transition: color .15s, opacity .15s, right .5s;
 	}
 	
-	.wiki-nav-item, #user {
+	.wiki-nav-item {
 		-moz-transition: all .25s;
 		-webkit-transition: all .25s;
 		transition: all .25s;
