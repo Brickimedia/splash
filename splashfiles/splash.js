@@ -1,5 +1,5 @@
 //Mobile is 800px wide or less
-var desktop = window.innerWidth > 800 ? false : true; //starts opposite
+var desktop = window.innerWidth > 800 ? true : false;
 var listWikis = ['en', 'customs', 'ideas', 'stories', 'meta', 'books'];
 var userData;
 var defaultAvi = new Image();
@@ -15,7 +15,7 @@ $.ajax({
 	'success': function(data) {
 		if (data.query.userinfo.id != "0") {
 			userData = data.query.userinfo;
-			$('#user').attr('href', 'http://meta.brickimedia.org/wiki/User:' + userData.name);
+			$('#user').attr('href', 'http://meta.brickimedia.org/wiki/User:' + userData.name).attr('title', 'User:' + userData.name);
 			var fullPath = aviPath + userData.id;
 			var pathArray = [fullPath + '_l.png', fullPath + '_l.jpg', fullPath + '_l.gif', aviPath + 'default_l.gif'];
 			for (i = 0; i < pathArray.length - 1; i++) {
@@ -25,7 +25,7 @@ $.ajax({
 					checkImages();
 				}
 				image.onload = function() {
-					$('#userAvi').attr('src', this.src).attr('title', 'User:' + userData.name);
+					$('#userAvi').attr('src', this.src);
 				}
 			}
 			defaultAvi.src = pathArray[3];

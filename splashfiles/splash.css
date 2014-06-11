@@ -420,7 +420,7 @@ footer {
 		transition: color .15s, opacity .15s, right .5s;
 	}
 	
-	.wiki-nav-item {
+	.wiki-nav-item, #user {
 		-moz-transition: all .25s;
 		-webkit-transition: all .25s;
 		transition: all .25s;
