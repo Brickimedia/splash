@@ -65,112 +65,6 @@ ul {
 	text-align: left;
 }
 
-#sideMenu {
-	position: static;
-	height: 100%;
-	width: 100%;
-	z-index: 1;
-}
-
-#searchInput {
-	position: absolute;
-	right: 3em;
-	height: 50px;
-	border-radius: 25px;
-	border: 0;
-	top: 12px;
-	width: 200px;
-	font-family: "Lato", sans-serif;
-	font-size: 14pt;
-	padding: 0 10px;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
-	-webkit-appearance: none;
-	z-index: 2;
-}
-
-#searchInput:focus {
-	outline: none;
-}
-
-#searchResults {
-	pointer-events: none;
-	opacity: 0;
-	top: 75px;
-	height: 100%;
-	height: calc(100% - 95px);
-	height: -webkit-calc(100% - 95px);
-	height: -moz-calc(100% - 95px);
-	padding-bottom: 20px;
-	width: 100%;
-	background-color: #000;
-	background-color: rgba(0, 0, 0, 0.9);
-	position: absolute;
-	text-align: left;
-	overflow-x: hidden;
-	z-index: 1;
-	font-size: 20pt;
-	-moz-transition: opacity 1s;
-	-webkit-transition: opacity 1s;
-	transition: opacity 1s;
-}
-
-.search-result {
-	padding: 0 10% 0 10%;
-	margin-top: 20px;
-	text-align: center;
-	display: none;
-}
-
-.result a {
-	display: inline;
-	width: auto;
-	color: #0645ad;
-	margin-top: 5px;
-}
-
-.result a {
-	font-size: 18pt;
-}
-
-.result a:after {
-	display: block;
-	content: "";
-	margin-top: 5px;
-}
-
-.result a:hover {
-	color: #0389D6;
-}
-
-#clearContainer {
-	position: fixed;
-	z-index: 3;
-	right: 0;
-}
-
-#searchClose {
-	position: absolute;
-	right: -25px;
-	height: 75px;
-	width: 25px;
-	background: url("close-icon.png") no-repeat;
-	background-size: 25px;
-	background-position: center;
-	z-index: 2;
-}
-
-#searchClose:hover {
-	opacity: .5;
-}
-
-#content {
-	width: 100%;
-	z-index: 2;
-	box-shadow: #000 0px 0px 10px;
-	overflow-y: hidden;
-}
-
 #header {
 	overflow: hidden;
 	position: relative;
@@ -181,40 +75,39 @@ ul {
 	background: #002541;
 }
 
-#header a {
-	display: block;
-	overflow: hidden;
-	width: auto;
+#logo {
+	height: 70px;
+	margin-top: 5px;
+	float: left;
+	width: 100%;
+	margin-right: -80px;
+}
+
+#logoInner {
 	margin: auto;
 	background: url("logo.svg") no-repeat scroll;
 	background-size: contain;
 	background-position: 0 center;
-	height: 70px;
-	margin-top: 5px;
-	max-width: 340px;
+	height: 100%;
+	width: 340px;
 }
 
-#sideToggle {
-	position: absolute;
-	opacity: 0;
-	pointer-events: none;
+#user {
+	position: static;
 	height: 75px;
 	width: 80px;
-	background: url("search-icon.png") no-repeat;
-	background-size: 74px;
-	background-position: center;
-	margin-right: 10px;
 	float: left;
-	cursor: pointer;
-	background-color: #093861;
 }
 
-#sideToggle:hover {
-	background-color: #066996;
+#user:hover {
+	opacity: .75;
 }
 
-#logo {
-	padding-top: 5px;
+#user img {
+	width: 55px;
+	margin-top: 10px;
+	margin-right: 8px;
+	border-radius: 30px;
 }
 
 #hero {
@@ -252,10 +145,6 @@ ul {
 	background: rgb(0, 0, 0);
 	background: rgba(0, 0, 0, 0.7);
 	max-width: 975px;
-}
-
-.wiki-nav-row {
-	padding: 0;
 }
 
 .wiki-nav-item {
@@ -358,10 +247,6 @@ ul {
 	display: inline-block;
 }
 
-.circle-container:last-of-type {
-	margin-right: 0;
-}
-
 .circle {
 	width: 200px;
 	height: 200px;
@@ -405,10 +290,6 @@ ul {
 	background-color: #419ec8;
 }
 
-.divider {
-	padding: 50px;
-}
-
 #white-container {
 	background: url("contribute.jpg") no-repeat fixed;
 	background-position: center 0;
@@ -425,11 +306,6 @@ ul {
 
 #white-container a:hover {
 	color: #777;
-}
-
-.contribute-table {
-	width: 100%;
-	display: table;
 }
 
 .contribute-small-box {
@@ -471,22 +347,6 @@ footer {
 	background: rgba(75, 75, 75, 0.4);
 }
 
-::-webkit-input-placeholder {
-	text-align: center;
-}
-
-:-moz-placeholder {
-	text-align: center;
-}
-
-::-moz-placeholder {
-	text-align: center;
-}
-
-:-ms-input-placeholder {
-	text-align: center;
-}
-
 @media screen and (max-width: 800px) {
 	p {
 		width: 100%;
@@ -503,36 +363,6 @@ footer {
 	}
 	
 	/* !importants are needed to override javascript */
-
-	#searchInput {
-		left: 12px;
-		width: 196px !important;
-		top: 12px;
-	}
-
-	#searchResults {
-		height: auto;
-		padding: 0;
-		top: 0px;
-		width: 240px;
-		opacity: 1 !important;
-		pointer-events: auto !important;
-		background-color: #000;
-		padding-top: 62px;
-	}
-
-	#clearContainer {
-		display: none !important;
-	}
-
-	#content {
-		position: relative;
-	}
-
-	#sideToggle {
-		opacity: 1;
-		pointer-events: auto;
-	}
 
 	#hero,
 	#blue-container,
@@ -635,13 +465,16 @@ footer {
 }
 
 @media screen and (max-width: 537px) {
-	#sideToggle {
-		position: static;
+	#logo {
+		float: left;
+		width: 100%;
+		margin-right: -80px;
 	}
-
-	#header a {
-		margin-left: 0;
-		margin-right: 10px;
+	
+	#logoInner {
+		width: auto;
+		margin-right: 90px;
+		margin-left: 10px;
 	}
 }
 
