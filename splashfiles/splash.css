@@ -247,6 +247,10 @@ ul {
 	display: inline-block;
 }
 
+.circle-container:last-of-type {
+	margin-right: 0;
+}
+
 .circle {
 	width: 200px;
 	height: 200px;
