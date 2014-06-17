@@ -6,16 +6,16 @@ var defaultAvi = new Image();
 var imageLoop = 0;
 
 //Load the avi
-var aviPath = 'http://images.brickimedia.org/avatars/';
+var aviPath = '//images.brickimedia.org/avatars/';
 $.ajax({
-	'url': 'http://meta.brickimedia.org/api.php?action=query&meta=userinfo&origin=http%3A%2F%2F' + document.domain + '&format=json',
+	'url': '//meta.brickimedia.org/api.php?action=query&meta=userinfo&origin=http%3A%2F%2F' + document.domain + '&format=json',
 	'xhrFields': {
 		'withCredentials': true
 	},
 	'success': function(data) {
 		if (data.query.userinfo.id != "0") {
 			userData = data.query.userinfo;
-			$('#user').attr('href', 'http://meta.brickimedia.org/wiki/User:' + userData.name).attr('title', 'User:' + userData.name);
+			$('#user').attr('href', '//meta.brickimedia.org/wiki/User:' + userData.name).attr('title', 'User:' + userData.name);
 			var fullPath = aviPath + userData.id;
 			var pathArray = [fullPath + '_l.png', fullPath + '_l.jpg', fullPath + '_l.gif', aviPath + 'default_l.gif'];
 			for (i = 0; i < pathArray.length - 1; i++) {
@@ -42,13 +42,13 @@ $(document).ready(function() {
 	//Load circles
 	var articles = 0;
 	var ii = 0;
-	$.get('http://meta.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&origin=http%3A%2F%2F' + document.domain + '&format=json',
+	$.get('//meta.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&origin=http%3A%2F%2F' + document.domain + '&format=json',
 		function(data) {
 			var accounts = data.query.statistics.users;
 			accounts = ((accounts/1000).toFixed(1).replace(/\.?0+$/, "")) + "k";
 			$('#circle-accounts .circle-number').text(accounts);
 			for (var i = 0; i < listWikis.length - 1; i++) {
-				$.get('http://' + listWikis[i] + '.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&origin=http%3A%2F%2F' + document.domain + '&format=json',
+				$.get('//' + listWikis[i] + '.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&origin=http%3A%2F%2F' + document.domain + '&format=json',
 					function(data) {
 						articles += parseInt(data.query.statistics.articles, 10);
 						ii++; //total successes
