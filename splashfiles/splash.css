@@ -149,7 +149,7 @@ ul {
 
 .wiki-nav-item {
 	display: table-cell;
-	width: 16%;
+	width: 14%;
 	height: 70px;
 	vertical-align: middle;
 	font-size: 110%;
@@ -168,7 +168,7 @@ ul {
 	border-radius: 35px 0 0 35px;
 }
 
-.brickibooks {
+.minifigures {
 	-webkit-border-radius: 0 35px 35px 0;
 	-moz-border-radius: 0 35px 35px 0;
 	border-radius: 0 35px 35px 0;
@@ -196,6 +196,10 @@ ul {
 
 .brickibooks:hover {
 	background: #ed8400;
+}
+
+.minifigures:hover {
+	background: #EB1214;
 }
 
 #ad {
