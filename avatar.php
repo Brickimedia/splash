@@ -7,11 +7,11 @@
 // Location to avatars on-server (may need to be changed periodically)
 $directory = "/var/www/images/avatars/";
 
-// Location of avatars to the client
-$client = "//images.brickimedia.org/avatars/";
+// The file to be displayed
+$file = "";
 
-// The output to be displayed
-$output = "";
+// The file header type
+$type = "image/";
 
 if ( $_GET["id"] ) {
 	$userID = $_GET["id"];
@@ -20,25 +20,19 @@ if ( $_GET["id"] ) {
 }
 
 if ( file_exists( $directory . $userID . "_l.png" ) ) {
-	$output = $client . $userID . "_l.png";
+	$file = $directory . $userID . "_l.png";
+	$type .= "png";
 } elseif ( file_exists( $directory . $userID . "_l.jpg" ) ) {
-	$output = $client . $userID . "_l.jpg";
+	$file = $directory . $userID . "_l.jpg";
+	$type .= "jpeg";
 } elseif ( file_exists( $directory . $userID . "_l.gif" ) ) {
-	$output = $client . $userID . "_l.gif";
+	$file = $directory . $userID . "_l.gif";
+	$type .= "gif";
 } else {
-	$output = $client . "default_l.gif";
+	$file = $directory . "default_l.gif";
+	$type .= "gif";
 }
-?>
 
-<html>
-	<body>
-		<?php
-			if ( $_GET["url"] == "1" || $error ) {
-				echo $output;
-			} else {
-				echo "<img src=\"{$output}\" alt=\"Avatar\" width=\"75\" />";
-			}
-		?>
-	</body>
-</html>
+header( 'Content-Type:' . $type );
 
+readfile( $file );
