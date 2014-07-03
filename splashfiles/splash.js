@@ -64,17 +64,24 @@ $(document).ready(function() {
 	); //meta ajax
 
 	if (desktop) {
+		var heightAboveBlue, heightAboveRed, heightAboveWhite;
 		$(window).scroll(function() {
 			var diffToTop = $(this).scrollTop();
-			var diffToBottom = $(document).height() - ($(this).scrollTop() + $(this).height());
-			$("#hero").css("background-position", "center " + parseInt(-diffToTop / 5, 10) + "px");
-			$("#blue-container").css("background-position", "center " + parseInt(-diffToTop / 5, 10) + "px");
-			$("#red-container").css("background-position", "center " + (150 + parseInt(-diffToTop / 5, 10)) + "px");
-			$("#white-container").css("background-position", "center " + (300 + parseInt(-diffToTop / 5, 10)) + "px");
+			var diffToBottom = $(document).height() - (diffToTop + $(this).height());
+			$("#hero").css("background-position", "center " + ( -diffToTop / 5 ) + "px");
+			$("#blue-container").css("background-position", "center " + ( heightAboveBlue - diffToTop / 5 - 50 ) + "px");
+			$("#red-container").css("background-position", "center " + ( heightAboveRed - diffToTop / 5 - 50 ) + "px");
+			$("#white-container").css("background-position", "center " + ( heightAboveWhite - diffToTop / 5 - 50 ) + "px");
 			if (diffToBottom <= 100) {
 				$("#wiki-nav-bottom").css("opacity", (100 - diffToBottom) / 100);
 			}
-		}); //move background images
+		}) //move background images
+		.resize(function() {
+			heightAboveBlue = $('#blue-container').offset().top / 5;
+			heightAboveRed = $('#red-container').offset().top / 5;
+			heightAboveWhite = $('#white-container').offset().top / 5;
+		}) //update variables on resize
+		.resize();
 	}
 });
 
