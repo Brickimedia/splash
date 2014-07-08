@@ -149,7 +149,7 @@ ul {
 
 .wiki-nav-item {
 	display: table-cell;
-	width: 14%;
+	width: 14%; /* was 14% with books */
 	height: 70px;
 	vertical-align: middle;
 	font-size: 110%;
