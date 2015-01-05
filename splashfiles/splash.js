@@ -16,8 +16,8 @@ $.ajax({
 		if (data.query.userinfo.id != "0") {
 			userData = data.query.userinfo;
 			$('#user').attr('href', '//meta.brickimedia.org/wiki/User:' + userData.name).attr('title', 'User:' + userData.name);
-			var fullPath = aviPath + userData.id;
-			var pathArray = [fullPath + '_l.png', fullPath + '_l.jpg', fullPath + '_l.gif', aviPath + 'default_l.gif'];
+			var fullPath = aviPath + 'global_' + userData.id + '_l.';
+			var pathArray = [fullPath + 'png', fullPath + 'jpg', fullPath + 'gif', aviPath + 'default_l.gif'];
 			for (i = 0; i < pathArray.length - 1; i++) {
 				image = new Image();
 				image.src = pathArray[i];
