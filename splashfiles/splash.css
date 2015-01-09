@@ -149,7 +149,7 @@ ul {
 
 .wiki-nav-item {
 	display: table-cell;
-	width: 14%; /* was 14% with books */
+	width: 20%; /* set to 14% when adding a new project */
 	height: 70px;
 	vertical-align: middle;
 	font-size: 110%;
@@ -168,7 +168,7 @@ ul {
 	border-radius: 35px 0 0 35px;
 }
 
-.minifigures {
+.ideas {
 	-webkit-border-radius: 0 35px 35px 0;
 	-moz-border-radius: 0 35px 35px 0;
 	border-radius: 0 35px 35px 0;
