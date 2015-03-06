@@ -1,6 +1,6 @@
 //Mobile is 800px wide or less
 var desktop = window.innerWidth > 800 ? true : false;
-var listWikis = ['en', 'customs', 'ideas', 'stories', 'meta'];
+var listWikis = ['en', 'customs', 'ideas', 'stories', 'gbc', 'meta'];
 var userData;
 var defaultAvi = new Image();
 var imageLoop = 0;

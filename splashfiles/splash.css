@@ -149,7 +149,7 @@ ul {
 
 .wiki-nav-item {
 	display: table-cell;
-	width: 20%; /* set to 14% when adding a new project */
+	width: 14%;
 	height: 70px;
 	vertical-align: middle;
 	font-size: 110%;
@@ -200,6 +200,10 @@ ul {
 
 .minifigures:hover {
 	background: #EB1214;
+}
+
+.gbc:hover {
+	background: #F49B00;
 }
 
 #ad {
