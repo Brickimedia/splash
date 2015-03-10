@@ -168,7 +168,9 @@ ul {
 	border-radius: 35px 0 0 35px;
 }
 
-.ideas {
+.gbc {
+	-webkit-border-radius: 0 35px 35px 0;
+	-moz-border-radius: 0 35px 35px 0;
 	border-radius: 0 35px 35px 0;
 }
 
@@ -201,8 +203,6 @@ ul {
 }
 
 .gbc:hover {
-	-webkit-border-radius: 0 35px 35px 0;
-	-moz-border-radius: 0 35px 35px 0;
 	background: #F49B00;
 }
 
