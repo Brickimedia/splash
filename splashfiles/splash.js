@@ -1,6 +1,7 @@
 //Mobile is 800px wide or less
 var desktop = window.innerWidth > 800 ? true : false;
-var listWikis = ['en', 'customs', 'ideas', 'gbc', 'meta'];
+var a = '.brickimedia.org'
+var listWikis = ['en' + a, 'customs' + a, 'ideas' + a, 'greatballcontraption.com', 'meta' + a];
 var userData;
 var defaultAvi = new Image();
 var imageLoop = 0;
@@ -48,7 +49,7 @@ $(document).ready(function() {
 			accounts = ((accounts/1000).toFixed(1).replace(/\.?0+$/, "")) + "k";
 			$('#circle-accounts .circle-number').text(accounts);
 			for (var i = 0; i < listWikis.length - 1; i++) {
-				$.get('//' + listWikis[i] + '.brickimedia.org/api.php?action=query&meta=siteinfo&siprop=statistics&origin=http%3A%2F%2F' + document.domain + '&format=json',
+				$.get('//' + listWikis[i] + '/api.php?action=query&meta=siteinfo&siprop=statistics&origin=http%3A%2F%2F' + document.domain + '&format=json',
 					function(data) {
 						articles += parseInt(data.query.statistics.articles, 10);
 						ii++; //total successes
