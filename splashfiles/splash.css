@@ -276,6 +276,7 @@ ul {
 	position: absolute;
 	top: 45px; /* half of height (90/2) */
 	width: 100%;
+	color: #333;
 }
 
 .circle-number {
