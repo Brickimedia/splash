@@ -139,8 +139,6 @@ ul {
 	height: 70px;
 	margin: 40px auto auto auto;
 	text-align: center;
-	-webkit-border-radius: 35px;
-	-moz-border-radius: 35px;
 	border-radius: 35px;
 	background: rgb(0, 0, 0);
 	background: rgba(0, 0, 0, 0.7);
@@ -163,14 +161,10 @@ ul {
 }
 
 .meta {
-	-webkit-border-radius: 35px 0 0 35px;
-	-moz-border-radius: 35px 0 0 35px;
 	border-radius: 35px 0 0 35px;
 }
 
 .gbc {
-	-webkit-border-radius: 0 35px 35px 0;
-	-moz-border-radius: 0 35px 35px 0;
 	border-radius: 0 35px 35px 0;
 }
 
@@ -262,8 +256,6 @@ ul {
 .circle {
 	width: 200px;
 	height: 200px;
-	-webkit-border-radius: 200px;
-	-moz-border-radius: 200px;
 	border-radius: 200px;
 	font-size: 75pt;
 	line-height: 500px;
@@ -412,22 +404,16 @@ footer {
 
 @media screen and (min-width: 800px) {
 	a {
-		-moz-transition: color .15s, opacity .15s, right .5s;
-		-webkit-transition: color .15s, opacity .15s, right .5s;
 		transition: color .15s, opacity .15s, right .5s;
 	}
 	
 	.wiki-nav-item {
-		-moz-transition: all .25s;
-		-webkit-transition: all .25s;
 		transition: all .25s;
 	}
 	
 	#social-links img {
 		position: relative;
 		bottom: 0;
-		-moz-transition: bottom .2s;
-		-webkit-transition: bottom .2s;
 		transition: bottom .2s;
 	}
 	
@@ -459,14 +445,10 @@ footer {
 	}
 
 	.meta {
-		-webkit-border-radius: 35px 35px 0 0;
-		-moz-border-radius: 35px 35px 0 0;
 		border-radius: 35px 35px 0 0;
 	}
 
 	.gbc {
-		-webkit-border-radius: 0 0 35px 35px;
-		-moz-border-radius: 0 0 35px 35px;
 		border-radius: 0 0 35px 35px;
 	}
 
