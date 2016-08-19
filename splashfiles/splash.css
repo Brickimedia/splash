@@ -160,7 +160,7 @@ ul {
 	line-height: 4em;
 }
 
-.meta {
+.enbricki {
 	border-radius: 35px 0 0 35px;
 }
 
@@ -168,32 +168,9 @@ ul {
 	border-radius: 0 35px 35px 0;
 }
 
-.meta:hover {
-	background: #89959e;
-}
 
 .enbricki:hover {
 	background: #3d9ec8;
-}
-
-.customs:hover {
-	background: #ad2b2b;
-}
-
-.stories:hover {
-	background: #965100;
-}
-
-.ideas:hover {
-	background: #0175c0;
-}
-
-.brickibooks:hover {
-	background: #ed8400;
-}
-
-.minifigures:hover {
-	background: #EB1214;
 }
 
 .gbc:hover {
@@ -366,7 +343,7 @@ footer {
 	li {
 		margin-top: 1em;
 	}
-	
+
 	/* !importants are needed to override javascript */
 
 	#hero,
@@ -391,7 +368,7 @@ footer {
 	#social {
 		padding-bottom: 2em;
 	}
-	
+
 	#social-links a:hover{
 		opacity: .5;
 	}
@@ -406,17 +383,17 @@ footer {
 	a {
 		transition: color .15s, opacity .15s, right .5s;
 	}
-	
+
 	.wiki-nav-item {
 		transition: all .25s;
 	}
-	
+
 	#social-links img {
 		position: relative;
 		bottom: 0;
 		transition: bottom .2s;
 	}
-	
+
 	#social-links a:hover img {
 		bottom: 10px;
 	}
@@ -465,7 +442,7 @@ footer {
 		width: 100%;
 		margin-right: -80px;
 	}
-	
+
 	#logoInner {
 		width: auto;
 		margin-right: 90px;
