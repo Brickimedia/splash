@@ -291,8 +291,7 @@ ul {
 }
 
 .contribute-small-box {
-	width: 50%;
-	display: table-cell;
+	width: 100%;
 	position: relative;
 }
 
