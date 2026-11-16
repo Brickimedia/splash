@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<title>Page Not Found - Brickimedia</title>
 		<link rel="icon" type="image/ico" href="//www.brickimedia.org/img/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="//www.brickimedia.org/resources/fonts/lato/lato.css" />
 		<style type="text/css">
 			body {
-				background: rgb(65,158,200);
+				background: rgb(36,104,139);
 				color: #fff;
 			}
 			.image {
@@ -22,9 +23,7 @@
 				font-weight: lighter;
 				margin-bottom: -15px;
 				-webkit-user-select: none;
-				-moz-user-select: none;
-				-ms-user-select: none;
-				-o-user-select: none;
+				user-select: none;
 			}
 			p {
 				margin-left: 5px;
@@ -33,16 +32,33 @@
 				font-size: 105%;
 			}
 			a {
-				color: #ccc;
+				color: #e0f2fb;
 				text-decoration: none;
 			}
+			p a {
+				text-decoration: underline;
+			}
 			a:hover {
-				color: #eaeaea;
+				color: #fff;
 			}
 			span {
 				position: absolute;
 				bottom: 10px;
 				right: 20px;
+			}
+			@media (max-width: 600px) {
+				.image {
+					display: none;
+				}
+				h1 {
+					font-size: 250%;
+					margin-bottom: 0;
+				}
+				span {
+					position: static;
+					display: block;
+					margin: 2em 5px 0;
+				}
 			}
 		</style>
 	</head>
