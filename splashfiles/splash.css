@@ -38,7 +38,7 @@ h2 {
 }
 
 a {
-	color: #ccc;
+	color: #e0f2fb;
 	text-decoration: none;
 	cursor: pointer;
 	-moz-transition: right .5s;
@@ -47,7 +47,13 @@ a {
 }
 
 a:hover {
-	color: #eaeaea;
+	color: #fff;
+}
+
+/* Underline links in running text so they don't rely on color alone */
+p a,
+li a {
+	text-decoration: underline;
 }
 
 p {
@@ -55,6 +61,10 @@ p {
 	width: 50%;
 	line-height: 1.5em;
 	margin: 0 auto;
+}
+
+p + p {
+	margin-top: 1em;
 }
 
 ul {
@@ -108,6 +118,24 @@ ul {
 	margin-top: 10px;
 	margin-right: 8px;
 	border-radius: 30px;
+}
+
+/* Darken photo backgrounds so white text stays readable */
+#hero,
+#blue-container,
+#red-container {
+	position: relative;
+	isolation: isolate;
+}
+
+#hero::before,
+#blue-container::before,
+#red-container::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background: rgba(0, 37, 65, 0.45);
 }
 
 #hero {
@@ -164,17 +192,20 @@ ul {
 	border-radius: 35px 0 0 35px;
 }
 
-.gbc {
-	border-radius: 0 35px 35px 0;
+/* With a single wiki, shrink the bar to a pill around its link */
+.wiki-nav:has(> :only-child) {
+	width: auto;
 }
 
+.wiki-nav-item:only-child {
+	width: auto;
+	border-radius: 35px;
+	padding: 0 3em;
+}
 
-.enbricki:hover {
+.enbricki:hover,
+.enbricki:focus-within {
 	background: #3d9ec8;
-}
-
-.gbc:hover {
-	background: #F49B00;
 }
 
 #ad {
@@ -187,14 +218,16 @@ ul {
 	padding: 75px 8px;
 }
 
-.text-container h1 {
+.text-container h2 {
 	font-size: 3em;
 	padding: 0;
-	margin: 0;
+	margin: 0 0 .3em;
 }
 
-.text-container h2 {
+.text-container h3 {
 	font-size: 2em;
+	font-weight: normal;
+	margin: .83em 0 .25em;
 }
 
 #blue-container {
@@ -223,7 +256,6 @@ ul {
 	width: auto;
 	height: auto;
 	vertical-align: top;
-	display: inline-block;
 }
 
 .circle-container:last-of-type {
@@ -235,7 +267,6 @@ ul {
 	height: 200px;
 	border-radius: 200px;
 	font-size: 75pt;
-	line-height: 500px;
 	text-align: center;
 	background: #ccc;
 	line-height: 196px; /* total height (200px) - half of the small text font size (16/2=8) + 2 for padding */
@@ -307,11 +338,6 @@ ul {
 	display: inline-block;
 }
 
-.fb-like {
-	margin: 0 auto;
-	padding-top: 1em;
-}
-
 .paypal-form {
 	padding-top: 1em;
 }
@@ -324,8 +350,22 @@ footer {
 
 #wiki-nav-bottom {
 	margin-top: 35px;
+	/* Solid so the white link text stays readable over the pale photo */
 	background: rgb(75, 75, 75);
-	background: rgba(75, 75, 75, 0.4);
+}
+
+/* Override the scroll fade-in so a focused link is never invisible */
+#wiki-nav-bottom:focus-within {
+	opacity: 1 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#hero,
+	#blue-container,
+	#red-container,
+	#white-container {
+		background-attachment: scroll;
+	}
 }
 
 @media screen and (max-width: 800px) {
@@ -418,14 +458,6 @@ footer {
 	.wiki-nav-item {
 		width: 100%;
 		display: block;
-	}
-
-	.meta {
-		border-radius: 35px 35px 0 0;
-	}
-
-	.gbc {
-		border-radius: 0 0 35px 35px;
 	}
 
 	footer {

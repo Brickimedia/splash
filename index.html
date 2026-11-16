@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<title>Brickimedia</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="referrer" content="strict-origin-when-cross-origin">
 		<meta name="application-name" content="&nbsp;">
 		<meta name="msapplication-TileColor" content="#429ec8">
 		<meta name="msapplication-TileImage" content="splashfiles/square.png">
@@ -29,23 +30,24 @@
 	</head>
 	<body>
 		<header id="header">
-			<a id="logo" href="//www.brickimedia.org">
+			<a id="logo" href="//www.brickimedia.org" aria-label="Brickimedia home">
 				<div id="logoInner"></div>
 			</a>
 			<!--<a id="user" href="//meta.brickimedia.org/wiki/Special:UserLogin" title="Sign In">
 				<img id="userAvi" alt="avatar">
 			</a>-->
 		</header>
+		<main>
 		<section id="hero">
 			<header>
 				<h1 id="heroHeader">Welcome to <b>Brickimedia</b></h1>
 				<span>An open project to create the largest LEGO fan network on the web</span>
 			</header>
-			<div class="wiki-nav">
+			<nav class="wiki-nav" aria-label="Wikis">
 				<div class="wiki-nav-item enbricki">
 					<a href="//en.brickimedia.org">Brickipedia</a>
 				</div>
-			</div>
+			</nav>
 			<!--<div id="ad">
 				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 				<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-9543775174763951" data-ad-slot="9998611139"></ins>
@@ -57,16 +59,16 @@
 		<div class="text-container" id="blue-container">
 			<section id="about">
 				<header>
-					<h1>What is Brickimedia?</h1>
+					<h2>What is Brickimedia?</h2>
 				</header>
-				<p>Brickimedia is an open network of LEGO fan communities founded in early 2013. In addition to a <a href="//meta.brickimedia.org/">coordination wiki</a>, Brickimedia hosts 4 projects: <a href="//en.brickimedia.org/">Brickipedia</a>, <a href="//customs.brickimedia.org/">Customs</a>, <a href="//ideas.brickimedia.org/">LEGO Ideas Wiki</a>, and <a href="//greatballcontraption.com">greatballcontraption.com</a>.</p>
+				<p>Brickimedia is an open network of LEGO fan communities founded in early 2013. In addition to a <a href="//meta.brickimedia.org/">coordination wiki</a>, Brickimedia hosts 3 projects: <a href="//en.brickimedia.org/">Brickipedia</a>, <a href="//customs.brickimedia.org/">Customs</a>, and <a href="//ideas.brickimedia.org/">LEGO Ideas Wiki</a>.</p>
 
 				<p>Brickimedia was originally launched in February 2013, but several months later the site's data was lost during an attack on its webhost. Since that downtime, Brickimedia has been through several testing periods and is now officially open!</p>
 			<aside id="circles">
 				<div class="circle-container" id="circle-projects">
 					<div class="circle"></div>
 					<div class="circle-text">
-						<div class="circle-number">5</div><span>projects</span>
+						<div class="circle-number">4</div><span>projects</span>
 					</div>
 				</div>
 				<div class="circle-container" id="circle-articles">
@@ -88,29 +90,29 @@
 		<div class="text-container" id="red-container">
 			<section id="updates">
 				<header>
-					<h1>Recent Updates</h1>
+					<h2>Recent Updates</h2>
 				</header>
 				<ul>
-	      <li><b>19 January 2015:</b> <a href="//greatballcontraption.com">greatballcontraption.com</a> joins the Brickimedia Network.</li>
+	      <li><b>19 January 2015:</b> greatballcontraption.com joins the Brickimedia Network.</li>
 				<li><b>31 December 2014:</b> Brickipedia is proud to announce they will be part of a panel at <a href="http://www.brickuniverse.org">BrickUniverse 2015</a> in Raleigh, North Carolina from 26-29 March 2015.</li>
 				<li><b>17 June 2014:</b> <a href="//minifigures.brickimedia.org">LEGO Minifigures Online Wiki</a> officially launched.</li>
 				<li><b>30 April 2014:</b> LEGO CUUSOO Wiki migrated to <a href="//ideas.brickimedia.org">LEGO Ideas Wiki</a>.</li>
 				<li><b>1 February 2014:</b> Brickimedia is officially open!</li>
-				<li><b>1 November 2013:</b> Brickimedia is in public beta! Learn more about the open beta period <a href="//meta.brickimedia.org/wiki/User_blog:ToaMeiko/Open_Beta_-_What_to_expect">here</a>.</li>
+				<li><b>1 November 2013:</b> Brickimedia is in public beta! <a href="//meta.brickimedia.org/wiki/User_blog:ToaMeiko/Open_Beta_-_What_to_expect">Learn more about the open beta period</a>.</li>
 				</ul>
 			</section>
 		</div>
 		<div class="text-container" id="white-container">
 			<section id="contribute">
 				<header>
-					<h1>Be a Part</h1>
+					<h2>Be a Part</h2>
 				</header>
 				<p>The best way you can contribute to Brickimedia is by <a href="//en.brickimedia.org/wiki/Special:UserLogin/signup">signing up</a> for an account and editing wikis on the Brickimedia network.</p>
 				<p>Here are some other ways to contribute:</p>
 				<div id="contribute-table">
 				<section class="contribute-small-box" id="social">
 					<header>
-						<h2>Social</h2>
+						<h3>Social</h3>
 					</header>
 					<p>Stay up to date with Brickimedia on the following networks:</p>
 					<div id="social-links">
@@ -119,12 +121,9 @@
 						<a href="//www.youtube.com/brickimedia"><img src="splashfiles/youtube.png" width="32" height="32" alt="YouTube"></a>
 						<a href="//www.github.com/Brickimedia"><img src="splashfiles/github.png" width="32" height="32" alt="GitHub"></a>
 					</div>
-					<div>
-						<div class="fb-like" data-href="//www.facebook.com/brickimedia" data-width="100px" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-					</div>
 				</section>
 				<!--<section class="contribute-small-box" id="donate">
-					<h2>Donate</h2>
+					<h3>Donate</h3>
 					<p>As a not-for-profit organization, Brickimedia relies on ad revenue and donations to keep running. Every cent counts, so even the smallest donations help make Brickimedia better.</p>
 					<form class="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
 							<input type="hidden" name="cmd" value="_s-xclick">
@@ -136,11 +135,12 @@
 				</section>-->
 				</div>
 				<footer>
-					<div class="wiki-nav" id="wiki-nav-bottom">
+					<nav class="wiki-nav" id="wiki-nav-bottom" aria-label="Wikis (bottom)">
 						<div class="wiki-nav-item enbricki"><a href="//en.brickimedia.org">Brickipedia</a></div>
-					</div>
+					</nav>
 				</footer>
 			</section>
 		</div>
+		</main>
 	</body>
 </html>

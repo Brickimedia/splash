@@ -67,7 +67,9 @@ $(document).ready(function() {
 		'json'
 	); //meta ajax
 
-	if (desktop) {
+	//Skip the parallax for users who prefer reduced motion
+	var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	if (desktop && !reduceMotion) {
 		var heightAboveBlue, heightAboveRed, heightAboveWhite;
 		$(window).scroll(function() {
 			var diffToTop = $(this).scrollTop();
