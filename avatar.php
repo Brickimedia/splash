@@ -13,10 +13,15 @@ $file = "";
 // The file header type
 $type = "image/";
 
-if ( $_GET["id"] ) {
+if ( !empty( $_GET["id"] ) ) {
 	$userID = $_GET["id"];
 } else {
-	$userID = $_COOKIE["sharedUserID"];
+	$userID = $_COOKIE["ShoutWikiUserID"] ?? "";
+}
+
+// User IDs are numeric; anything else (e.g. "../") gets the default avatar
+if ( !is_string( $userID ) || !ctype_digit( $userID ) ) {
+	$userID = "default";
 }
 
 if ( file_exists( $directory . $userID . "_l.png" ) ) {
@@ -34,5 +39,6 @@ if ( file_exists( $directory . $userID . "_l.png" ) ) {
 }
 
 header( 'Content-Type:' . $type );
+header( 'X-Content-Type-Options: nosniff' );
 
 readfile( $file );

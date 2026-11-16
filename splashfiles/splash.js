@@ -1,7 +1,7 @@
 //Mobile is 800px wide or less
 var desktop = window.innerWidth > 800 ? true : false;
 var a = '.brickimedia.org'
-var listWikis = ['en' + a, 'customs' + a, 'ideas' + a, 'greatballcontraption.com', 'meta' + a];
+var listWikis = ['en' + a, 'customs' + a, 'ideas' + a, 'meta' + a];
 var userData;
 var defaultAvi = new Image();
 var imageLoop = 0;
@@ -10,6 +10,7 @@ var imageLoop = 0;
 var aviPath = '//images.brickimedia.org/avatars/';
 $.ajax({
 	'url': '//meta.brickimedia.org/api.php?action=query&meta=userinfo&origin=http%3A%2F%2F' + document.domain + '&format=json',
+	'dataType': 'json',
 	'xhrFields': {
 		'withCredentials': true
 	},
@@ -58,10 +59,12 @@ $(document).ready(function() {
 							$('#circle-articles .circle-number').text(articles);
 							$('#circles').show();
 						} //last success
-					} //success
+					}, //success
+					'json'
 				); //ajax
 			} //not meta
-		} //meta success
+		}, //meta success
+		'json'
 	); //meta ajax
 
 	if (desktop) {
